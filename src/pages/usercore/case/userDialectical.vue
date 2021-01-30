@@ -90,7 +90,14 @@
               @focus="focusName"
               @blur="timerDiseaseout"
             />
-            <div class="search_down">
+            <div
+              class="search_down"
+              :style="{
+                'border-top': diseaseNameShow
+                  ? '1px solid rgb(111,147,251)'
+                  : 'none',
+              }"
+            >
               <div class="search_down_cont" v-show="diseaseNameShow">
                 <div
                   class="search_item"

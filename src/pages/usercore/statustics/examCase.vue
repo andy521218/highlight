@@ -248,8 +248,9 @@ export default {
     .case_exam_examumber {
       width: 49%;
       height: 100%;
-      background-color: rgb(212, 229, 255, 0.4);
-      border-radius: 10px;
+      background: url("../../../assets/public/0e0644c15de83e6b6f7e1b6b02d589e.png")
+        no-repeat center;
+      background-size: 100% 100%;
       position: relative;
       display: flex;
       align-items: center;
@@ -290,8 +291,9 @@ export default {
       }
     }
     .caee_exam_classrommsort {
-      background-color: rgb(212, 229, 255, 0.4);
-      border-radius: 10px;
+      background: url("../../../assets/public/0e0644c15de83e6b6f7e1b6b02d589e.png")
+        no-repeat center;
+      background-size: 100% 100%;
       width: 49%;
       height: 100%;
       position: relative;

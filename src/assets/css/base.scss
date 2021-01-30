@@ -39,26 +39,6 @@ body,
   box-shadow: 0px 0px 8px 0px rgb(111, 147, 251);
 }
 
-// .text_box::-webkit-input-placeholder {
-//   /* WebKit, Blink, Edge */
-//   color: rgb(111, 147, 251);
-// }
-
-// .text_box:-moz-placeholder {
-//   /* Mozilla Firefox 4 to 18 */
-//   color: rgb(111, 147, 251);
-// }
-
-// .text_box::-moz-placeholder {
-//   /* Mozilla Firefox 19+ */
-//   color: rgb(111, 147, 251);
-// }
-
-// .text_box:-ms-input-placeholder {
-//   /* Internet Explorer 10-11 */
-//   color: rgb(111, 147, 251);
-// }
-
 
 ::-webkit-input-placeholder {
   /* WebKit, Blink, Edge */
@@ -112,8 +92,8 @@ textarea:focus {
 //选择框样式
 
 .custom_radio {
-  width: 1.7em;
-  height: 1.7em;
+  width: 1.5em;
+  height: 1.5em;
   position: relative;
   display: inline-block;
 
@@ -127,8 +107,8 @@ textarea:focus {
 
   .custom_none {
     position: absolute;
-    width: 1.7em;
-    height: 1.7em;
+    width: 1.5em;
+    height: 1.5em;
     opacity: 0;
     left: 0;
     top: 0;
@@ -585,16 +565,16 @@ textarea:focus {
 
 //管理员内容管理
 .cont_bg {
-  background: url('../public/contbg.png') no-repeat center;
-  background-size: 100% 100%;
+  background-color: rgb(212, 229, 255, 0.4);
+  border-radius: 10px;
   height: 100%;
   position: relative;
   text-align: center;
 
   .addResult {
     color: rgb(255, 255, 255);
-    background: rgb(8, 72, 136);
-    border: 1px solid rgb(1, 140, 246);
+    background: rgb(111, 147, 251);
+    border: 1px solid rgb(111, 147, 251);
     border-radius: 5px;
     outline: none;
     cursor: pointer;
@@ -640,7 +620,7 @@ textarea:focus {
       position: absolute;
       width: 75%;
       top: 100%;
-      background-color: rgb(5, 61, 118);
+      background-color: rgb(111, 147, 251);
       text-align: left;
 
       .search_scrollbar {
@@ -668,7 +648,7 @@ textarea:focus {
 
     li {
       width: 100%;
-      border-bottom: 1px solid rgb(8, 111, 148);
+      border-bottom: 1px solid rgb(212, 229, 255);
       padding: 0 1em;
 
 
@@ -681,7 +661,7 @@ textarea:focus {
         cursor: pointer;
 
         i {
-          background: rgb(255, 255, 255);
+          background: rgb(111, 147, 251);
           width: 0.8em;
           height: 0.8em;
           border-radius: 50%;
@@ -702,7 +682,7 @@ textarea:focus {
           height: 0;
           border: 0.6em solid;
           transform: rotate(-90deg);
-          border-color: rgb(255, 255, 255) transparent transparent;
+          border-color: rgb(111, 147, 251) transparent transparent;
         }
 
         .transform {
@@ -796,140 +776,152 @@ textarea:focus {
         height: 50%;
         padding: 1%;
 
-        .case_top {
-          width: 100%;
-          height: 90%;
-          background: url("../../assets/public/caseBox.png") no-repeat center;
-          background-size: 100% 100%;
-          position: relative;
+        .case_user_item_box {
+          width: 81%;
+          height: 93%;
+          border: 1px solid rgb(255, 255, 255);
+          box-shadow: 0px 0px 8px 0px rgb(111, 147, 251);
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: space-between;
 
 
-          img {
-            position: absolute;
-            top: 2%;
-            right: 2%;
-            width: 96%;
-            height: 96%;
-          }
 
-          .state {
-            display: flex;
-            justify-content: space-between;
-            width: 98%;
+          .case_top {
+            margin-top: 3.5%;
+            width: 90%;
+            height: 70%;
+            position: relative;
 
-            .custom_radio {
-              margin: 1.2em;
+
+            img {
+              position: absolute;
+              width: 100%;
+              height: 100%;
             }
 
-            .state_item {
+            .state {
               display: flex;
-              margin-top: 0.3em;
-              color: rgb(255, 255, 255);
+              justify-content: space-between;
+              width: 98%;
+
+              .custom_radio {
+                margin: 1.2em;
+              }
+
+              .state_item {
+                display: flex;
+                margin-top: 0.3em;
+                color: rgb(255, 255, 255);
+                text-align: center;
+                z-index: 1;
+
+
+                .item_one {
+                  background: url("../../assets/public/red.png") no-repeat center;
+                  background-size: 100% 100%;
+                  padding: 0 0.3em;
+                  height: 6em;
+                  width: 2em;
+                  margin-left: 0.5em;
+                }
+
+                .item_draft {
+                  background: url("../../assets/public/red.png") no-repeat center;
+                  background-size: 100% 100%;
+                  padding: 0 0.3em;
+                  height: 4em;
+                  width: 2em;
+                  margin-left: 0.5em;
+                }
+
+                .item_two {
+                  background: url("../../assets/public/blue.png") no-repeat center;
+                  background-size: 100% 100%;
+                  padding-top: 0.5em;
+                  height: 3.5em;
+                  width: 2em;
+                  margin-left: 0.5em;
+                }
+
+                .item_three {
+                  background: url("../../assets/public/violet.png") no-repeat center;
+                  background-size: 100% 100%;
+                  padding-top: 0.5em;
+                  height: 3.5em;
+                  width: 2em;
+                  margin-left: 0.5em;
+                }
+              }
+            }
+
+            .bottom {
+              width: 100%;
+              height: 2em;
+              bottom: 0;
+              background: rgb(111, 147, 251, 0.62);
+              position: absolute;
+              display: flex;
+              align-items: center;
               text-align: center;
-              z-index: 1;
+              font-size: 1.2em;
 
+              .bottom_edit {
+                width: 50%;
+                color: rgb(255, 255, 255);
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
-              .item_one {
-                background: url("../../assets/public/red.png") no-repeat center;
-                background-size: 100% 100%;
-                padding: 0 0.3em;
-                height: 6em;
-                width: 2em;
-                margin-left: 0.5em;
+                i {
+                  background: url("../../assets/public/edit1.png") no-repeat center;
+                  background-size: 100% 100%;
+                  width: 1.2em;
+                  height: 1.2em;
+                  margin-right: 0.5em;
+                }
               }
 
-              .item_draft {
-                background: url("../../assets/public/red.png") no-repeat center;
-                background-size: 100% 100%;
-                padding: 0 0.3em;
-                height: 4em;
-                width: 2em;
-                margin-left: 0.5em;
+              .bottom_dele {
+                width: 50%;
+                color: red;
+                border-left: 1px rgb(25, 179, 243) solid;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                i {
+                  background: url("../../assets/public/dele.png") no-repeat center;
+                  background-size: 100% 100%;
+                  width: 1.2em;
+                  height: 1.2em;
+                  margin-right: 0.5em;
+                }
               }
 
-              .item_two {
-                background: url("../../assets/public/blue.png") no-repeat center;
-                background-size: 100% 100%;
-                padding: 0 0.3em;
-                height: 2.5em;
-                width: 2em;
-                margin-left: 0.5em;
-              }
-
-              .item_three {
-                background: url("../../assets/public/violet.png") no-repeat center;
-                background-size: 100% 100%;
-                padding: 0 0.3em;
-                height: 2.5em;
-                width: 2em;
-                margin-left: 0.5em;
+              .bottom_edit:hover,
+              .bottom_dele:hover {
+                color: rgb(111, 147, 251);
+                cursor: pointer;
               }
             }
           }
 
-          .bottom {
-            width: 96%;
-            height: 2.5em;
-            background: rgb(5, 61, 118);
-            position: absolute;
-            bottom: 0.3em;
-            left: 2%;
+          .case_bottom {
+            height: 25%;
+            width: 93%;
             display: flex;
             align-items: center;
-            text-align: center;
-            font-size: 1.2em;
+            flex-wrap: wrap;
+            padding: 0 7%;
 
-            .bottom_edit {
+            span {
+              text-align: left;
               width: 50%;
               color: rgb(111, 147, 251);
-              display: flex;
-              align-items: center;
-              justify-content: center;
-
-              i {
-                background: url("../../assets/public/edit.png") no-repeat center;
-                background-size: 100% 100%;
-                width: 1.2em;
-                height: 1.2em;
-                margin-right: 0.5em;
-              }
+              font-weight: bold;
             }
-
-            .bottom_dele {
-              width: 50%;
-              color: red;
-              border-left: 1px rgb(25, 179, 243) solid;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-
-              i {
-                background: url("../../assets/public/dele.png") no-repeat center;
-                background-size: 100% 100%;
-                width: 1.2em;
-                height: 1.2em;
-                margin-right: 0.5em;
-              }
-            }
-
-            .bottom_edit:hover,
-            .bottom_dele:hover {
-              color: rgb(255, 255, 255);
-              cursor: pointer;
-            }
-          }
-        }
-
-        .case_bottom {
-          margin-left: 15%;
-          width: 85%;
-          display: flex;
-          flex-wrap: wrap;
-
-          span {
-            text-align: left;
-            width: 50%;
-            margin-top: 1%;
           }
         }
       }
@@ -1021,7 +1013,7 @@ textarea:focus {
 
                 .icon_edit {
                   width: 25px;
-                  background: url("../../assets/public/edit.png") no-repeat center;
+                  background: url("../../assets/public/edit1.png") no-repeat center;
                   height: 40px;
                   line-height: 40px;
                   cursor: pointer;
@@ -1271,7 +1263,7 @@ textarea:focus {
 // 学习记录
 
 .study_title {
-  height: 80px;
+  height: 13%;
   width: 100%;
   display: flex;
   align-items: center;
@@ -1295,43 +1287,68 @@ textarea:focus {
       margin-left: 20px;
     }
   }
-}
 
-.study_main {
-  .study_item_title {
-    width: 100%;
-    background: rgb(21, 100, 157);
-    height: 50px;
+  .study_title_item {
     display: flex;
     align-items: center;
 
+    .custom_radio {
+      margin-left: 1em;
+      margin-right: 0.5em;
+    }
+  }
+}
+
+.study_ask,
+.study_watch,
+.study_listen,
+.study_feel,
+.study_treat,
+.study_disease {
+  width: 100%;
+  height: 100%;
+}
+
+.study_main {
+  width: 100%;
+  height: 9%;
+
+  .study_item_title {
+    width: 100%;
+    height: 100%;
+    background: rgb(111, 147, 251);
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+  
+
     .downMenu {
       width: 80%;
-      line-height: 50px;
+      height: 100%;
       padding-left: 20px;
       position: relative;
-
-      .ivu-icon {
-        position: absolute;
-        top: 10px;
-      }
+      display: flex;
+      align-items: center;
 
       .downMenu_item {
         position: absolute;
         width: 85px;
         text-align: center;
         left: 0;
-        background: rgb(21, 100, 157);
-        line-height: 25px;
+        top: 100%;
+        background: rgb(240, 246, 255);
+        line-height: 35px;
         cursor: pointer;
+        color: rgb(0, 0, 0);
+
 
         ul {
           li:hover {
-            color: rgb(111, 147, 251);
+            background-color: rgb(111, 147, 251, 0.62);
           }
 
           .active {
-            color: rgb(111, 147, 251);
+            background-color: rgb(111, 147, 251, 0.62);
           }
         }
       }
@@ -1340,38 +1357,47 @@ textarea:focus {
 }
 
 
+.scrollbar {
+  width: 100%;
+  height: 78%;
 
-.study_main_item {
-  overflow-y: auto;
-  height: 400px;
-
-  li {
+  .study_main_item {
+    overflow-y: auto;
     width: 100%;
-    padding-left: 10px;
-    display: flex;
-    align-items: center;
-    border-bottom: rgb(111, 147, 251) 1px solid;
+    height: 100%;
 
-    .ask_item {
-      width: 81%;
+    li {
+      width: 100%;
+      padding-left: 10px;
       display: flex;
       align-items: center;
 
-      i {
-        width: 20px;
-        height: 20px;
-        margin-right: 10px;
-      }
 
-      .ask_column {
+      .ask_item {
+        width: 81%;
         display: flex;
-        flex-direction: column;
+        align-items: center;
+
+        i {
+          width: 20px;
+          height: 20px;
+          margin-right: 10px;
+        }
+
+        .ask_column {
+          display: flex;
+          flex-direction: column;
+        }
       }
     }
-  }
 
-  li:hover {
-    background: rgb(26, 127, 195, 0.2);
+    li:nth-child(even) {
+      background: rgb(240, 246, 255);
+    }
+
+    li:hover {
+      background-color: rgb(111, 147, 251, 0.62);
+    }
   }
 }
 
@@ -1384,7 +1410,7 @@ textarea:focus {
     display: inline-block;
     width: 20px;
     height: 20px;
-    background: url("../../assets/public/askTips.png") no-repeat center;
+    background: url("../../assets/public/askTips1.png") no-repeat center;
     background-size: 100% 100%;
   }
 
@@ -1392,7 +1418,7 @@ textarea:focus {
     display: inline-block;
     width: 20px;
     height: 20px;
-    background: url("../../assets/public/error.png") no-repeat center;
+    background: url("../../assets/public/error1.png") no-repeat center;
     background-size: 100% 100%;
   }
 }

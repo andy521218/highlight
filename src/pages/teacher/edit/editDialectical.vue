@@ -22,7 +22,10 @@
           <li
             v-for="(item, index) in askData"
             :key="index"
-            style="flex-direction: column; border-bottom: 1px solid #097ca8"
+            style="
+              flex-direction: column;
+              border-bottom: 1px solid rgb(212, 229, 255);
+            "
           >
             <span class="start">问: {{ item.question }}</span>
             <span class="end">答: {{ item.answer }}</span>
@@ -87,8 +90,16 @@
               v-model="searchDisease"
               @focus="focusName"
               @blur="timerDiseaseout"
+              style="border-bottom: none"
             />
-            <div class="search_down">
+            <div
+              class="search_down"
+              :style="{
+                'border-top': diseaseNameShow
+                  ? '1px solid rgb(111,147,251)'
+                  : 'none',
+              }"
+            >
               <div class="search_down_cont" v-show="diseaseNameShow">
                 <div
                   class="search_item"
@@ -148,7 +159,7 @@
           <li
             v-for="(item, index) in askData"
             :key="index"
-            style="border-bottom: 1px solid #097ca8"
+            style="border-bottom: 1px solid rgb(212, 229, 255)"
           >
             <div>
               <div class="custom_radio" style="margin-right: 10px">
@@ -326,7 +337,7 @@
           <li
             v-for="(item, index) in askData"
             :key="index"
-            style="border-bottom: 1px solid #097ca8"
+            style="border-bottom: 1px solid rgb(212, 229, 255)"
           >
             <div class="custom_radio" style="margin-right: 10px">
               <span
@@ -935,8 +946,7 @@ export default {
   .dialectical_layout_left {
     width: 53%;
     height: 96%;
-    background-color: rgb(5, 61, 118, 0.3);
-    border: 1px solid rgb(111,147,251);
+
     .title {
       width: 100%;
       height: 5%;
@@ -959,7 +969,7 @@ export default {
     height: 96%;
     position: relative;
     margin-left: 1%;
-    border-left: 2px solid rgb(111,147,251);
+    border-left: 2px solid rgb(111, 147, 251);
     ul {
       width: 97%;
       margin-left: 3%;
@@ -1005,8 +1015,8 @@ export default {
     width: 47.5%;
     height: 85%;
     margin-top: 2%;
-    background: url("../../../assets/public/contbg.png") no-repeat center;
-    background-size: 100% 100%;
+    background-color: rgb(212, 229, 255, 0.4);
+    border-radius: 10px;
     position: relative;
     .disease {
       position: absolute;
@@ -1029,7 +1039,7 @@ export default {
       align-items: center;
       justify-content: space-between;
       padding: 0 1% 0 3%;
-      border-bottom: 1px solid rgb(111,147,251);
+      border-bottom: 1px solid rgb(111, 147, 251);
       div {
         width: 100px;
         margin-left: 15px;
@@ -1080,7 +1090,7 @@ export default {
       position: absolute;
       width: 100%;
       bottom: 0;
-      border: 3px solid rgb(111,147,251);
+      border: 3px solid rgb(111, 147, 251);
       border-radius: 3px;
     }
   }

@@ -287,8 +287,8 @@ export default {
   .uploadImg1 {
     width: 51%;
     height: 14em;
-    background-color: rgb(5, 61, 118);
-    border: rgb(111,147,251) 1px solid;
+    background: rgb(240, 246, 255);
+    border: rgb(111, 147, 251) 1px solid;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -52,8 +52,11 @@
           <span>添加图片</span>
         </div>
         <div class="case_right_cont">
-          <div class="main_mask" v-if="imgurl">
-            <img :src="imgurl" accept="image/*" alt="" class="userlogo" />
+          <div
+            class="main_mask"
+            :style="{ 'background-image': 'url(' + imgurl + ')' }"
+          >
+            <!-- <img :src="imgurl" accept="image/*" alt="" class="userlogo" /> -->
           </div>
           <div class="case_right_cont_upload">
             <div class="case_right_cont_upload_img">
@@ -182,9 +185,11 @@ export default {
       width: 90%;
       position: relative;
       .main_mask {
+        background: no-repeat;
+        background-size: contain;
         .userlogo {
-          width: 100%;
-          height: 100%;
+          max-width: 100%;
+          max-height: 100%;
         }
       }
       .case_right_cont_upload {
@@ -201,6 +206,7 @@ export default {
           flex-direction: column;
           position: relative;
           z-index: 99999;
+          // color: rgb(255, 255, 255);
           img {
             width: 48px;
             height: 40px;

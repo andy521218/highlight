@@ -70,17 +70,19 @@
             </div>
             <span class="edit_text_i">{{ prescriptionItemData.name }}</span>
           </li>
-          <li>
+          <li class="flex-wrap">
             <div class="edit_left">
               <span class="edit_red">*</span>
               <span class="edit_text">方剂组成:</span>
             </div>
-            <span
-              class="edit_text_i"
-              v-for="(item, index) in prescriptionItemData.druggeries"
-              :key="index"
-              >{{ item.name }},</span
-            >
+            <div class="flex-right">
+              <span
+                class="edit_text_i"
+                v-for="(item, index) in prescriptionItemData.druggeries"
+                :key="index"
+                >{{ item.name }},</span
+              >
+            </div>
           </li>
         </ul>
       </div>
@@ -105,7 +107,7 @@
               </div>
               <span
                 @click="seePrescription(item)"
-                style="color:rgb(111,147,251)"
+                style="color: rgb(111, 147, 251)"
                 >查看</span
               >
             </div>
@@ -419,11 +421,22 @@ export default {
             }
           }
         }
+        .flex-wrap {
+          align-items: flex-start;
+          .flex-right {
+            width: 70%;
+            display: flex;
+            flex-wrap: wrap;
+            span {
+              width: 19%;
+            }
+          }
+        }
       }
       .addList {
         display: inline-block;
         background: rgb(8, 75, 130);
-        border: rgb(111,147,251) 1px solid;
+        border: rgb(111, 147, 251) 1px solid;
         font-size: 30px;
         width: 30px;
         height: 30px;

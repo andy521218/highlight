@@ -2,7 +2,7 @@
   <div class="study_watch">
     <div class="study_title">
       <span>望诊</span>
-      <div v-for="(item, index) in list" :key="index">
+      <div class="study_title_item" v-for="(item, index) in list" :key="index">
         <div class="custom_radio">
           <span
             class="custom_text"
@@ -156,33 +156,5 @@ export default {
 </script>
 
 <style lang="scss">
-.study_watch {
-  .study_title {
-    height: 80px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    span {
-      font-size: 20px;
-    }
-    label {
-      margin-right: 15px;
-    }
-    div {
-      display: flex;
-      .custom_radio {
-        margin: 0 10px;
-      }
-    }
-  }
-  .study_main {
-    .study_item_title {
-      width: 100%;
-      background: rgb(21, 100, 157);
-      height: 50px;
-      display: flex;
-      align-items: center;
-    }
-  }
-}
+
 </style>

@@ -61,11 +61,7 @@
       <div class="cont_header">病名证型</div>
       <div class="scrollbar">
         <ul ref="scroll">
-          <li
-            v-for="(item, index) in nameData"
-            :key="index"
-            style="border-bottom: 1px solid #086f94"
-          >
+          <li v-for="(item, index) in nameData" :key="index">
             <div class="item_cont" @click="tabShow(item, index)">
               <div class="item_left">
                 <i></i>

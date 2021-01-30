@@ -149,14 +149,16 @@ export default {
     width: 100%;
     height: 20%;
     position: relative;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
     i {
       width: 1.8em;
       height: 3.5em;
       background: url("../../assets/public/0235255.png") no-repeat;
       background-size: 100% 100%;
-      left: 0;
-      top: 0;
       position: absolute;
+      margin-left: 10px;
     }
     .orange {
       background: url("../../assets/public/25113894.png");
@@ -169,7 +171,7 @@ export default {
     span {
       font-size: 17px;
       font-weight: bold;
-      margin-left: 1.8em;
+      margin-left: 2.5em;
     }
     .train_bottom_right_total {
       position: absolute;

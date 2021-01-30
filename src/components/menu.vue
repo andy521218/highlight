@@ -10,13 +10,11 @@
         {{ item.title }}
       </p>
       <ul :class="{ show: menuId == index }">
-        <li
-          v-for="(item, i) in item.item"
-          :key="i"
-          :class="{ color: i == colorIndex }"
-        >
-          <i></i>
-          <span @click="twoRouting(index, i)">{{ item }}</span>
+        <li v-for="(item, i) in item.item" :key="i">
+          <div class="menu_two_item" :class="{ color: i == colorIndex }">
+            <i></i>
+            <span @click="twoRouting(index, i)">{{ item }}</span>
+          </div>
         </li>
       </ul>
     </div>
@@ -122,7 +120,7 @@ export default {
     border-bottom-right-radius: 30px;
     cursor: pointer;
     font-size: 1.3em;
-    color:rgb(111, 147, 251);
+    color: rgb(111, 147, 251);
   }
   p:hover {
     background: rgb(111, 147, 251);
@@ -140,31 +138,52 @@ export default {
       display: flex;
       align-items: center;
       cursor: pointer;
-      margin-top: 5%;
-      i {
-        width: 0.8em;
-        height: 0.8em;
-        background: rgb(255, 255, 255);
-        border-radius: 50%;
-        margin-left: 25%;
-        margin-right: 5%;
+      justify-content: flex-end;
+      .menu_two_item {
+        width: 75%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 2%;
+        padding: 5% 0;
+        i {
+          width: 0.8em;
+          height: 0.8em;
+          background: rgb(111, 147, 251);
+          border-radius: 50%;
+          margin-right: 5%;
+        }
+        span {
+          font-size: 1.3em;
+          color: rgb(111, 147, 251);
+        }
       }
-      span {
-        font-size: 1.3em;
-      }
-      i:hover {
-        background:rgb(111,147,251);
-      }
-      span:hover {
-        color:rgb(111,147,251);
+      &:hover {
+        .menu_two_item {
+          width: 75%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: rgb(111, 147, 251);
+          border-radius: 20px;
+
+          i {
+            background-color: rgb(255, 255, 255) !important;
+          }
+          span {
+            color: rgb(255, 255, 255) !important;
+          }
+        }
       }
     }
     .color {
+      background-color: rgb(111, 147, 251);
+      border-radius: 20px;
       i {
-        background:rgb(111,147,251);
+        background-color: rgb(255, 255, 255) !important;
       }
       span {
-        color:rgb(111,147,251);
+        color: rgb(255, 255, 255) !important;
       }
     }
   }

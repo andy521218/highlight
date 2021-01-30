@@ -46,9 +46,9 @@
           <i-circle
             :percent="parseInt((report.caseCnt / report.totalCaseCnt) * 100)"
             class="item"
-            style="width: 30.5%; height: 96%"
-            stroke-color="rgb(0,235,245)"
-            trail-color="rgb(25,72,114)"
+            style="width: 25.5%; height: 100%"
+            stroke-color="rgb(40,210,208)"
+            trail-color="rgb(40,210,208,0.62)"
           >
             <span class="demo-Circle-inner" style="font-size: 40px">
               {{
@@ -289,8 +289,9 @@ export default {
       height: 100%;
       display: flex;
       flex-direction: column;
-      background-color: rgb(212, 229, 255, 0.4);
-      border-radius: 10px;
+      background: url("../../../assets/public/0e0644c15de83e6b6f7e1b6b02d589e.png")
+        no-repeat center;
+      background-size: 100% 100%;
       .train_itm_main {
         width: 100%;
         height: 60%;
@@ -338,8 +339,9 @@ export default {
     .train_bottom_left,
     .train_bottom_right {
       flex: 1;
-      background: rgb(240, 246, 255);
-      border-radius: 10px;
+      background: url("../../../assets/public/0e0644c15de83e6b6f7e1b6b02d589e.png")
+        no-repeat center;
+      background-size: 100% 100%;
       .train_bottom_left_i {
         background: url("../../../assets/public/25518099.png");
         background-size: 100% 100%;
@@ -353,7 +355,7 @@ export default {
     .train_bottom_right_main {
       margin: 0 auto;
       width: 85%;
-      height: 75%;
+      height: 70%;
     }
     .train_bottom_left_main {
       display: flex;

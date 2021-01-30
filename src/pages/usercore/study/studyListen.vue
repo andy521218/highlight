@@ -83,21 +83,4 @@ export default {
 </script>
 
 <style lang="scss">
-.study_listen {
-  .study_title {
-    height: 80px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-  }
-  .study_main {
-    .study_item_title {
-      width: 100%;
-      background: rgb(21, 100, 157);
-      height: 50px;
-      display: flex;
-      align-items: center;
-    }
-  }
-}
 </style>

@@ -246,37 +246,40 @@ export default {
     border: none;
     text-align: center;
     padding: 0;
-    background: rgb(6, 50, 95);
+    background-color: "";
     cursor: pointer;
   }
   .active {
-    border: 1px solid rgb(111,147,251);
+    border: 1px solid rgb(111, 147, 251);
   }
   .admin_number_item {
     flex: 1;
     height: 100%;
+
     .number_item_title {
-      border: rgb(111,147,251) 1px solid;
       width: 100%;
       padding: 2% 0;
-      background: url("../../assets/public/1143.png") no-repeat center;
-      background-size: 100% 100%;
-      margin-bottom: 0.7em;
+      background-color: rgb(111, 147, 251);
       text-align: center;
       font-size: 1.3em;
       font-weight: bold;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      color: rgb(255, 255, 255);
     }
   }
   .admin_number_item:nth-child(2) {
     margin: 0 3%;
   }
   .number_item_list {
-    background: rgb(6, 50, 95);
+    background-color: rgb(212, 229, 255, 0.4);
     margin-bottom: 2em;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
     li {
       padding: 0 4%;
       display: flex;
-    
+
       align-items: center;
       span {
         flex: 1;

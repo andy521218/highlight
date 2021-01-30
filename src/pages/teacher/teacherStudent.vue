@@ -187,7 +187,7 @@
 import turnPage from "../../components/turnPage";
 import mainItps from "../../components/mainItps";
 import editScore from "../../components/edit/editScore";
-import studyMain from "../usercore/study/studyMain";
+import studyMain from "../usercore/userStudy";
 import selectBox from "../../components/selectBox";
 
 export default {

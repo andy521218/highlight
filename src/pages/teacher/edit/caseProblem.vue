@@ -99,7 +99,6 @@ export default {
 .edit_problem {
   .edit {
     width: 850px;
-    top: -28px;
     left: 50%;
     margin-left: -425px;
     ul {

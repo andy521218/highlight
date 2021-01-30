@@ -2,46 +2,51 @@
   <div class="user_study">
     <header>
       <div class="chart_item">
-        <span class="chart_item_title">总分(100分)</span>
+        <div class="chart_item_title"></div>
+        <span class="chart_item_title_text">总分(100分)</span>
         <i-circle
           :percent="(Math.floor(scoreData.total) / 100) * 100"
           class="item"
           stroke-color="rgb(50,168,255)"
-          trail-color="rgb(25,72,114)"
+          trail-color="rgb(196,217,232)"
         >
           <span class="demo-Circle-inner" style="font-size: 24px">
             {{ Math.floor(scoreData.total) }}分</span
           >
         </i-circle>
       </div>
+
       <div
         class="chart_item"
         :class="{ active: titleIndex == 1 }"
-        @click="titleIndex = 1"
+        @click="routerView(1, 'ask')"
       >
-        <span class="chart_item_title">问({{ askscore }}分)</span>
+        <div class="chart_item_title"></div>
+        <span class="chart_item_title_text">问({{ askscore }}分)</span>
         <i-circle
           :percent="(Math.floor(scoreData.ask) / askscore) * 100"
           class="item"
-          stroke-color="rgb(50,168,255)"
-          trail-color="rgb(25,72,114)"
+          stroke-color="rgb(117,147,251)"
+          trail-color="rgb(196,217,232)"
         >
           <span class="demo-Circle-inner" style="font-size: 24px">
             {{ Math.floor(scoreData.ask) }}分
           </span>
         </i-circle>
       </div>
+
       <div
         class="chart_item"
         :class="{ active: titleIndex == 2 }"
-        @click="titleIndex = 2"
+        @click="routerView(2, 'watch')"
       >
-        <span class="chart_item_title">望({{ watchscore }}分)</span>
+        <div class="chart_item_title"></div>
+        <span class="chart_item_title_text">望({{ watchscore }}分)</span>
         <i-circle
           :percent="(Math.floor(scoreData.watch) / watchscore) * 100"
           class="item"
-          stroke-color="rgb(50,168,255)"
-          trail-color="rgb(25,72,114)"
+          stroke-color="rgb(117,147,251)"
+          trail-color="rgb(196,217,232)"
         >
           <span class="demo-Circle-inner" style="font-size: 24px">
             {{ Math.floor(scoreData.watch) }}分
@@ -51,14 +56,15 @@
       <div
         class="chart_item"
         :class="{ active: titleIndex == 3 }"
-        @click="titleIndex = 3"
+        @click="routerView(3, 'listen')"
       >
-        <span class="chart_item_title">闻({{ listenscore }}分)</span>
+        <div class="chart_item_title"></div>
+        <span class="chart_item_title_text">闻({{ listenscore }}分)</span>
         <i-circle
           :percent="(Math.floor(scoreData.listen) / listenscore) * 100"
           class="item"
-          stroke-color="rgb(50,168,255)"
-          trail-color="rgb(25,72,114)"
+          stroke-color="rgb(117,147,251)"
+          trail-color="rgb(196,217,232)"
         >
           <span class="demo-Circle-inner" style="font-size: 24px">
             {{ Math.floor(scoreData.listen) }}分
@@ -68,14 +74,15 @@
       <div
         class="chart_item"
         :class="{ active: titleIndex == 4 }"
-        @click="titleIndex = 4"
+        @click="routerView(4, 'feel')"
       >
-        <span class="chart_item_title">切({{ feelscore }}分)</span>
+        <div class="chart_item_title"></div>
+        <span class="chart_item_title_text">切({{ feelscore }}分)</span>
         <i-circle
           :percent="(Math.floor(scoreData.feel) / feelscore) * 100"
           class="item"
-          stroke-color="rgb(50,168,255)"
-          trail-color="rgb(25,72,114)"
+          stroke-color="rgb(117,147,251)"
+          trail-color="rgb(196,217,232)"
         >
           <span class="demo-Circle-inner" style="font-size: 24px">
             {{ Math.floor(scoreData.feel) }}分
@@ -85,14 +92,17 @@
       <div
         class="chart_item"
         :class="{ active: titleIndex == 5 }"
-        @click="titleIndex = 5"
+        @click="routerView(5, 'disease')"
       >
-        <span class="chart_item_title">辩证({{ dialecticalscore }}分)</span>
+        <div class="chart_item_title"></div>
+        <span class="chart_item_title_text"
+          >辩证({{ dialecticalscore }}分)</span
+        >
         <i-circle
           :percent="(Math.floor(scoreData.disease) / dialecticalscore) * 100"
           class="item"
-          stroke-color="rgb(50,168,255)"
-          trail-color="rgb(25,72,114)"
+          stroke-color="rgb(117,147,251)"
+          trail-color="rgb(196,217,232)"
         >
           <span class="demo-Circle-inner" style="font-size: 24px">
             {{ Math.floor(scoreData.disease) }}分
@@ -102,14 +112,15 @@
       <div
         class="chart_item"
         :class="{ active: titleIndex == 6 }"
-        @click="titleIndex = 6"
+        @click="routerView(6, 'treat')"
       >
-        <span class="chart_item_title">治疗({{ treatmentscore }}分)</span>
+        <div class="chart_item_title"></div>
+        <span class="chart_item_title_text">治疗({{ treatmentscore }}分)</span>
         <i-circle
           :percent="(Math.floor(scoreData.treat) / treatmentscore) * 100"
           class="item"
-          stroke-color="rgb(50,168,255)"
-          trail-color="rgb(25,72,114)"
+          stroke-color="rgb(117,147,251)"
+          trail-color="rgb(196,217,232)"
         >
           <span class="demo-Circle-inner" style="font-size: 24px">
             {{ Math.floor(scoreData.treat) }}分</span
@@ -118,42 +129,23 @@
       </div>
     </header>
     <div class="user_main_item">
-      <study-ask v-show="titleIndex == 1" :scoreData="scoreData"></study-ask>
-      <study-watch v-show="titleIndex == 2"></study-watch>
-      <study-listen v-show="titleIndex == 3"></study-listen>
-      <study-feel v-show="titleIndex == 4"></study-feel>
-      <study-disease v-if="titleIndex == 5"></study-disease>
-      <study-treat v-show="titleIndex == 6"></study-treat>
+      <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import studyAsk from "../study/studyAsk";
-import studyWatch from "../study/studyWatch";
-import studyListen from "../study/studyListen";
-import studyFeel from "../study/studyFeel";
-import studyDisease from "../study/studyDisease";
-import studyTreat from "../study/studyTreat";
+
 export default {
   name: "study-main",
-  components: {
-    studyAsk,
-    studyWatch,
-    studyListen,
-    studyFeel,
-    studyDisease,
-    studyTreat,
-  },
+
   computed: {
     ...mapState(["examId"]),
   },
   data() {
     return {
-      examNo: "",
       caseId: "",
-      userId: "",
       scoreData: "",
       titleIndex: "1",
       askscore: "",
@@ -162,14 +154,14 @@ export default {
       feelscore: "",
       dialecticalscore: "",
       treatmentscore: 0,
+      examNo: "",
     };
   },
   mounted() {
-    this.userId = localStorage.getItem("examId");
     this.examNo = localStorage.getItem("examNo");
     this.caseId = localStorage.getItem("caseId");
-    this.getSettingScore();
     this.getscore();
+    this.getSettingScore();
   },
   methods: {
     getSettingScore() {
@@ -196,6 +188,10 @@ export default {
         });
       });
     },
+    routerView(index, router) {
+      this.titleIndex = index;
+      this.$router.push(router);
+    },
     getscore() {
       this.axios
         .get(`/${this.examNo}/${this.caseId}/score`, {
@@ -208,12 +204,6 @@ export default {
         });
     },
   },
-  watch: {
-    examId: function () {
-      this.caseId = this.examId;
-      this.getscore();
-    },
-  },
 };
 </script>
 
@@ -224,49 +214,42 @@ export default {
   padding: 1%;
   header {
     width: 100%;
-    height: 210px;
+    height: 28%;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     .chart_item {
-      flex: 1;
-      max-width: 210px;
-      max-height: 210px;
-      margin-right: 28px;
-      background: url("../../../assets/public/chart_deafuly.png") no-repeat
-        center;
-      background-size: 100% 100%;
+      width: 12.5%;
+      height: 100%;
+      border-radius: 5px;
+      border: 2px solid rgb(111, 147, 251);
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
       position: relative;
+
       .chart_item_title {
         position: absolute;
-        text-align: center;
-        line-height: 30px;
-        display: inline-block;
-        height: 30px;
-        width: 130px;
-        background: url("../../../assets/public/chart_default_title.png")
-          no-repeat center;
-        background-size: 100% 100%;
-        left: 0;
-        top: 0;
+        width: 60%;
+        height: 0;
+        border-top: 30px solid rgb(111, 147, 251);
+        border-right: 1em solid transparent;
+        border-left: 1em solid transparent;
       }
-
+      .chart_item_title_text {
+        position: absolute;
+        height: 30px;
+        line-height: 30px;
+      }
       .item {
-        margin-top: 20px;
-        width: 70% !important;
-        height: 70% !important;
+        margin-top: 25%;
+        width: 55% !important;
+        height: 55% !important;
       }
     }
     .active {
-      background: url("../../../assets/public/chart.png") no-repeat center;
-      background-size: 100% 100%;
-      .chart_item_title {
-        background: url("../../../assets/public/chart_title.png") no-repeat
-          center;
-        background-size: 100% 100%;
-      }
+      background-color: rgb(225, 237, 254);
+      border: none;
     }
     .chart_item:last-child {
       margin-right: 0;
@@ -274,7 +257,7 @@ export default {
   }
   .user_main_item {
     width: 100%;
-    height: 534px;
+    height: 72%;
   }
 }
 </style>

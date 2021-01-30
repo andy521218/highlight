@@ -130,31 +130,33 @@
       <main-itps v-show="main_show" :title="'请先添加考核案例'"></main-itps>
       <ul class="caseList" v-show="!main_show">
         <li v-for="(item, index) in manageData" :key="index">
-          <div class="case_top">
-            <img :src="$url + item.picUrl" alt="" />
-            <div class="state">
-              <div class="custom_radio">
-                <span
-                  class="custom_text"
-                  :class="{ active_checkbox: item.active == true }"
-                ></span>
-                <input
-                  type="checkbox"
-                  class="custom_none"
-                  v-model="check"
-                  :value="item.name"
-                  @click="item.active = !item.active"
-                />
-              </div>
-              <div class="state_item">
-                <div class="item_three" v-if="item.exam">考</div>
+          <div class="case_user_item_box">
+            <div class="case_top">
+              <img :src="$url + item.picUrl" alt="" />
+              <div class="state">
+                <div class="custom_radio">
+                  <span
+                    class="custom_text"
+                    :class="{ active_checkbox: item.active == true }"
+                  ></span>
+                  <input
+                    type="checkbox"
+                    class="custom_none"
+                    v-model="check"
+                    :value="item.name"
+                    @click="item.active = !item.active"
+                  />
+                </div>
+                <div class="state_item">
+                  <div class="item_three" v-if="item.exam">考</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="case_bottom">
-            <span>姓名: {{ item.name }}</span>
-            <span>性别: {{ item.gender ? "男" : "女" }}</span>
-            <span>年龄: {{ item.age }}岁</span>
+            <div class="case_bottom">
+              <span>姓名: {{ item.name }}</span>
+              <span>性别: {{ item.gender ? "男" : "女" }}</span>
+              <span>年龄: {{ item.age }}岁</span>
+            </div>
           </div>
         </li>
       </ul>
@@ -443,8 +445,6 @@ export default {
 <style lang="scss">
 .case {
   .release_exam {
-    background: url("../../assets/public/box_1.png") no-repeat;
-    background-size: 100% 100%;
     position: absolute;
     z-index: 9;
     left: 50%;
@@ -460,17 +460,17 @@ export default {
         text-align: center;
       }
       span:first-child {
-        border-right: 1px solid rgb(111,147,251);
+        border-right: 1px solid rgb(111, 147, 251);
       }
       .number_title {
-        border: 1px solid rgb(111,147,251);
+        border: 1px solid rgb(111, 147, 251);
         border-bottom: none;
         height: 30px;
         line-height: 30px;
         margin-top: 10px;
       }
       .ul_scrollbar {
-        border: 1px solid rgb(111,147,251);
+        border: 1px solid rgb(111, 147, 251);
         border-bottom: none;
         .case_item {
           width: 100%;
@@ -481,7 +481,7 @@ export default {
             margin-top: 0;
             height: 30px;
             line-height: 30px;
-            border-bottom: 1px solid rgb(111,147,251);
+            border-bottom: 1px solid rgb(111, 147, 251);
             .text_box {
               text-align: center;
               padding-left: 0;
@@ -508,18 +508,6 @@ export default {
       margin: 20px auto;
     }
   }
-  // .main_table .caseList li .case_top .release {
-  //   width: 60px;
-  //   height: 50px;
-  //   left: 78%;
-  //   background: url("../../assets/public/circle.png") no-repeat;
-  //   padding-left: 10px;
-  //   padding-top: 8px;
-  //   span {
-  //     font-size: 14px;
-  //     color:rgb(111,147,251);
-  //   }
-  // }
   .el-date-editor
     .el-input
     .el-input--prefix
@@ -531,29 +519,29 @@ export default {
     width: 51%;
   }
   .el-input__inner {
-    background: rgb(5, 61, 128);
-    border: #097ca8 1px solid;
-    color: rgb(255, 255, 255);
+    background: rgb(240, 246, 255);
+    border: rgb(111, 147, 251) 1px solid;
+    color: rgb(111, 147, 251);
     width: 100%;
   }
   ::-webkit-input-placeholder {
     /* WebKit, Blink, Edge */
-    color: rgb(255, 255, 255);
+    color: rgb(111, 147, 251);
   }
 
   :-moz-placeholder {
     /* Mozilla Firefox 4 to 18 */
-    color: rgb(255, 255, 255);
+    color: rgb(111, 147, 251);
   }
 
   ::-moz-placeholder {
     /* Mozilla Firefox 19+ */
-    color: rgb(255, 255, 255);
+    color: rgb(111, 147, 251);
   }
 
   :-ms-input-placeholder {
     /* Internet Explorer 10-11 */
-    color: rgb(255, 255, 255);
+    color: rgb(111, 147, 251);
   }
   ::-webkit-scrollbar {
     width: 0;

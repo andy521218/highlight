@@ -229,9 +229,8 @@ export default {
       position: absolute;
     }
     p {
-      color: rgb(111, 147, 251);
-      border: 1px solid rgb(111, 147, 251);
-      background-color: rgb(5, 61, 118);
+      color: rgb(255, 255, 255);
+      background-color: rgb(111, 147, 251);
       width: 2.3em;
       height: 2.3em;
       line-height: 2.3em;

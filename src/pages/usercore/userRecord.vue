@@ -127,7 +127,7 @@ export default {
     },
     toMapping(e) {
       localStorage.setItem("examNo", e.examNo);
-      localStorage.setItem("caseId", e.caseId);
+      localStorage.setItem("caseId", e.userId);
       this.$router.push("usermap");
     },
     toStudy(e) {

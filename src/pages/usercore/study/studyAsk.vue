@@ -8,7 +8,7 @@
           因未按照正确顺序进行问诊,扣除顺序分5分
         </p>
       </div>
-      <div class="study_title_right">
+      <div class="study_title_right" @click="getcoreectasked()">
         <i-switch v-model="correct"></i-switch>
         <span>显示正确答案</span>
       </div>
@@ -111,9 +111,9 @@
 
 <script>
 import { mapState } from "vuex";
+
 export default {
   name: "study-ask",
-  props: ["scoreData"],
   computed: {
     ...mapState(["examId"]),
   },
@@ -157,16 +157,28 @@ export default {
       correctaskked: [],
       correct: false,
       askId: "",
+      scoreData: "",
     };
   },
   mounted() {
-    this.caseId = localStorage.getItem("caseId");
     this.examNo = localStorage.getItem("examNo");
-    this.userId = localStorage.getItem("examId");
+    this.caseId = localStorage.getItem("caseId");
     this.getTabdata();
     this.getAskdata();
+    this.getscore();
   },
   methods: {
+    getscore() {
+      this.axios
+        .get(`/${this.examNo}/${this.caseId}/score`, {
+          params: {
+            userId: this.userId,
+          },
+        })
+        .then((res) => {
+          this.scoreData = res.data;
+        });
+    },
     getTabdata() {
       this.axios
         .get(`/meta/ask/module`, {
@@ -191,6 +203,7 @@ export default {
         });
     },
     getcoreectasked() {
+      if (!this.correct) return;
       let asklist = [];
       for (let i = 0; i < this.tabData.length; i++) {
         asklist.push(
@@ -229,16 +242,6 @@ export default {
           this.askItemData.push(ele);
         }
       });
-    },
-  },
-  watch: {
-    tabData: function () {
-      this.getcoreectasked();
-    },
-    examId: function () {
-      this.caseId = this.examId;
-      this.getTabdata();
-      this.getAskdata();
     },
   },
 };

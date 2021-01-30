@@ -52,49 +52,53 @@
         <button class="submit" @click="getManage('1')">检索</button>
       </div>
     </div>
-    <div class="main_table" v-show="!main_show" style="height: 80%">
+    <div class="main_table" v-show="!main_show">
       <ul class="caseList">
         <li v-for="(item, index) in manageData" :key="index">
-          <div class="case_top">
-            <img :src="$url + item.picUrl" alt="" v-if="item.picUrl" />
-            <div class="state">
-              <div class="custom_radio">
-                <span
-                  class="custom_text"
-                  :class="{ active_radio: active == item.caseId }"
-                ></span>
-                <input
-                  type="radio"
-                  class="custom_none"
-                  v-model="check"
-                  @change="getRadiodata(item)"
-                  :value="item.caseId"
-                />
-              </div>
-              <div class="state_item">
-                <div class="item_one" v-if="!item.complete">
-                  未<br />完<br />成
+          <div class="case_user_item_box">
+            <div class="case_top">
+              <img :src="$url + item.picUrl" alt="" v-if="item.picUrl" />
+              <div class="state">
+                <div class="custom_radio">
+                  <span
+                    class="custom_text"
+                    :class="{ active_radio: active == item.caseId }"
+                  ></span>
+                  <input
+                    type="radio"
+                    class="custom_none"
+                    v-model="check"
+                    @change="getRadiodata(item)"
+                    :value="item.caseId"
+                  />
                 </div>
-                <div class="item_draft" v-if="item.draft">草<br />稿</div>
-                <div class="item_two" v-if="item.train">训</div>
-                <div class="item_three" v-if="item.exam">考</div>
+                <div class="state_item">
+                  <div class="item_one" v-if="!item.complete">
+                    未<br />完<br />成
+                  </div>
+                  <div class="item_draft" v-if="item.draft">草<br />稿</div>
+                  <div class="item_two" v-if="item.train">训</div>
+                  <div class="item_three" v-if="item.exam">考</div>
+                </div>
+              </div>
+              <div class="bottom">
+                <span class="bottom_edit" @click="link(item)">
+                  <i></i>
+                  编 辑
+                </span>
+                <span class="bottom_dele" @click="dele(item)">
+                  <i></i>
+                  删 除
+                </span>
               </div>
             </div>
-            <div class="bottom">
-              <span class="bottom_edit" @click="link(item)">
-                <i></i>
-                编 辑
-              </span>
-              <span class="bottom_dele" @click="dele(item)">
-                <i></i>
-                删 除
-              </span>
+            <div class="case_bottom">
+              <span>姓名: {{ item.name }}</span>
+              <span style="text-align: right"
+                >性别: {{ item.gender ? "男" : "女" }}</span
+              >
+              <span>年龄: {{ item.age }}岁</span>
             </div>
-          </div>
-          <div class="case_bottom">
-            <span>姓名: {{ item.name }}</span>
-            <span>性别: {{ item.gender ? "男" : "女" }}</span>
-            <span>年龄: {{ item.age }}岁</span>
           </div>
         </li>
       </ul>

@@ -91,7 +91,8 @@ export default {
     align-items: center;
     justify-content: space-between;
     height: 40px;
-    background-color: rgb(5, 61, 118);
+    background: rgb(240, 246, 255);
+    color: rgb(111, 147, 251);
 
     i {
       width: 20px;
@@ -115,7 +116,7 @@ export default {
 
   .select_title,
   .select_down {
-    border: rgb(111,147,251) 1px solid;
+    border: rgb(111, 147, 251) 1px solid;
   }
 
   .select_down {
@@ -131,8 +132,8 @@ export default {
     }
 
     .select_item:hover {
-      background: rgb(24, 165, 226);
-      cursor: pointer;
+      color: rgb(255, 255, 255);
+      background: rgb(111, 147, 251);
     }
   }
 }

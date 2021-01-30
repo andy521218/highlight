@@ -117,7 +117,7 @@
                   :style="{ width: max + '%' }"
                   alt=""
                 />
-                <span style="color:rgb(111,147,251)" v-show="max"
+                <span style="color: rgb(111, 147, 251)" v-show="max"
                   >{{ parseInt(report.maxScore) }}分</span
                 >
               </div>
@@ -152,7 +152,7 @@
               <span v-show="historgram050">{{ report.historgram050 }}人</span>
               <img
                 :style="{ height: historgram050 + '%' }"
-                src="../../../assets/public/numberblock.png"
+                src="../../../assets/public/452f0ad494a800823f29c9f1608c38d.png"
                 alt=""
               />
             </div>
@@ -160,7 +160,7 @@
               <span v-show="historgram5060">{{ report.historgram5060 }}人</span>
               <img
                 :style="{ height: historgram5060 + '%' }"
-                src="../../../assets/public/numberblock.png"
+                src="../../../assets/public/452f0ad494a800823f29c9f1608c38d.png"
                 alt=""
               />
             </div>
@@ -168,7 +168,7 @@
               <span v-show="historgram6070">{{ report.historgram6070 }}人</span>
               <img
                 :style="{ height: historgram6070 + '%' }"
-                src="../../../assets/public/numberblock.png"
+                src="../../../assets/public/452f0ad494a800823f29c9f1608c38d.png"
                 alt=""
               />
             </div>
@@ -176,7 +176,7 @@
               <span v-show="historgram8090">{{ report.historgram7080 }}人</span>
               <img
                 :style="{ height: historgram7080 + '%' }"
-                src="../../../assets/public/numberblock.png"
+                src="../../../assets/public/452f0ad494a800823f29c9f1608c38d.png"
                 alt=""
               />
             </div>
@@ -184,7 +184,7 @@
               <span v-show="historgram8090">{{ report.historgram8090 }}人</span>
               <img
                 :style="{ height: historgram8090 + '%' }"
-                src="../../../assets/public/numberblock.png"
+                src="../../../assets/public/452f0ad494a800823f29c9f1608c38d.png"
                 alt=""
               />
             </div>
@@ -192,7 +192,7 @@
               <span v-show="historgram90">{{ report.historgram90 }}人</span>
               <img
                 :style="{ height: historgram90 + '%' }"
-                src="../../../assets/public/numberblock.png"
+                src="../../../assets/public/452f0ad494a800823f29c9f1608c38d.png"
                 alt=""
               />
             </div>
@@ -333,7 +333,8 @@ export default {
 
   //公共样式
   .analysis_background {
-    background: url("../../../assets/public/background.png") no-repeat center;
+    background: url("../../../assets/public/0e0644c15de83e6b6f7e1b6b02d589e.png")
+      no-repeat center;
     background-size: 100% 100%;
   }
   .tarin_bottm_border {
@@ -352,7 +353,9 @@ export default {
     width: 100%;
     height: 15%;
     display: flex;
+    padding-top: 10px;
     i {
+      margin-left: 10px;
       width: 25px;
       height: 49px;
       background: url("../../../assets/public/0235255.png");
@@ -466,7 +469,7 @@ export default {
           .exam_left_bottom_main_block {
             width: 92%;
             height: 100%;
-            border: 1px solid rgb(111,147,251);
+            border: 1px solid rgb(111, 147, 251);
             border-top: none;
             border-right: none;
             display: flex;
@@ -506,7 +509,7 @@ export default {
         .exam_right_main_block {
           width: 100%;
           height: 90%;
-          border: 1px solid rgb(111,147,251);
+          border: 1px solid rgb(111, 147, 251);
           border-top: none;
           border-right: none;
           display: flex;

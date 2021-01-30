@@ -132,13 +132,13 @@
           <td class="status">
             <span
               v-if="item.classrooms[0].status == 2"
-              style="color: rgb(255, 255, 255)"
+              style="color: rgb(111, 147, 251)"
               >已结束</span
             >
             <span v-if="item.classrooms[0].status == 1">进行中</span>
             <span
               v-if="item.classrooms[0].status == 0"
-              style="color: rgb(255, 255, 255)"
+              style="color: rgb(111, 147, 251)"
               >未开始</span
             >
           </td>
@@ -146,8 +146,8 @@
             <p
               @click="seeExam(item)"
               style="
-                color: rgb(255, 255, 255);
-                border: 1px solid rgb(111,147,251);
+                color: rgb(111, 147, 251);
+                border: 1px solid rgb(111, 147, 251);
               "
             >
               查看
@@ -302,17 +302,17 @@ export default {
     text-align: center;
   }
   span:first-child {
-    border-right: 1px solid rgb(111,147,251);
+    border-right: 1px solid rgb(111, 147, 251);
   }
   .number_title {
-    border: 1px solid rgb(111,147,251);
+    border: 1px solid rgb(111, 147, 251);
     border-bottom: none;
     height: 30px;
     line-height: 30px;
     margin-top: 10px;
   }
   .ul_scrollbar {
-    border: 1px solid rgb(111,147,251);
+    border: 1px solid rgb(111, 147, 251);
     border-bottom: none;
     .case_item {
       width: 100%;
@@ -323,7 +323,7 @@ export default {
         margin-top: 0;
         height: 30px;
         line-height: 30px;
-        border-bottom: 1px solid rgb(111,147,251);
+        border-bottom: 1px solid rgb(111, 147, 251);
         .text_box {
           text-align: center;
           padding-left: 0;

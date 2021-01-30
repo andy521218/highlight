@@ -231,7 +231,7 @@ export default {
       li {
         display: flex;
         width: 100%;
-        border-bottom: rgb(111, 147, 251) 1px solid;
+        border-bottom: 1px solid rgb(212, 229, 255);
         height: 35px;
         align-items: center;
         padding-left: 15px;

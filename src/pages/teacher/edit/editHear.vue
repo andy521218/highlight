@@ -113,7 +113,7 @@ export default {
   .case_left {
     main {
       .item_cont_border {
-        border: 1px solid rgb(111,147,251);
+        border: 1px solid rgb(212, 229, 255);
         border-top: none;
         height: 30px;
         line-height: 30px;
@@ -121,7 +121,7 @@ export default {
           display: flex;
           .item_cont_title {
             width: 300px;
-            border-right: rgb(111,147,251) 1px solid;
+            border-right: 1px solid rgb(212, 229, 255);
           }
           .item_cont_option {
             cursor: pointer;

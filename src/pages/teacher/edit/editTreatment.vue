@@ -8,11 +8,17 @@
             <input
               type="text"
               class="text_box"
+              style="border-bottom: none"
               v-model="searchTreat"
               @focus="focusTreat"
               @blur="timerOuttreat"
             />
-            <div class="search_down scrollbar">
+            <div
+              :style="{
+                'border-top': treatShow ? '1px solid rgb(111,147,251)' : 'none',
+              }"
+              class="search_down scrollbar"
+            >
               <div
                 class="search_down_cont"
                 v-for="(item, index) in treatData"
@@ -589,7 +595,7 @@ export default {
     .layout_left {
       width: 57%;
       height: 100%;
-      border-right: 1px solid rgb(111,147,251);
+      border-right: 1px solid rgb(111, 147, 251);
       .title {
         font-size: 16px;
         width: 99%;
@@ -597,7 +603,7 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        border-bottom: 1px solid rgb(111,147,251);
+        border-bottom: 1px solid rgb(111, 147, 251);
         .search {
           padding-bottom: 25px;
           input {
@@ -669,7 +675,7 @@ export default {
         margin-top: 1%;
         .main_left {
           width: 43%;
-          border-right: 1px solid rgb(111,147,251);
+          border-right: 1px solid rgb(111, 147, 251);
           li {
             height: 40px;
             line-height: 40px;
@@ -682,7 +688,7 @@ export default {
             width: 100%;
             height: 100%;
             li {
-              border-bottom: 1px solid rgb(111,147,251);
+              border-bottom: 1px solid rgb(111, 147, 251);
               width: 98%;
               margin-left: 1%;
               display: flex;
@@ -699,8 +705,7 @@ export default {
     .layout_right {
       width: 42%;
       height: 100%;
-      background-color: rgb(5, 61, 118, 0.3);
-      border: 1px solid rgb(111,147,251);
+
       margin-left: 1%;
       .title {
         width: 100%;
@@ -712,9 +717,8 @@ export default {
         font-weight: bold;
       }
       .disease {
-        background: url("../../../assets/public/diseaseBox.png") no-repeat
-          center;
-        background-size: 100% 100%;
+        background-color: rgb(212, 229, 255, 0.4);
+        border-radius: 10px;
         width: 96%;
         height: 42%;
         margin: 0 auto;
@@ -722,7 +726,7 @@ export default {
           width: 98%;
           height: 13%;
           margin-left: 1%;
-          border-bottom: 1px solid rgb(111,147,251);
+          border-bottom: 1px solid rgb(111, 147, 251);
           display: flex;
           padding-left: 3%;
           align-items: center;
@@ -758,7 +762,7 @@ export default {
             width: 100%;
             left: 0;
             bottom: 0;
-            border: 3px solid rgb(111,147,251);
+            border: 3px solid rgb(111, 147, 251);
             border-radius: 3px;
           }
         }
@@ -795,7 +799,7 @@ export default {
               line-height: 25px;
               display: flex;
               flex-direction: column;
-              border-bottom: 1px solid rgb(111,147,251);
+              border-bottom: 1px solid rgb(111, 147, 251);
               span {
                 width: 100%;
               }

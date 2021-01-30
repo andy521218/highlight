@@ -4,7 +4,6 @@
       <div class="study_title_left">
         <span>辩证</span>
         <div v-for="(item, index) in list" :key="index" style="display: flex">
-        
           <div class="custom_radio" style="margin: 0 10px">
             <span
               class="custom_text"
@@ -29,49 +28,43 @@
     </div>
     <ul class="study_main" v-show="!correctshow">
       <li class="study_item_title">
-        <span style="width: 10%; padding-left: 10px">正确答案</span>
-        <span style="width: 10%">我的答案</span>
-        <span style="width: 2%"></span>
-        <div
-          class="downMenu"
-          style="width: 35%; text-align: center; padding-left: 0"
-        >
-          <span @click="downMenu_show = true" style="cursor: default">{{
-            title
-          }}</span>
-          <i-con
-            type="md-arrow-dropdown"
-            size="30"
-            @click="downMenu_show = true"
-          />
-          <div class="downMenu_item" v-show="downMenu_show" style="left: 238px">
-            <ul>
-              <li
-                v-for="(item, index) in tabData"
-                :key="index"
-                :class="{ active: downMenu_active == item.id }"
-                @click="switchIteM(item)"
-              >
-                {{ item.name }}
-              </li>
-            </ul>
-          </div>
+        <div class="study_item_title_left">
+          <span>正确答案</span>
+          <span>我的答案</span>
         </div>
-        <span style="width: 15%; text-align: center" v-show="title != '问'"
-          >正确答案</span
-        >
-        <span style="width: 15%; text-align: center" v-show="title != '问'"
-          >我的答案</span
-        >
-        <span
-          style="width: 15%; text-align: center"
-          v-show="title == '问'"
-        ></span>
-        <span
-          style="width: 15%; text-align: center"
-          v-show="title == '问'"
-        ></span>
-        <span style="width: 15%; text-align: center">是否为依据</span>
+        <div class="study_item_title_right">
+          <div class="downMenu">
+            <span @click="downMenu_show = true" style="cursor: default">{{
+              title
+            }}</span>
+            <i-con
+              type="md-arrow-dropdown"
+              size="30"
+              @click="downMenu_show = true"
+            />
+            <div
+              class="downMenu_item"
+              v-show="downMenu_show"
+              style="left: 238px"
+            >
+              <ul>
+                <li
+                  v-for="(item, index) in tabData"
+                  :key="index"
+                  :class="{ active: downMenu_active == item.id }"
+                  @click="switchIteM(item)"
+                >
+                  {{ item.name }}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <span v-show="title != '问'">正确答案</span>
+          <span v-show="title != '问'">我的答案</span>
+          <span v-show="title == '问'"></span>
+          <span v-show="title == '问'"></span>
+          <span>是否为依据</span>
+        </div>
       </li>
     </ul>
     <!-- 正确选项 -->
@@ -632,54 +625,49 @@ export default {
 <style lang="scss">
 .study_disease {
   .study_title {
-    height: 80px;
-    width: 100%;
-    display: flex;
     justify-content: space-between;
-    align-items: center;
-    span {
-      font-size: 20px;
+  }
+  .study_item_title {
+    justify-content: space-between;
+    .study_item_title_left {
+      width: 23%;
     }
-
-    label {
-      margin-right: 15px;
-    }
-    .study_title_right {
-      display: flex;
-      p {
-        margin-left: 20px;
-      }
+    .study_item_title_right {
+      width: 77%;
     }
   }
   .layout_flex {
     display: flex;
     width: 100%;
+    height: 78%;
     li {
       width: 100%;
-      height: 52px;
       display: flex;
       align-items: center;
       min-height: 40px;
-      border-bottom: rgb(111,147,251) 1px solid;
+    }
+    li:nth-child(even) {
+      background: rgb(240, 246, 255);
     }
     li:hover {
-      background: rgb(26, 127, 195, 0.2);
+      background-color: rgb(111, 147, 251, 0.62);
     }
     .study_main_left {
-      width: 360px;
-      height: 400px;
-      border-right: #097ca8 1px solid;
+      width: 23%;
+      height: 100%;
+      border-right: rgb(111, 147, 251) 1px solid;
       li {
         display: flex;
       }
     }
     .study_main_right {
-      height: 400px;
+      height: 100%;
+      width: 77%;
       overflow-y: auto;
       .disease_ask_item {
         display: flex;
         flex-direction: column;
-        width: 1041px;
+        width: 85%;
       }
       li {
         display: flex;

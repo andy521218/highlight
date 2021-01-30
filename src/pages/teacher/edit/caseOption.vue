@@ -13,7 +13,6 @@
         </div>
         <ul>
           <li v-for="(item, index) in option.options" :key="index">
-          
             <div class="custom_radio">
               <span
                 class="custom_text"
