@@ -40,7 +40,7 @@
         </div>
       </div>
     </div>
-    <div class="case_left">
+    <div class="case_left" style="width: 60%">
       <case-header></case-header>
       <main>
         <ul class="main_tab">
@@ -107,7 +107,7 @@
         </div>
       </main>
     </div>
-    <div class="case_right">
+    <div class="case_right" style="width: 38.5%">
       <div class="case_right_title">
         <span>导入问诊问题及答案</span>
       </div>

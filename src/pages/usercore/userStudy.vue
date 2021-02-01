@@ -4,10 +4,10 @@
       <li
         v-for="(item, index) in caseList"
         :key="index"
-        @click="routerDisease(item)"
+        @click="routerDisease(item, index)"
       >
         <span>案例{{ index + 1 }}</span
-        ><i></i>
+        ><i :class="{ caseId_border: caseIndex == index }"></i>
       </li>
     </ul>
     <header>
@@ -166,6 +166,7 @@ export default {
       userId: "",
       authority: "",
       caseList: [],
+      caseIndex: "0",
     };
   },
   mounted() {
@@ -180,10 +181,11 @@ export default {
     }
   },
   methods: {
-    routerDisease(caseId) {
+    routerDisease(caseId, index) {
       localStorage.setItem("caseId", caseId);
       this.$router.push("ask");
       this.titleIndex = 1;
+      this.caseIndex = index;
     },
     getSettingScore() {
       this.axios.get("/case/manage/score/setting").then((res) => {
@@ -249,10 +251,19 @@ export default {
       justify-content: space-around;
       align-items: center;
       flex-direction: column;
+      cursor: pointer;
       i {
         width: 100%;
-        border: 3px solid rgb(111, 147, 251);
+        height: 3px;
         border-radius: 3px;
+      }
+      .caseId_border {
+        border: 3px solid rgb(111, 147, 251);
+      }
+      &:hover {
+        i {
+          border: 3px solid rgb(111, 147, 251);
+        }
       }
     }
   }

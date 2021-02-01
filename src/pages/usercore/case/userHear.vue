@@ -16,7 +16,6 @@
               {{ item }}
               <div :class="{ active: typeId == index }"></div>
             </li>
-            <i class="tips"></i>
           </ul>
           <div class="normal_edit" v-if="normal_edit_show">
             闻诊的结果均为正常
@@ -43,6 +42,12 @@
           </div>
         </main>
       </div>
+      <div class="case_right" v-if="imgurl">
+        <span class="case_title_name">患者{{ name }}正在接望诊:</span>
+        <div class="main_mask_img">
+          <img :src="imgurl" accept="image/*" alt="" class="userlogo" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -63,6 +68,7 @@ export default {
       examNo: "",
       listenId: "",
       videoUrl: "",
+      imgurl: "",
     };
   },
   components: {
@@ -73,8 +79,24 @@ export default {
     this.caseId = localStorage.getItem("caseId");
     this.examNo = localStorage.getItem("examNo");
     this.getListenData();
+    this.getwatchdata();
   },
   methods: {
+    getwatchdata() {
+      this.axios
+        .get(`/answer/${this.examNo}/${this.caseId}/watch/1`)
+        .then((res) => {
+          this.watchData = res.data.list;
+          this.normal_show = res.data.list.length;
+          if (/localhost/.test(res.data.url)) {
+            this.imgurl = res.data.url.replace(/localhost/, "101.132.150.87");
+          } else if (!res.data.url) {
+            this.imgurl = "";
+          } else {
+            this.imgurl = this.$url + res.data.url;
+          }
+        });
+    },
     openOption(e) {
       this.option = e;
       if (/localhost/.test(e.videoUrl)) {
@@ -118,7 +140,7 @@ export default {
   .case_left {
     main {
       .item_cont_border {
-        border: 1px solid rgb(111,147,251);
+        border: 1px solid rgb(111, 147, 251);
         border-top: none;
         height: 30px;
         line-height: 30px;
@@ -126,7 +148,7 @@ export default {
           display: flex;
           .item_cont_title {
             width: 300px;
-            border-right: rgb(111,147,251) 1px solid;
+            border-right: rgb(111, 147, 251) 1px solid;
           }
           .item_cont_option {
             cursor: pointer;
@@ -134,6 +156,18 @@ export default {
           }
         }
       }
+    }
+  }
+  .main_mask_img {
+    // background: rgb(0, 0, 0, 0.5);
+    width: 90%;
+    height: 80%;
+    margin: 5% auto;
+    text-align: center;
+
+    .userlogo {
+      max-width: 100%;
+      max-height: 100%;
     }
   }
 }

@@ -445,38 +445,38 @@ export default {
         }
       };
       if (flag) return;
-      let _this = this;
-      window.onblur = function () {
-        let total = localStorage.getItem("total");
-        if (total >= 4) {
-          let examNo = localStorage.getItem("examNo");
-          _this.axios.put(`/exam/${examNo}/finished`).then((res) => {
-            _this.fraction = res.data;
-            clearInterval(_this.timerTotal);
-            localStorage.removeItem("total");
-            _this
-              .$confirm(`您已经离开考试界面超过3次自动提交本次考试!`, "提示", {
-                confirmButtonText: "确定",
-                type: "warning",
-              })
-              .then(() => {
-                _this.fractionshow = true;
-                _this.number_show = true;
-              });
-          });
-          return;
-        }
-        _this.$confirm(
-          `您已经离开考试界面${total}次,超过3次将会自动提交本次考试!`,
-          "提示",
-          {
-            confirmButtonText: "确定",
-            type: "warning",
-          }
-        );
-        total++;
-        localStorage.setItem("total", total);
-      };
+      // let _this = this;
+      // window.onblur = function () {
+      //   let total = localStorage.getItem("total");
+      //   if (total >= 4) {
+      //     let examNo = localStorage.getItem("examNo");
+      //     _this.axios.put(`/exam/${examNo}/finished`).then((res) => {
+      //       _this.fraction = res.data;
+      //       clearInterval(_this.timerTotal);
+      //       localStorage.removeItem("total");
+      //       _this
+      //         .$confirm(`您已经离开考试界面超过3次自动提交本次考试!`, "提示", {
+      //           confirmButtonText: "确定",
+      //           type: "warning",
+      //         })
+      //         .then(() => {
+      //           _this.fractionshow = true;
+      //           _this.number_show = true;
+      //         });
+      //     });
+      //     return;
+      //   }
+      //   _this.$confirm(
+      //     `您已经离开考试界面${total}次,超过3次将会自动提交本次考试!`,
+      //     "提示",
+      //     {
+      //       confirmButtonText: "确定",
+      //       type: "warning",
+      //     }
+      //   );
+      //   total++;
+      //   localStorage.setItem("total", total);
+      // };
       window.onbeforeunload = function (e) {
         var a = window.event || e;
         a.returnValue = "确定离开当前页面吗？";

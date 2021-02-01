@@ -1077,6 +1077,7 @@ export default {
       position: relative;
       padding: 1%;
       width: 99%;
+      font-size: 1.1em;
       .custom_radio {
         margin-bottom: 12px;
       }

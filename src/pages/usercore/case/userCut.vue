@@ -19,7 +19,6 @@
               {{ item }}
               <div :class="{ active: typeId == index }"></div>
             </li>
-            <i class="tips" @click="opneTips"></i>
           </ul>
           <div class="content scrollbar">
             <div class="content_scrollbar_">
@@ -715,14 +714,11 @@ export default {
     }
   }
   .case_right {
-    text-align: center;
     img {
-      max-width: 90%;
-      max-height: 90%;
+      width: 90%;
       margin-top: 3%;
     }
     .seedesc {
-      text-align: left;
       margin-left: 20px;
     }
   }

@@ -1,6 +1,10 @@
 <template>
   <header class="case_header">
-    <img :src="$url + caseData.picUrl" alt="" v-if="caseData.picUrl" />
+    <div
+      class="case_header_logo"
+      :style="{ 'background-image': 'url(' + $url + caseData.picUrl + ')' }"
+    ></div>
+
     <ul>
       <li>
         <span>姓名:</span>
@@ -83,11 +87,14 @@ export default {
   width: 100%;
   height: 15%;
   align-items: center;
-  img {
-    height: 72%;
-    width: 8%;
-    border-radius: 50%;
+  .case_header_logo {
+    width: 70px;
+    height: 70px;
     margin: 0 2em;
+    display: flex;
+    border-radius: 50%;
+    background: no-repeat center;
+    background-size: cover;
   }
 
   ul {

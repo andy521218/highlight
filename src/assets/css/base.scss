@@ -939,7 +939,7 @@ textarea:focus {
 
   .case_left {
     height: 100%;
-    width: 65%;
+    width: 60%;
 
     main {
       width: 96%;
@@ -999,9 +999,9 @@ textarea:focus {
               justify-content: space-between;
               align-items: center;
               padding: 0 15px;
-              height: 30px;
+              height: 40px;
               border-bottom: rgb(212, 229, 255, ) 1px solid;
-
+              font-size: 1.1em;
 
               i {
                 margin-right: 1%;
@@ -1057,7 +1057,7 @@ textarea:focus {
     background-color: rgb(212, 229, 255, 0.4);
     border-radius: 10px;
     position: relative;
-    width: 33.5%;
+    width: 38.5%;
     height: 94.5%;
     margin-top: 1%;
 
@@ -1460,6 +1460,7 @@ textarea:focus {
         flex-direction: column;
         justify-content: space-between;
         position: relative;
+        border-radius: 6px;
 
         img {
           margin-top: 3.5%;
@@ -1492,6 +1493,7 @@ textarea:focus {
           justify-content: center;
           flex-direction: column;
           opacity: 0;
+          border-radius: 6px;
 
           .totlal_second {
             color: rgb(255, 255, 255);

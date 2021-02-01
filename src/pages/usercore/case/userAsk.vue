@@ -20,11 +20,7 @@
             <div class="content_scrollbar">
               <!-- 主诉 -->
               <ul v-show="'主诉' == typeName">
-                <li
-                  v-for="(item, index) in askData0"
-                  :key="index"
-                  style="height: 35px"
-                >
+                <li v-for="(item, index) in askData0" :key="index">
                   <div class="item_cont" style="flex-direction: column">
                     <span>{{ item.question }}</span>
                   </div>
@@ -66,11 +62,7 @@
               </ul>
               <!-- 既往史 -->
               <ul v-show="'既往史' == typeName">
-                <li
-                  v-for="(item, index) in askData2"
-                  :key="index"
-                  style="height: 35px"
-                >
+                <li v-for="(item, index) in askData2" :key="index">
                   <div class="item_cont" style="flex-direction: column">
                     <span>{{ item.question }}</span>
                   </div>
@@ -89,11 +81,7 @@
               </ul>
               <!-- 个人史 -->
               <ul v-show="'个人史' == typeName">
-                <li
-                  v-for="(item, index) in askData3"
-                  :key="index"
-                  style="height: 35px"
-                >
+                <li v-for="(item, index) in askData3" :key="index">
                   <div class="item_cont" style="flex-direction: column">
                     <span>{{ item.question }}</span>
                   </div>
@@ -112,11 +100,7 @@
               </ul>
               <!-- 婚育史 -->
               <ul v-show="'婚育史' == typeName">
-                <li
-                  v-for="(item, index) in askData4"
-                  :key="index"
-                  style="height: 35px"
-                >
+                <li v-for="(item, index) in askData4" :key="index">
                   <div class="item_cont" style="flex-direction: column">
                     <span>{{ item.question }}</span>
                   </div>
@@ -135,11 +119,7 @@
               </ul>
               <!-- 月经史 -->
               <ul v-show="'月经史' == typeName">
-                <li
-                  v-for="(item, index) in askData5"
-                  :key="index"
-                  style="height: 35px"
-                >
+                <li v-for="(item, index) in askData5" :key="index">
                   <div class="item_cont" style="flex-direction: column">
                     <span>{{ item.question }}</span>
                   </div>
@@ -158,11 +138,7 @@
               </ul>
               <!-- 家族史 -->
               <ul v-show="'家族史' == typeName">
-                <li
-                  v-for="(item, index) in askData6"
-                  :key="index"
-                  style="height: 35px"
-                >
+                <li v-for="(item, index) in askData6" :key="index">
                   <div class="item_cont" style="flex-direction: column">
                     <span>{{ item.question }}</span>
                   </div>
@@ -463,7 +439,7 @@ export default {
           width: 20px;
           height: 20px;
           border-radius: 50%;
-          background: url("../../../assets/public/111147251.png") no-repeat
+          background: url("../../../assets/public/askTips1.png") no-repeat
             center;
           background-size: 100% 100%;
         }
@@ -476,13 +452,14 @@ export default {
     }
   }
   .case_right {
-    width: 33.5%;
+    width: 38.5%;
     height: 94.5%;
     margin-top: 1%;
     ul {
       width: 99%;
       height: 100%;
       overflow-y: auto;
+      padding-top: 10px;
       li {
         width: 100%;
         margin-bottom: 10px;
