@@ -44,15 +44,15 @@ export default {
   width: 100%;
   height: 92%;
   display: flex;
-  align-items: center;
   justify-content: center;
   .exam_index {
     width: 54%;
     height: 63%;
-    background: url("../../../assets/public/exam_box.png") no-repeat center;
+    margin-top: 3%;
+    background: url("../../../assets/public/exam_box1.png") no-repeat center;
     background-size: 100% 100%;
     .exam_index_title {
-      border-bottom: 5px solid rgb(111,147,251);
+      border-bottom: 5px solid rgb(111, 147, 251);
       width: 90px;
       margin-top: 3%;
       padding-bottom: 5px;

@@ -2,60 +2,47 @@
   <div class="disease_correct">
     <ul class="study_main">
       <li class="study_item_title">
-        <span style="width: 10%; padding-left: 10px">正确答案</span>
-        <span style="width: 10%"></span>
-        <span style="width: 2%"></span>
-        <div
-          class="downMenu"
-          style="width: 35%; text-align: center; padding-left: 0"
-        >
-          <span @click="downMenu_show = true" style="cursor: default">{{
-            title
-          }}</span>
-          <i-con
-            type="md-arrow-dropdown"
-            size="30"
-            @click="downMenu_show = true"
-          />
-          <div class="downMenu_item" v-show="downMenu_show" style="left: 238px">
-            <ul>
-              <li
-                v-for="(item, index) in tabData"
-                :key="index"
-                :class="{ active: downMenu_active == item.id }"
-                @click="switchIteM(item)"
-              >
-                {{ item.name }}
-              </li>
-            </ul>
-          </div>
+        <div class="study_item_title_left">
+          <span>正确答案</span>
+          <span>我的答案</span>
         </div>
-        <span style="width: 15%; text-align: center" v-show="title != '问'"
-          >正确答案</span
-        >
-        <span style="width: 15%; text-align: center" v-show="title != '问'"
-          >我的答案</span
-        >
-        <span
-          style="width: 15%; text-align: center"
-          v-show="title == '问'"
-        ></span>
-        <span
-          style="width: 15%; text-align: center"
-          v-show="title == '问'"
-        ></span>
-        <span style="width: 15%; text-align: center">是否为依据</span>
+        <div class="study_item_title_right">
+          <div class="downMenu">
+            <span @click="downMenu_show = true" style="cursor: default">{{
+              title
+            }}</span>
+            <i-con
+              type="md-arrow-dropdown"
+              size="30"
+              @click="downMenu_show = true"
+            />
+            <div class="downMenu_item" v-show="downMenu_show">
+              <ul>
+                <li
+                  v-for="(item, index) in tabData"
+                  :key="index"
+                  :class="{ active: downMenu_active == item.id }"
+                  @click="switchIteM(item)"
+                >
+                  {{ item.name }}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <span style="width: 30%" v-show="title != '问'">正确答案</span>
+          <span style="width: 30%" v-show="title != '问'">我的答案</span>
+          <span style="width: 30%" v-show="title == '问'"></span>
+          <span style="width: 30%" v-show="title == '问'"></span>
+          <span style="width: 10%; text-align: center">是否为依据</span>
+        </div>
       </li>
     </ul>
     <!-- 病名 -->
     <div class="layout_flex scrollbar" v-show="mainId == '1'">
       <ul class="study_main_left">
         <li>
-          <span style="width: 163px; padding-left: 10px">{{
-            showData.diseaseName
-          }}</span>
-          <span style="width: 163px">{{ showData.answer }}</span>
-        
+          <span>{{ showData.diseaseName }}</span>
+          <span>{{ showData.answer }}</span>
         </li>
       </ul>
       <!-- 问诊 -->
@@ -65,64 +52,49 @@
             <span>问: {{ item.question }}</span>
             <span>答: {{ item.answer }}</span>
           </div>
-          <span style="width: 240px; text-align: center" class="options">
+          <span class="options">
             <i class="right"></i>
           </span>
         </li>
       </ul>
       <!-- 望诊 -->
-      <ul class="study_main_right" v-show="title == '望'">
+      <ul class="study_main_right special" v-show="title == '望'">
         <li v-for="(item, index) in watchData" :key="index">
-          <span style="width: 561px; text-align: center">{{ item.name }}</span>
-          <span style="width: 240px; text-align: center">
-            {{ item.correctAnswer }}</span
-          >
-          <span style="width: 240px; text-align: center">{{
-            item.answer
-          }}</span>
-          <span style="width: 240px; text-align: center" class="options">
+          <span>{{ item.name }}</span>
+          <span> {{ item.correctAnswer }}</span>
+          <span>{{ item.answer }}</span>
+          <span class="options">
             <i class="right"></i>
           </span>
         </li>
       </ul>
       <!-- 闻诊 -->
-      <ul class="study_main_right" v-show="title == '闻'">
+      <ul class="study_main_right special" v-show="title == '闻'">
         <li v-for="(item, index) in listenData" :key="index">
-          <span style="width: 561px; text-align: center">{{ item.name }}</span>
-          <span style="width: 240px; text-align: center">
-            {{ item.correctAnswer }}</span
-          >
-          <span style="width: 240px; text-align: center">{{
-            item.answer
-          }}</span>
-          <span style="width: 240px; text-align: center" class="options">
+          <span>{{ item.name }}</span>
+          <span> {{ item.correctAnswer }}</span>
+          <span>{{ item.answer }}</span>
+          <span class="options">
             <i class="right"></i>
           </span>
         </li>
       </ul>
       <!-- 切诊 -->
-      <ul class="study_main_right" v-show="title == '切'">
+      <ul class="study_main_right special" v-show="title == '切'">
         <li v-show="pulseData.id">
-          <span style="width: 561px; text-align: center">脉诊</span>
-          <span style="width: 240px; text-align: center"
-            >{{ pulseData.correctAnswer }}
-          </span>
-          <span style="width: 240px; text-align: center">{{
-            pulseData.answer
-          }}</span>
-          <span style="width: 240px; text-align: center" class="options">
+          <span>脉诊</span>
+          <span>{{ pulseData.correctAnswer }} </span>
+          <span>{{ pulseData.answer }}</span>
+          <span class="options">
             <i class="right"></i>
           </span>
         </li>
         <li v-for="(item, index) in feelData" :key="index">
-          <span style="width: 561px; text-align: center">{{ item.name }}</span>
-          <span style="width: 240px; text-align: center">
-            {{ item.correctAnswer }}</span
-          >
-          <span style="width: 240px; text-align: center">{{
-            item.answer
-          }}</span>
-          <span style="width: 240px; text-align: center" class="options">
+          <span>{{ item.name }}</span>
+          <span> {{ item.correctAnswer }}</span>
+          <span>{{ item.answer }}</span>
+          <span
+            >class="options">
             <i class="right"></i>
           </span>
         </li>
@@ -137,9 +109,9 @@
           :key="index"
           @click="seeDiseaseItem(item)"
         >
-          <span style="width: 163px; padding-left: 10px">{{ item.name }}</span>
+          <span>{{ item.name }}</span>
           <!-- <span style="width: 163px">{{ item.answer }}</span> -->
-          <span style="width: 10%" class="options"> </span>
+          <span class="options"> </span>
         </li>
       </ul>
       <!-- 问诊 -->
@@ -149,65 +121,49 @@
             <span>问: {{ item.question }}</span>
             <span>答: {{ item.answer }}</span>
           </div>
-          <span style="width: 240px; text-align: center" class="options">
+          <span class="options">
             <i class="right"></i>
           </span>
         </li>
       </ul>
       <!-- 望诊 -->
-      <ul class="study_main_right" v-show="title == '望'">
+      <ul class="study_main_right special" v-show="title == '望'">
         <li v-for="(item, index) in diseaseWatch" :key="index">
-          <span style="width: 561px; text-align: center">{{ item.name }}</span>
-          <span style="width: 240px; text-align: center">
-            {{ item.correctAnswer }}</span
-          >
-          <span style="width: 240px; text-align: center">{{
-            item.answer
-          }}</span>
-          <span style="width: 240px; text-align: center" class="options">
+          <span>{{ item.name }}</span>
+          <span> {{ item.correctAnswer }}</span>
+          <span>{{ item.answer }}</span>
+          <span class="options">
             <i class="right"></i>
           </span>
         </li>
       </ul>
       <!-- 闻诊 -->
-      <ul class="study_main_right" v-show="title == '闻'">
+      <ul class="study_main_right special" v-show="title == '闻'">
         <li v-for="(item, index) in diseaseListen" :key="index">
-          <span style="width: 561px; text-align: center">{{ item.name }}</span>
-          <span style="width: 240px; text-align: center">
-            {{ item.correctAnswer }}</span
-          >
-          <span style="width: 240px; text-align: center">{{
-            item.answer
-          }}</span>
-          <span style="width: 240px; text-align: center" class="options">
+          <span>{{ item.name }}</span>
+          <span> {{ item.correctAnswer }}</span>
+          <span>{{ item.answer }}</span>
+          <span class="options">
             <i class="right"></i>
           </span>
         </li>
       </ul>
 
       <!-- 切诊 -->
-      <ul class="study_main_right" v-show="title == '切'">
+      <ul class="study_main_right special" v-show="title == '切'">
         <li v-show="diseasePulse.id">
-          <span style="width: 561px; text-align: center">脉诊</span>
-          <span style="width: 240px; text-align: center"
-            >{{ diseasePulse.correctAnswer }}
-          </span>
-          <span style="width: 240px; text-align: center">{{
-            diseasePulse.answer
-          }}</span>
-          <span style="width: 240px; text-align: center" class="options">
+          <span>脉诊</span>
+          <span>{{ diseasePulse.correctAnswer }} </span>
+          <span>{{ diseasePulse.answer }}</span>
+          <span class="options">
             <i class="right"></i>
           </span>
         </li>
         <li v-for="(item, index) in diseaseFeel" :key="index">
-          <span style="width: 561px; text-align: center">{{ item.name }}</span>
-          <span style="width: 240px; text-align: center">
-            {{ item.correctAnswer }}</span
-          >
-          <span style="width: 240px; text-align: center">{{
-            item.answer
-          }}</span>
-          <span style="width: 240px; text-align: center" class="options">
+          <span>{{ item.name }}</span>
+          <span> {{ item.correctAnswer }}</span>
+          <span>{{ item.answer }}</span>
+          <span s class="options">
             <i class="right"></i>
           </span>
         </li>
@@ -254,7 +210,7 @@ export default {
   mounted() {
     this.caseId = localStorage.getItem("caseId");
     this.examNo = localStorage.getItem("examNo");
-    this.userId = localStorage.getItem("examId");
+    this.userId = localStorage.getItem("caseUserId");
     this.getcorrect();
   },
   methods: {
@@ -511,7 +467,7 @@ export default {
       this.watchData = [];
       this.listenData = [];
       this.pulseData = {};
-      this.feelData = []; 
+      this.feelData = [];
       this.correctData = {};
       this.ask = [];
       this.watch = [];
@@ -525,3 +481,69 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.disease_correct {
+  .layout_flex {
+    display: flex;
+    width: 100%;
+    height: 78%;
+    li {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      min-height: 40px;
+    }
+    li:nth-child(even) {
+      background: rgb(240, 246, 255);
+    }
+    li:hover {
+      background-color: rgb(111, 147, 251, 0.62);
+    }
+    .study_main_left {
+      width: 23%;
+      height: 100%;
+      border-right: rgb(111, 147, 251) 1px solid;
+      li {
+        display: flex;
+        span {
+          text-align: center;
+          width: 45%;
+        }
+        .options {
+          width: 10%;
+        }
+      }
+    }
+    .study_main_right {
+      height: 100%;
+      width: 77%;
+      overflow-y: auto;
+      .disease_ask_item {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+      }
+      .options {
+        width: 10%;
+      }
+      li {
+        display: flex;
+      }
+    }
+    .special {
+      li {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        span {
+          width: 30%;
+        }
+        span:first-child {
+          padding-left: 1%;
+        }
+      }
+    }
+  }
+}
+</style>

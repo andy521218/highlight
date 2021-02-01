@@ -940,7 +940,8 @@ export default {
     height: 96%;
     position: relative;
     margin-left: 1%;
-    border-left: 2px solid rgb(111, 147, 251);
+    background-color: rgb(212, 229, 255, 0.4);
+    border-radius: 10px;
 
     ul {
       width: 97%;

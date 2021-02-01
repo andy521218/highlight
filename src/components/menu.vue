@@ -67,7 +67,13 @@ export default {
             if (
               /teacher/.test(window.location) ||
               /examanalysis/.test(window.location) ||
-              /trainanalysis/.test(window.location)
+              /trainanalysis/.test(window.location) ||
+              /ask/.test(window.location) ||
+              /watch/.test(window.location) ||
+              /listen/.test(window.location) ||
+              /feel/.test(window.location) ||
+              /disease/.test(window.location) ||
+              /treat/.test(window.location)
             ) {
               this.menuData = this.teacherMenu;
               return;

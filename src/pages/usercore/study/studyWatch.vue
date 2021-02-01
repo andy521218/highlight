@@ -100,7 +100,7 @@ export default {
   mounted() {
     this.caseId = localStorage.getItem("caseId");
     this.examNo = localStorage.getItem("examNo");
-    this.userId = localStorage.getItem("examId");
+    this.userId = localStorage.getItem("caseUserId");
     for (let i = 0; i < 3; i++) {
       this.axios
         .get(`/${this.examNo}/${this.caseId}/watched/${i}`, {
@@ -156,5 +156,4 @@ export default {
 </script>
 
 <style lang="scss">
-
 </style>

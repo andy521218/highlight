@@ -74,7 +74,7 @@
       </div>
     </div>
     <!-- 学习记录 -->
-    <div class="records" v-if="records_show">
+    <!-- <div class="records" v-if="records_show">
       <div class="records_tile">
         <ul>
           <li
@@ -89,7 +89,7 @@
         <div class="switch_close" @click="close">X</div>
       </div>
       <study-main></study-main>
-    </div>
+    </div> -->
 
     <table class="main_table">
       <thead class="thead-dark">
@@ -187,7 +187,7 @@
 import turnPage from "../../components/turnPage";
 import mainItps from "../../components/mainItps";
 import editScore from "../../components/edit/editScore";
-import studyMain from "../usercore/userStudy";
+// import studyMain from "../usercore/userStudy";
 import selectBox from "../../components/selectBox";
 
 export default {
@@ -196,7 +196,7 @@ export default {
     turnPage,
     editScore,
     mainItps,
-    studyMain,
+    // studyMain,
     selectBox,
   },
   data() {
@@ -288,10 +288,12 @@ export default {
       }
       localStorage.setItem("caseId", item.caseId[0]);
       localStorage.setItem("examNo", item.examNo);
-      localStorage.setItem("examId", item.userId);
       this.caseId = item.caseId;
-      this.records_show = true;
-      this.ask = true;
+      localStorage.setItem("examNo", item.examNo);
+      localStorage.setItem("caseUserId", item.userId);
+      localStorage.setItem("caseId", item.caseId[0]);
+      localStorage.setItem("ArrayCaseId", JSON.stringify(item.caseId));
+      this.$router.push("ask");
     },
     //切换案例
     tapExam(caseId, index) {
@@ -336,12 +338,10 @@ export default {
 <style lang="scss">
 .records {
   position: absolute;
-  height: 103.8%;
+  height: 100%;
   width: 100%;
-  top: -30px;
-  background: url("../../assets/public/23a9142cc272e65ed9e24189f5cd7bb.png")
-    no-repeat center;
-  background-size: 100% 100%;
+  top: 0;
+  background-color: rgb(255, 255, 255);
   z-index: 999;
   .records_tile {
     width: 99%;

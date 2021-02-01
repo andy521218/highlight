@@ -23,7 +23,7 @@
       </div>
       <div class="study_title_right">
         <i-switch v-model="correctshow"></i-switch>
-        <p>显示正确答案</p>
+        <p>正确答案</p>
       </div>
     </div>
     <ul class="study_main" v-show="!correctshow">
@@ -42,11 +42,7 @@
               size="30"
               @click="downMenu_show = true"
             />
-            <div
-              class="downMenu_item"
-              v-show="downMenu_show"
-              style="left: 238px"
-            >
+            <div class="downMenu_item" v-show="downMenu_show">
               <ul>
                 <li
                   v-for="(item, index) in tabData"
@@ -59,11 +55,11 @@
               </ul>
             </div>
           </div>
-          <span v-show="title != '问'">正确答案</span>
-          <span v-show="title != '问'">我的答案</span>
-          <span v-show="title == '问'"></span>
-          <span v-show="title == '问'"></span>
-          <span>是否为依据</span>
+          <span style="width: 30%" v-show="title != '问'">正确答案</span>
+          <span style="width: 30%" v-show="title != '问'">我的答案</span>
+          <span style="width: 30%" v-show="title == '问'"></span>
+          <span style="width: 30%" v-show="title == '问'"></span>
+          <span style="width: 10%; text-align: center">是否为依据</span>
         </div>
       </li>
     </ul>
@@ -82,11 +78,9 @@
     >
       <ul class="study_main_left">
         <li>
-          <span style="width: 163px; padding-left: 10px">{{
-            showData.correctAnswer
-          }}</span>
-          <span style="width: 163px">{{ showData.answer }}</span>
-          <span style="width: 10%" class="options">
+          <span>{{ showData.correctAnswer }}</span>
+          <span>{{ showData.answer }}</span>
+          <span class="options">
             <i class="right" v-show="showData.correct"></i>
             <i class="error" v-show="!showData.correct"></i>
           </span>
@@ -99,68 +93,52 @@
             <span>问: {{ item.question }}</span>
             <span>答: {{ item.answer }}</span>
           </div>
-          <span style="width: 240px; text-align: center" class="options">
+          <span class="options">
             <i class="right" v-show="item.correct"></i>
             <i class="error" v-show="!item.correct"></i
           ></span>
         </li>
       </ul>
       <!-- 望诊 -->
-      <ul class="study_main_right" v-show="title == '望'">
+      <ul class="study_main_right special" v-show="title == '望'">
         <li v-for="(item, index) in watchData" :key="index">
-          <span style="width: 561px; text-align: center">{{ item.name }}</span>
-          <span style="width: 240px; text-align: center">
-            {{ item.correctAnswer }}</span
-          >
-          <span style="width: 240px; text-align: center">{{
-            item.answer
-          }}</span>
-          <span style="width: 240px; text-align: center" class="options">
+          <span>{{ item.name }}</span>
+          <span> {{ item.correctAnswer }}</span>
+          <span>{{ item.answer }}</span>
+          <span class="options">
             <i class="right" v-show="item.correct"></i>
             <i class="error" v-show="!item.correct"></i
           ></span>
         </li>
       </ul>
       <!-- 闻诊 -->
-      <ul class="study_main_right" v-show="title == '闻'">
+      <ul class="study_main_right special" v-show="title == '闻'">
         <li v-for="(item, index) in listenData" :key="index">
-          <span style="width: 561px; text-align: center">{{ item.name }}</span>
-          <span style="width: 240px; text-align: center">
-            {{ item.correctAnswer }}</span
-          >
-          <span style="width: 240px; text-align: center">{{
-            item.answer
-          }}</span>
-          <span style="width: 240px; text-align: center" class="options">
+          <span>{{ item.name }}</span>
+          <span> {{ item.correctAnswer }}</span>
+          <span>{{ item.answer }}</span>
+          <span class="options">
             <i class="right" v-show="item.correct"></i>
             <i class="error" v-show="!item.correct"></i
           ></span>
         </li>
       </ul>
       <!-- 切诊 -->
-      <ul class="study_main_right" v-show="title == '切'">
+      <ul class="study_main_right special" v-show="title == '切'">
         <li v-show="pulseData.id">
-          <span style="width: 561px; text-align: center">脉诊</span>
-          <span style="width: 240px; text-align: center"
-            >{{ pulseData.correctAnswer }}
-          </span>
-          <span style="width: 240px; text-align: center">{{
-            pulseData.answer
-          }}</span>
-          <span style="width: 240px; text-align: center" class="options">
+          <span>脉诊</span>
+          <span>{{ pulseData.correctAnswer }} </span>
+          <span>{{ pulseData.answer }}</span>
+          <span class="options">
             <i class="right" v-show="pulseData.correct"></i>
             <i class="error" v-show="!pulseData.correct"></i
           ></span>
         </li>
         <li v-for="(item, index) in feelData" :key="index">
-          <span style="width: 561px; text-align: center">{{ item.name }}</span>
-          <span style="width: 240px; text-align: center">
-            {{ item.correctAnswer }}</span
-          >
-          <span style="width: 240px; text-align: center">{{
-            item.answer
-          }}</span>
-          <span style="width: 240px; text-align: center" class="options">
+          <span>{{ item.name }}</span>
+          <span> {{ item.correctAnswer }}</span>
+          <span>{{ item.answer }}</span>
+          <span class="options">
             <i class="right" v-show="item.correct"></i>
             <i class="error" v-show="!item.correct"></i
           ></span>
@@ -179,11 +157,9 @@
           :key="index"
           @click="seeDiseaseItem(item)"
         >
-          <span style="width: 163px; padding-left: 10px">{{
-            item.correctAnswer
-          }}</span>
-          <span style="width: 163px">{{ item.answer }}</span>
-          <span style="width: 10%" class="options">
+          <span>{{ item.correctAnswer }}</span>
+          <span>{{ item.answer }}</span>
+          <span class="options">
             <i class="right" v-show="item.correct"></i>
             <i class="error" v-show="!item.correct"></i>
           </span>
@@ -196,39 +172,31 @@
             <span>问: {{ item.question }}</span>
             <span>答: {{ item.answer }}</span>
           </div>
-          <span style="width: 240px; text-align: center" class="options">
+          <span class="options">
             <i class="right" v-show="item.correct"></i>
             <i class="error" v-show="!item.correct"></i
           ></span>
         </li>
       </ul>
       <!-- 望诊 -->
-      <ul class="study_main_right" v-show="title == '望'">
+      <ul class="study_main_right special" v-show="title == '望'">
         <li v-for="(item, index) in diseaseWatch" :key="index">
-          <span style="width: 561px; text-align: center">{{ item.name }}</span>
-          <span style="width: 240px; text-align: center">
-            {{ item.answer }}</span
-          >
-          <span style="width: 240px; text-align: center">{{
-            item.correctAnswer
-          }}</span>
-          <span style="width: 240px; text-align: center" class="options">
+          <span>{{ item.name }}</span>
+          <span> {{ item.answer }}</span>
+          <span>{{ item.correctAnswer }}</span>
+          <span class="options">
             <i class="right" v-show="item.correct"></i>
             <i class="error" v-show="!item.correct"></i
           ></span>
         </li>
       </ul>
       <!-- 闻诊 -->
-      <ul class="study_main_right" v-show="title == '闻'">
+      <ul class="study_main_right special" v-show="title == '闻'">
         <li v-for="(item, index) in diseaseListen" :key="index">
-          <span style="width: 561px; text-align: center">{{ item.name }}</span>
-          <span style="width: 240px; text-align: center">
-            {{ item.answer }}</span
-          >
-          <span style="width: 240px; text-align: center">{{
-            item.correctAnswer
-          }}</span>
-          <span style="width: 240px; text-align: center" class="options">
+          <span>{{ item.name }}</span>
+          <span> {{ item.answer }}</span>
+          <span>{{ item.correctAnswer }}</span>
+          <span class="options">
             <i class="right" v-show="item.correct"></i>
             <i class="error" v-show="!item.correct"></i
           ></span>
@@ -236,29 +204,21 @@
       </ul>
 
       <!-- 切诊 -->
-      <ul class="study_main_right" v-show="title == '切'">
+      <ul class="study_main_right special" v-show="title == '切'">
         <li v-show="diseasePulse.id">
-          <span style="width: 561px; text-align: center">脉诊</span>
-          <span style="width: 240px; text-align: center"
-            >{{ diseasePulse.answer }}
-          </span>
-          <span style="width: 240px; text-align: center">{{
-            diseasePulse.correctAnswer
-          }}</span>
-          <span style="width: 240px; text-align: center" class="options">
+          <span>脉诊</span>
+          <span>{{ diseasePulse.answer }} </span>
+          <span>{{ diseasePulse.correctAnswer }}</span>
+          <span class="options">
             <i class="right" v-show="diseasePulse.correct"></i>
             <i class="error" v-show="!diseasePulse.correct"></i
           ></span>
         </li>
         <li v-for="(item, index) in diseaseFeel" :key="index">
-          <span style="width: 561px; text-align: center">{{ item.name }}</span>
-          <span style="width: 240px; text-align: center">
-            {{ item.answer }}</span
-          >
-          <span style="width: 240px; text-align: center">{{
-            item.correctAnswer
-          }}</span>
-          <span style="width: 240px; text-align: center" class="options">
+          <span>{{ item.name }}</span>
+          <span> {{ item.answer }}</span>
+          <span>{{ item.correctAnswer }}</span>
+          <span class="options">
             <i class="right" v-show="item.correct"></i>
             <i class="error" v-show="!item.correct"></i
           ></span>
@@ -349,7 +309,7 @@ export default {
   mounted() {
     this.caseId = localStorage.getItem("caseId");
     this.examNo = localStorage.getItem("examNo");
-    this.userId = localStorage.getItem("examId");
+    this.userId = localStorage.getItem("caseUserId");
     this.getDiseasename();
   },
   methods: {
@@ -631,9 +591,21 @@ export default {
     justify-content: space-between;
     .study_item_title_left {
       width: 23%;
+      display: flex;
+      span {
+        text-align: center;
+        width: 45%;
+      }
     }
     .study_item_title_right {
       width: 77%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .downMenu {
+        width: 30%;
+      }
     }
   }
   .layout_flex {
@@ -658,6 +630,13 @@ export default {
       border-right: rgb(111, 147, 251) 1px solid;
       li {
         display: flex;
+        span {
+          text-align: center;
+          width: 45%;
+        }
+        .options {
+          width: 10%;
+        }
       }
     }
     .study_main_right {
@@ -667,10 +646,26 @@ export default {
       .disease_ask_item {
         display: flex;
         flex-direction: column;
-        width: 85%;
+        width: 90%;
+      }
+      .options {
+        width: 10%;
       }
       li {
         display: flex;
+      }
+    }
+    .special {
+      li {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        span {
+          width: 30%;
+        }
+        span:first-child {
+          padding-left: 1%;
+        }
       }
     }
   }

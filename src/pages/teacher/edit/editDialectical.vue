@@ -946,7 +946,8 @@ export default {
   .dialectical_layout_left {
     width: 53%;
     height: 96%;
-
+    background-color: rgb(212, 229, 255, 0.4);
+    border-radius: 10px;
     .title {
       width: 100%;
       height: 5%;
@@ -969,7 +970,8 @@ export default {
     height: 96%;
     position: relative;
     margin-left: 1%;
-    border-left: 2px solid rgb(111, 147, 251);
+    background-color: rgb(212, 229, 255, 0.4);
+    border-radius: 10px;
     ul {
       width: 97%;
       margin-left: 3%;

@@ -2,7 +2,7 @@
   <div class="study_feel">
     <div class="study_title">
       <span>切诊</span>
-      <div v-for="(item, index) in list" :key="index">
+      <div class="study_title_item" v-for="(item, index) in list" :key="index">
         <div class="custom_radio">
           <span
             class="custom_text"
@@ -11,7 +11,7 @@
           <input
             class="custom_none"
             type="radio"
-            name="feel"
+            name="watch"
             :value="item.id"
             v-model="typeId"
             @click="seeFeel(item)"
@@ -44,7 +44,7 @@
           }}</span>
           <span style="width: 30%">{{ item.correctAnswer }}</span>
           <span style="width: 35%">{{ item.answer }}</span>
-          <span style="width: 5%; height: 20px" class="options">
+          <span style="width: 5%" class="options">
             <i class="right" v-show="item.correct"></i>
             <i class="error" v-show="!item.correct"></i
           ></span>
@@ -80,7 +80,7 @@ export default {
   mounted() {
     this.caseId = localStorage.getItem("caseId");
     this.examNo = localStorage.getItem("examNo");
-    this.userId = localStorage.getItem("examId");
+    this.userId = localStorage.getItem("caseUserId");
     this.getPress();
     this.getpulse();
   },

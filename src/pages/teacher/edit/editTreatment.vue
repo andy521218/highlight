@@ -614,6 +614,9 @@ export default {
             width: 100%;
           }
         }
+        .scrollbar {
+          height: auto;
+        }
       }
       .layout_search {
         width: 99%;

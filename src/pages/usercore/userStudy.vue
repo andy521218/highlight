@@ -1,5 +1,15 @@
 <template>
   <div class="user_study">
+    <ul class="case_id" v-if="authority == 'TEACHER'">
+      <li
+        v-for="(item, index) in caseList"
+        :key="index"
+        @click="routerDisease(item)"
+      >
+        <span>案例{{ index + 1 }}</span
+        ><i></i>
+      </li>
+    </ul>
     <header>
       <div class="chart_item">
         <div class="chart_item_title"></div>
@@ -15,7 +25,6 @@
           >
         </i-circle>
       </div>
-
       <div
         class="chart_item"
         :class="{ active: titleIndex == 1 }"
@@ -139,7 +148,6 @@ import { mapState } from "vuex";
 
 export default {
   name: "study-main",
-
   computed: {
     ...mapState(["examId"]),
   },
@@ -155,15 +163,28 @@ export default {
       dialecticalscore: "",
       treatmentscore: 0,
       examNo: "",
+      userId: "",
+      authority: "",
+      caseList: [],
     };
   },
   mounted() {
     this.examNo = localStorage.getItem("examNo");
     this.caseId = localStorage.getItem("caseId");
+    this.userId = localStorage.getItem("caseUserId");
+    this.authority = localStorage.getItem("authority");
     this.getscore();
     this.getSettingScore();
+    if (this.authority == "TEACHER") {
+      this.caseList = JSON.parse(localStorage.getItem("ArrayCaseId"));
+    }
   },
   methods: {
+    routerDisease(caseId) {
+      localStorage.setItem("caseId", caseId);
+      this.$router.push("ask");
+      this.titleIndex = 1;
+    },
     getSettingScore() {
       this.axios.get("/case/manage/score/setting").then((res) => {
         res.data.forEach((item) => {
@@ -212,6 +233,29 @@ export default {
   height: 99%;
   width: 100%;
   padding: 1%;
+  position: relative;
+  .case_id {
+    position: absolute;
+    width: 90%;
+    height: 5%;
+    top: -5%;
+    display: flex;
+    align-items: center;
+    li {
+      width: 4%;
+      height: 100%;
+      margin-right: 1em;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
+      i {
+        width: 100%;
+        border: 3px solid rgb(111, 147, 251);
+        border-radius: 3px;
+      }
+    }
+  }
   header {
     width: 100%;
     height: 28%;

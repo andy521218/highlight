@@ -57,7 +57,7 @@ export default {
   mounted() {
     this.caseId = localStorage.getItem("caseId");
     this.examNo = localStorage.getItem("examNo");
-    this.userId = localStorage.getItem("examId");
+    this.userId = localStorage.getItem("caseUserId");
     this.getListen();
   },
   methods: {

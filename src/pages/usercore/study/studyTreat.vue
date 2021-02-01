@@ -22,18 +22,22 @@
     </div>
     <ul class="study_main">
       <li class="study_item_title">
-        <span style="width: 48%; padding-left: 20px">正确答案</span>
-        <span style="width: 48%; padding-left: 5px">我的答案</span>
-        <span style="width: 4%"></span>
+        <span style="width: 45%; padding-left: 10px">正确答案</span>
+        <span style="width: 45%; padding-left: 10px">我的答案</span>
+        <span style="width: 10%"></span>
       </li>
     </ul>
     <!-- 治则治法 -->
-    <div class="scrollbar">
-      <ul class="study_main_item" v-show="showId == '1'">
-        <li style="height: 40px" v-for="(item, index) in showData" :key="index">
-          <span style="width: 48%">{{ item.correctAnswer }}</span>
-          <span style="width: 48%">{{ item.answer }}</span>
-          <span style="width: 4%; height: 20px" class="options">
+    <div class="scrollbar" v-show="showId == '1'">
+      <ul class="study_main_item">
+        <li
+          style="height: 40px; padding-left: 10px"
+          v-for="(item, index) in showData"
+          :key="index"
+        >
+          <span style="width: 45%">{{ item.correctAnswer }}</span>
+          <span style="width: 45%">{{ item.answer }}</span>
+          <span style="width: 10%" class="options">
             <i class="right" v-show="item.correct"></i>
             <i class="error" v-show="!item.correct"></i
           ></span>
@@ -41,12 +45,16 @@
       </ul>
     </div>
     <!-- 遣方用药 -->
-    <div class="scrollbar">
-      <ul class="study_main_item" v-show="showId == '2'">
-        <li style="height: 40px" v-for="(item, index) in showData" :key="index">
-          <span style="width: 48%">{{ item.agentiaCorrectAnswer }}</span>
-          <span style="width: 48%">{{ item.agentiaAnswer }}</span>
-          <span style="width: 4%; height: 20px" class="options">
+    <div class="scrollbar" v-show="showId == '2'">
+      <ul class="study_main_item">
+        <li
+          style="height: 40px; padding-left: 10px"
+          v-for="(item, index) in showData"
+          :key="index"
+        >
+          <span style="width: 45%">{{ item.agentiaCorrectAnswer }}</span>
+          <span style="width: 45%">{{ item.agentiaAnswer }}</span>
+          <span style="width: 10%" class="options">
             <i class="right" v-show="item.agentiaCorrect"></i>
             <i class="error" v-show="!item.agentiaCorrect"></i
           ></span>
@@ -54,14 +62,20 @@
       </ul>
     </div>
     <!-- 药物组成 -->
-    <div class="scrollbar">
-      <ul class="study_main_item" v-show="showId == '3'">
-        <li style="height: 40px" v-for="(item, index) in showData" :key="index">
-          <span style="width: 48%">{{
+    <div class="scrollbar" v-show="showId == '3'">
+      <ul class="study_main_item">
+        <li
+          style="height: 40px; padding-left: 10px"
+          v-for="(item, index) in showData"
+          :key="index"
+        >
+          <span style="width: 45%">{{
             item.correctDruggeryName ? item.correctDruggeryName : item.name
           }}</span>
-          <span style="width: 48%">{{ item.druggeryName }}</span>
-          <span style="width: 4%; height: 20px" class="options">
+          <span style="width: 45%; padding-left: 10px">{{
+            item.druggeryName
+          }}</span>
+          <span style="width: 10%" class="options">
             <i class="right" v-show="item.correct"></i>
             <i class="error" v-show="!item.correct"></i
           ></span>
@@ -100,9 +114,10 @@ export default {
   mounted() {
     this.caseId = localStorage.getItem("caseId");
     this.examNo = localStorage.getItem("examNo");
-    this.userId = localStorage.getItem("examId");
+    this.userId = localStorage.getItem("caseUserId");
     this.getTreat();
     this.getAgentia();
+    this.getTreatCorrect();
   },
   methods: {
     sortName(property) {
@@ -118,12 +133,20 @@ export default {
         this.showData = this.trearData;
       }
       if (item.id == "2") {
+        if (this.agentiaData.length === 0) {
+          this.showData[0].agentiaCorrectAnswer = this.trearCorrectData[0].name;
+          return;
+        }
         this.showData = this.agentiaData;
         if (!this.agentiaData[0].agentiaCorrectAnswer) {
           this.showData[0].agentiaCorrectAnswer = this.trearCorrectData[0].name;
         }
       }
       if (item.id == "3") {
+        if (this.agentiaData.length === 0) {
+          this.showData = this.trearCorrectData[0].druggeries;
+          return;
+        }
         let showData = this.agentiaData[0].druggeries;
         let showlen = showData.length;
         let correctData = this.trearCorrectData[0].druggeries;
@@ -196,37 +219,6 @@ export default {
         });
     },
   },
-  watch: {
-    agentiaData: function () {
-      this.getTreatCorrect();
-    },
-    examId: function () {
-      this.caseId = this.examId;
-      this.trearData = [];
-      this.showData = [];
-      this.showId = "1";
-      this.typeId = "1";
-      this.getTreat();
-      this.getAgentia();
-    },
-  },
 };
 </script>
 
-<style lang="scss">
-.study_treat {
-  .study_title {
-    height: 80px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    span {
-      font-size: 20px;
-    }
-
-    label {
-      margin-right: 15px;
-    }
-  }
-}
-</style>

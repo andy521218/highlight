@@ -50,7 +50,11 @@
     <div class="scrollbar">
       <!-- 我的答案 -->
       <ul class="study_main_item" v-show="!correct">
-        <li v-for="(item, index) in askItemData" :key="index">
+        <li
+          v-for="(item, index) in askItemData"
+          :key="index"
+          style="padding-left: 10px"
+        >
           <div class="ask_item">
             <i
               v-if="item.typeId == 1"
@@ -70,7 +74,11 @@
       </ul>
       <!-- 正确答案 -->
       <ul class="study_main_item" v-show="correct && title == '总问题'">
-        <li v-for="(item, index) in correctaskked" :key="index">
+        <li
+          v-for="(item, index) in correctaskked"
+          :key="index"
+          style="padding-left: 10px"
+        >
           <div class="ask_item">
             <i
               v-show="item.typeId == 1"
@@ -163,6 +171,7 @@ export default {
   mounted() {
     this.examNo = localStorage.getItem("examNo");
     this.caseId = localStorage.getItem("caseId");
+    this.userId = localStorage.getItem("caseUserId");
     this.getTabdata();
     this.getAskdata();
     this.getscore();

@@ -35,6 +35,50 @@ export const teacher = [
         },
       },
       {
+        path: '/teacherstudy',
+        name: 'teacherstudy',
+        components: {
+          main: () => import('../pages/usercore/userStudy'),
+        },
+        children: [
+          {
+            path: '/ask',
+            name: '/ask',
+            component: () => import('../pages/usercore/study/studyAsk'),
+          },
+          {
+            path: '/watch',
+            name: 'watch',
+            component: () => import('../pages/usercore/study/studyWatch'),
+          },
+          {
+            path: '/listen',
+            name: 'listen',
+            component: () => import('../pages/usercore/study/studyListen'),
+          },
+          {
+            path: '/feel',
+            name: 'feel',
+            component: () => import('../pages/usercore/study/studyFeel'),
+          },
+          {
+            path: '/disease',
+            name: 'disease',
+            component: () => import('../pages/usercore/study/studyDisease'),
+          },
+          {
+            path: '/treat',
+            name: 'treat',
+            component: () => import('../pages/usercore/study/studyTreat'),
+          },
+          {
+            path: '/correct',
+            name: 'correct',
+            component: () => import('../pages/usercore/study/studyCorrect'),
+          },
+        ]
+      },
+      {
         path: '/teacherexam',
         name: 'teacherexam',
         components: {

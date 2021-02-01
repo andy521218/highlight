@@ -10,15 +10,13 @@
             v-model="searchTreat"
             @focus="treatShow = true"
             @blur="timerOuttreat"
-            style="border-bottom: none"
           />
-          <div class="search_down scrollbar">
+          <div class="search_down scrollbar" v-show="treatShow">
             <div
               class="search_down_cont"
               v-for="(item, index) in treatData"
               :key="index"
               @click="treatVal(item)"
-              v-show="treatShow"
             >
               <div class="search_item">
                 {{ item.name }}
@@ -69,7 +67,7 @@
               <div class="search_down" v-show="searchDurhshow">
                 <div class="search_down_cont">
                   <div
-                    class="search_item search_custom_radio"
+                    class="search_item"
                     v-for="(item, index) in searchDrugdata"
                     :key="index"
                   >
@@ -718,6 +716,9 @@ export default {
       .search_down {
         width: 100%;
       }
+      .scrollbar {
+        height: auto;
+      }
     }
     .layout_search {
       height: 15%;
@@ -768,13 +769,9 @@ export default {
           }
           .search_down {
             width: 100%;
-            .search_custom_radio {
+            .custom_radio {
               display: flex;
               align-items: center;
-              .custom_radio {
-                width: 20px;
-                height: 20px;
-              }
             }
           }
         }

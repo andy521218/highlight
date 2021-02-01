@@ -142,10 +142,10 @@ textarea:focus {
 
 .submit {
   cursor: pointer;
-  background-color: rgb(111, 147, 251, );
+  background-color: rgb(111, 147, 251);
   border: rgb(111, 147, 251);
   color: rgb(255, 255, 255);
-  opacity: 0.9;
+  opacity: 1;
   border-radius: 3px;
   outline: none;
   width: 7em;
@@ -154,7 +154,7 @@ textarea:focus {
 }
 
 .submit:hover {
-  opacity: 1;
+  opacity: 0.9;
 }
 
 .add {
@@ -164,7 +164,7 @@ textarea:focus {
   border: rgb(255, 171, 64);
   border-radius: 3px;
   outline: none;
-  opacity: 0.9;
+  opacity: 1;
   width: 7em;
   height: 3em;
 }
@@ -176,7 +176,7 @@ textarea:focus {
   border: rgb(252, 94, 95);
   border-radius: 3px;
   outline: none;
-  opacity: 0.9;
+  opacity: 1;
   width: 7em;
   height: 3em;
 }
@@ -188,7 +188,7 @@ textarea:focus {
   border: rgb(35, 161, 248);
   border-radius: 3px;
   outline: none;
-  opacity: 0.9;
+  opacity: 1;
   width: 7em;
   height: 3em;
 }
@@ -200,7 +200,7 @@ textarea:focus {
   outline: none;
   color: rgb(255, 255, 255);
   background-color: rgb(255, 209, 44);
-  opacity: 0.9;
+  opacity: 1;
   border: rgb(255, 209, 44);
 }
 
@@ -211,7 +211,7 @@ textarea:focus {
   border: rgb(0, 186, 201);
   border-radius: 3px;
   outline: none;
-  opacity: 0.9;
+  opacity: 1;
   width: 7em;
   height: 3em;
 }
@@ -224,7 +224,7 @@ textarea:focus {
   border-radius: 3px;
   outline: none;
   background: rgb(10, 55, 97);
-  opacity: 0.9;
+  opacity: 1;
   width: 7em;
   height: 3em;
 }
@@ -246,7 +246,7 @@ textarea:focus {
 .edit_cancel:hover,
 .edit_submit:hover,
 .train_btn:hover {
-  opacity: 1;
+  opacity: 0.9;
 }
 
 //主体内容布局
@@ -556,7 +556,8 @@ textarea:focus {
 }
 
 .main_mask {
-  background: rgb(0, 0, 0, 0.3);
+  // background: rgb(0, 0, 0, 0.3);
+  background-color: rgb(111, 147, 251, 0.62);
   position: absolute;
   width: 100%;
   height: 100%;
@@ -971,7 +972,7 @@ textarea:focus {
         }
 
         .tips {
-          background: url("../../assets/public/tips1.png") no-repeat center;
+          background: url("../../assets/public/111147251.png") no-repeat center;
           background-size: 100% 100%;
           width: 2em;
           height: 2em;
@@ -1184,6 +1185,8 @@ textarea:focus {
         height: 3em;
         line-height: 3em;
         padding: 0 15px;
+        display: flex;
+        align-items: center;
       }
 
       .search_item:hover {
@@ -1223,14 +1226,15 @@ textarea:focus {
 
 
   .main_mask_img {
-    background: rgb(0, 0, 0, 0.5);
-    width: 65%;
-    height: 50%;
-    margin: 10% auto 0 auto;
+    // background: rgb(0, 0, 0, 0.5);
+    width: 90%;
+    height: 80%;
+    margin: 5% auto;
+    text-align: center;
 
     .userlogo {
-      width: 100%;
-      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
     }
   }
 }
@@ -1283,8 +1287,10 @@ textarea:focus {
   }
 
   .study_title_right {
+    display: flex;
+
     span {
-      margin-left: 20px;
+      margin-right: 10px;
     }
   }
 
@@ -1304,7 +1310,8 @@ textarea:focus {
 .study_listen,
 .study_feel,
 .study_treat,
-.study_disease {
+.study_disease,
+.disease_correct {
   width: 100%;
   height: 100%;
 }
@@ -1320,7 +1327,7 @@ textarea:focus {
     color: rgb(255, 255, 255);
     display: flex;
     align-items: center;
-  
+
 
     .downMenu {
       width: 80%;
@@ -1368,7 +1375,6 @@ textarea:focus {
 
     li {
       width: 100%;
-      padding-left: 10px;
       display: flex;
       align-items: center;
 

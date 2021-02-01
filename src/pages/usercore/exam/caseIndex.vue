@@ -37,18 +37,19 @@
           :key="index"
           @click="startExam(item)"
         >
-          <div class="case_img">
+          <div class="case_user_item_box">
             <img :src="$url + item.picUrl" alt="" />
-            <div class="case_active">
-              <div class="case_img_tips">
-                <span>开始考试</span>
-              </div>
+            <div class="case_current">
+              <span>姓名:{{ item.name }}</span>
+              <span style="text-align: right"
+                >性别:{{ item.gender ? "男" : "女" }}</span
+              >
+              <span>年龄:{{ item.age }}</span>
             </div>
-          </div>
-          <div class="case_current">
-            <span>姓名: {{ item.name }}</span>
-            <span>性别: {{ item.gender ? "男" : "女" }}</span>
-            <span>年龄: {{ item.age }}</span>
+            <div class="case_active">
+              <button class="train_btn">进入考试</button>
+              <!-- <span class="totlal_second">累计学习:{{ item.count }}次</span> -->
+            </div>
           </div>
         </li>
       </ul>
@@ -123,30 +124,17 @@ export default {
 <style lang="scss">
 .exam_index_list {
   margin-top: 3%;
+  background-color: rgb(255, 255, 255, 0.82);
+  height: 80%;
+  text-align: center;
   position: relative;
-  .case_user_item {
-    img {
-      width: 100%;
-      height: 100%;
-    }
+  ul {
+    background-color: transparent;
+    height: 93%;
+    text-align: left;
   }
   .import {
-    width: 200px;
-    left: 50%;
-    bottom: 10px;
-    margin-left: -100px;
-    position: absolute;
-  }
-  .case_active {
-    width: 100% !important;
-    height: 100% !important;
-    left: 0 !important;
-    top: 0 !important;
-  }
-  .edit_dele {
-    .edit {
-      margin: 10% 40%;
-    }
+    width: 15em;
   }
 }
 </style>

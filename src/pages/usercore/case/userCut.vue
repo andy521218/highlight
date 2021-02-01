@@ -715,12 +715,14 @@ export default {
     }
   }
   .case_right {
+    text-align: center;
     img {
-      width: 100%;
-      height: 30%;
+      max-width: 90%;
+      max-height: 90%;
       margin-top: 3%;
     }
     .seedesc {
+      text-align: left;
       margin-left: 20px;
     }
   }
