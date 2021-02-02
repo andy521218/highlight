@@ -242,7 +242,7 @@ export default {
       exam: null,
       hour: 0,
       mint: 0,
-      second: 59,
+      second: 0,
       duringLimit: "",
       saveCase_show: false,
       total: 0,
@@ -264,25 +264,6 @@ export default {
         : "0";
     }
 
-    if (this.authority == "STUDENT") {
-      let url = window.location.href;
-      if (
-        /userask/.test(url) ||
-        /userlook/.test(url) ||
-        /userHear/.test(url) ||
-        /usercut/.test(url) ||
-        /userdialectical/.test(url) ||
-        /usertreatment/.test(url)
-      ) {
-        this.time = setInterval(() => {
-          this.http.put(
-            `/exam/${this.examNo}/during?${this.qs.stringify({
-              during: 30,
-            })}`
-          );
-        }, 30000);
-      }
-    }
     if (this.authority == "STUDENT") {
       this.item = [
         {
@@ -317,22 +298,46 @@ export default {
     }
     let exam_flag = localStorage.getItem("exam");
     if (exam_flag) {
+      var de = document.documentElement;
+      if (de.requestFullscreen) {
+        de.requestFullscreen();
+      } else if (de.mozRequestFullScreen) {
+        de.mozRequestFullScreen();
+      } else if (de.webkitRequestFullScreen) {
+        de.webkitRequestFullScreen();
+      }
+
       this.axios.get("/exam").then((res) => {
-        let startTime = res.data[0].startTime
-          ? res.data[0].startTime
-          : new Date().getTime();
+        let startTime = res.data[0].startTime;
+        let beginTime = res.data[0].beginTime;
         let endTime = res.data[0].endTime;
-        let overTime = res.data[0].systemTime + res.data[0].duringLimit * 60000;
-        let time =
-          startTime + res.data[0].duringLimit * 60000 - res.data[0].systemTime;
-        if (overTime > endTime) {
-          this.duringLimit = parseInt(
-            (endTime - res.data[0].systemTime) / 60000
-          );
-          return;
+        let systemTime = res.data[0].systemTime;
+        //考试时长
+        let duringLimit = res.data[0].duringLimit * (1000 * 60);
+        //考试结束时间-考试开始时间
+        let diff_1 = endTime - beginTime;
+        // 已用时间
+        let diff_2 = systemTime - startTime;
+        //如果duringLimit<diff_1 则用duringLimit
+        if (duringLimit < diff_1) {
+          this.duringLimit = duringLimit - diff_2;
+        } else {
+          this.duringLimit = diff_1 - diff_2;
         }
-        this.duringLimit = parseInt(time / 60000);
+        this.hour = parseInt(
+          (this.duringLimit % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        this.mint = parseInt(
+          (this.duringLimit % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        this.second = parseInt((this.duringLimit % (1000 * 60)) / 1000);
+        this.timerTotal = setInterval(() => {
+          this.countDown();
+        }, 1000);
+        this.disableExam();
       });
+    } else {
+      this.startTime();
     }
   },
   methods: {
@@ -387,14 +392,16 @@ export default {
       this.stop_show = false;
       this.index_show = false;
       this.time = setInterval(() => {
-        this.http.put(`/exam/${this.examNo}/during`, {
-          during: "30",
-        });
+        this.http.put(
+          `/exam/${this.examNo}/during?${this.qs.stringify({
+            during: 30,
+          })}`
+        );
       }, 30000);
     },
     //正式考试倒计时
     countDown() {
-      if (this.hour == 0 && this.mint == 0 && this.second == 1) {
+      if (this.hour == 0 && this.mint == 0 && this.second == 0) {
         clearInterval(this.timerTotal);
         this.second = 0;
         let examNo = localStorage.getItem("examNo");
@@ -412,26 +419,12 @@ export default {
         });
         return;
       }
-      if (!this.hour) {
-        this.hour = parseInt(this.duringLimit / 60);
-      }
-      if (!this.mint) {
-        this.mint = this.duringLimit - this.hour * 60;
-      }
-
-      this.second--;
-
-      if (this.second == 0) {
-        this.second = 59;
-        this.mint--;
-      }
-      if (this.mint == 0 && this.hour >= 1) {
-        this.hour--;
-        this.mint = 59;
-      }
-      if (this.mint == 0 && this.hour == 0) {
-        this.mint = "0";
-      }
+      this.duringLimit -= 1000;
+      this.hour = parseInt(
+        (this.duringLimit % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      );
+      this.mint = parseInt((this.duringLimit % (1000 * 60 * 60)) / (1000 * 60));
+      this.second = parseInt((this.duringLimit % (1000 * 60)) / 1000);
     },
     //禁用考试项
     disableExam(flag) {
@@ -444,61 +437,70 @@ export default {
           return flag;
         }
       };
-      if (flag) return;
-      // let _this = this;
-      // window.onblur = function () {
-      //   let total = localStorage.getItem("total");
-      //   if (total >= 4) {
-      //     let examNo = localStorage.getItem("examNo");
-      //     _this.axios.put(`/exam/${examNo}/finished`).then((res) => {
-      //       _this.fraction = res.data;
-      //       clearInterval(_this.timerTotal);
-      //       localStorage.removeItem("total");
-      //       _this
-      //         .$confirm(`您已经离开考试界面超过3次自动提交本次考试!`, "提示", {
-      //           confirmButtonText: "确定",
-      //           type: "warning",
-      //         })
-      //         .then(() => {
-      //           _this.fractionshow = true;
-      //           _this.number_show = true;
-      //         });
-      //     });
-      //     return;
-      //   }
-      //   _this.$confirm(
-      //     `您已经离开考试界面${total}次,超过3次将会自动提交本次考试!`,
-      //     "提示",
-      //     {
-      //       confirmButtonText: "确定",
-      //       type: "warning",
-      //     }
-      //   );
-      //   total++;
-      //   localStorage.setItem("total", total);
-      // };
+      if (flag) {
+        window.onblur = "";
+        window.onbeforeunload = "";
+        return;
+      }
+      let _this = this;
+      window.onblur = function () {
+        let total = localStorage.getItem("total");
+        if (total >= 4) {
+          let examNo = localStorage.getItem("examNo");
+          _this.axios.put(`/exam/${examNo}/finished`).then((res) => {
+            _this.fraction = res.data;
+            clearInterval(_this.timerTotal);
+            localStorage.removeItem("total");
+            _this
+              .$confirm(`您已经离开考试界面超过3次自动提交本次考试!`, "提示", {
+                confirmButtonText: "确定",
+                type: "warning",
+              })
+              .then(() => {
+                window.onblur = "";
+                window.onbeforeunload = "";
+                _this.fractionshow = true;
+                _this.number_show = true;
+              });
+          });
+          return;
+        }
+        _this.$confirm(
+          `您已经离开考试界面${total}次,超过3次将会自动提交本次考试!`,
+          "提示",
+          {
+            confirmButtonText: "确定",
+            type: "warning",
+          }
+        );
+        total++;
+        localStorage.setItem("total", total);
+      };
       window.onbeforeunload = function (e) {
         var a = window.event || e;
         a.returnValue = "确定离开当前页面吗？";
       };
     },
   },
-  watch: {
-    duringLimit: function () {
-      if (this.exam) {
-        this.disableExam(false);
-        this.axios.post(`/exam/${this.examNo}/start`);
-        this.timerTotal = setInterval(() => {
-          this.countDown();
-        }, 1000);
-      }
-    },
-  },
   beforeRouteLeave(to, from, next) {
+    if (to.name == "examcase") {
+      clearInterval(this.timerTotal);
+      clearInterval(this.time);
+      this.disableExam(true);
+      next();
+      return;
+    }
+    clearInterval(this.timerTotal);
     clearInterval(this.time);
     this.disableExam(true);
-    window.onblur = "";
-    window.onbeforeunload = "";
+    var de = document;
+    if (de.exitFullscreen) {
+      de.exitFullscreen();
+    } else if (de.mozCancelFullScreen) {
+      de.mozCancelFullScreen();
+    } else if (de.webkitCancelFullScreen) {
+      de.webkitCancelFullScreen();
+    }
     next();
   },
 };

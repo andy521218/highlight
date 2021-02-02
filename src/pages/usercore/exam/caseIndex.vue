@@ -86,12 +86,27 @@ export default {
     localStorage.removeItem("sex");
     localStorage.removeItem("exam");
     localStorage.removeItem("total");
+    var de = document.documentElement;
+    if (de.requestFullscreen) {
+      de.requestFullscreen();
+    } else if (de.mozRequestFullScreen) {
+      de.mozRequestFullScreen();
+    } else if (de.webkitRequestFullScreen) {
+      de.webkitRequestFullScreen();
+    }
   },
   methods: {
     getExam() {
       this.axios.get("/exam").then((res) => {
         localStorage.setItem("examNo", res.data[0].examNo);
         let caseIds = res.data[0].caseId;
+        this.axios.post(`/exam/${res.data[0].examNo}/start`).then((res) => {
+          if (res.code == "000000") {
+            return;
+          } else {
+            this.$Message.error(res.data.msg);
+          }
+        });
         this.axios.get(`/case/${caseIds}/meta`).then((res) => {
           this.examData = res.data;
         });
@@ -118,6 +133,21 @@ export default {
       this.$router.push("index");
     },
   },
+  beforeRouteLeave(to, from, next) {
+    if (to.name == "userlookuserlookuserlookuserlook") {
+      next();
+      return;
+    }
+    var de = document;
+    if (de.exitFullscreen) {
+      de.exitFullscreen();
+    } else if (de.mozCancelFullScreen) {
+      de.mozCancelFullScreen();
+    } else if (de.webkitCancelFullScreen) {
+      de.webkitCancelFullScreen();
+    }
+    next();
+  },
 };
 </script>
 
@@ -128,6 +158,13 @@ export default {
   height: 80%;
   text-align: center;
   position: relative;
+  .edit_dele {
+    .edit {
+      top: 10%;
+      left: 50%;
+      margin-left: -16.5em;
+    }
+  }
   ul {
     background-color: transparent;
     height: 93%;

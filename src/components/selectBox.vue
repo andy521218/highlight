@@ -6,7 +6,7 @@
       showDown = 0;
       showDownHeight = 0;
     "
-    :style="{ 'z-index': index ? index : 9 }"
+    :style="{ 'z-index': index ? index : 1 }"
   >
     <span class="select_title_span">{{ title }}</span>
     <div class="select_title">
