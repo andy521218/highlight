@@ -1,31 +1,30 @@
 <template>
   <div class="login-right">
     <div class="login-right_bg">
-      <div class="login-right_bg_box">
-        <div class="login-box user">
-          <img src="../assets/img/login/user.png" alt />
-          <input type="text" v-model="user" :placeholder="userItps" />
+      <div class="login-right-title"></div>
+      <div class="login-box user">
+        <img src="../assets/img/login/user.png" alt />
+        <input type="text" v-model="user" :placeholder="userItps" />
+      </div>
+      <div class="login-box pwd">
+        <img style="width: 5%" src="../assets/img/login/pwd.png" alt />
+        <input type="text" v-model="pwd" :placeholder="passwordlItps" />
+      </div>
+      <div class="related">
+        <div class="related_left"></div>
+        <div class="related_right">
+          <span @click="sendEmail" style="color: red">{{ sendText }}</span>
+          <span v-show="text_show">秒后重新发送</span>
         </div>
-        <div class="login-box pwd">
-          <img src="../assets/img/login/pwd.png" alt />
-          <input type="text" v-model="pwd" :placeholder="passwordlItps" />
-        </div>
-        <div class="related">
-          <div class="related_left"></div>
-          <div class="related_right">
-            <span @click="sendEmail" style="color: red">{{ sendText }}</span>
-            <span v-show="text_show">秒后重新发送</span>
-          </div>
-        </div>
-        <div class="login_bottom">
-          <button
-            class="edit_cancel"
-            @click="$parent.RetrievePassword_show = false"
-          >
-            取消
-          </button>
-          <button class="edit_submit" @click="submit">确定</button>
-        </div>
+      </div>
+      <div class="login_bottom">
+        <button
+          class="edit_cancel"
+          @click="$parent.RetrievePassword_show = false"
+        >
+          取消
+        </button>
+        <button class="edit_submit" @click="submit">确定</button>
       </div>
     </div>
   </div>
@@ -162,12 +161,10 @@ export default {
 <style lang="scss">
 .login_bottom {
   width: 100%;
-  height: 12%;
+  height: 7.5%;
   display: flex;
   justify-content: space-between;
-  .edit_cancel {
-    background: rgb(255, 255, 255, 0.5);
-  }
+
   button {
     width: 40%;
     height: 100%;

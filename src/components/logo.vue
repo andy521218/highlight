@@ -1,9 +1,12 @@
 <template>
   <div class="logo" @click="link">
-    <h1 v-if="authority != 'ADMIN' && exam == null && index == true"></h1>
-    <span v-if="authority != 'ADMIN' && exam == null && index == true"
-      >首页</span
+    <div
+      class="logo_bg"
+      v-if="authority != 'ADMIN' && exam == null && index == true"
     >
+      <h1></h1>
+      <span>首页</span>
+    </div>
   </div>
 </template>
 
@@ -53,14 +56,24 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   color: rgb(255, 255, 255);
-  cursor: pointer;
-  h1 {
-    width: 40%;
-    height: 35%;
-    background: url("../assets/public/home.png") no-repeat center;
-    background-size: 100% 100%;
+
+  .logo_bg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 67%;
+    width: 53%;
+    h1 {
+      width: 78%;
+      height: 53%;
+      background: url("../assets/public/home.png") no-repeat center;
+      background-size: 100% 100%;
+    }
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 </style>

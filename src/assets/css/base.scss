@@ -870,6 +870,7 @@ textarea:focus {
 
               .bottom_edit {
                 width: 50%;
+                height: 100%;
                 color: rgb(255, 255, 255);
                 display: flex;
                 align-items: center;
@@ -882,12 +883,18 @@ textarea:focus {
                   height: 1.2em;
                   margin-right: 0.5em;
                 }
+
+                &:hover {
+                  cursor: pointer;
+                  background-color: rgb(196, 196, 196, 0.62);
+                }
               }
 
               .bottom_dele {
                 width: 50%;
+                height: 100%;
                 color: red;
-                border-left: 1px rgb(25, 179, 243) solid;
+                border-left: 1px rgb(111, 147, 251) solid;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -899,12 +906,11 @@ textarea:focus {
                   height: 1.2em;
                   margin-right: 0.5em;
                 }
-              }
 
-              .bottom_edit:hover,
-              .bottom_dele:hover {
-                color: rgb(111, 147, 251);
-                cursor: pointer;
+                &:hover {
+                  cursor: pointer;
+                  background-color: rgb(196, 196, 196, 0.62);
+                }
               }
             }
           }

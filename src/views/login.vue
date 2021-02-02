@@ -4,12 +4,13 @@
       <div class="setting_logo">
         <img :src="url + '/metrics/logo'" alt="" />
       </div>
-      <div class="login-left">
-        <img src="../assets/img/login/left.png" alt />
-      </div>
-      <div class="login-right" v-if="!RetrievePassword_show">
-        <div class="login-right_bg">
-          <div class="login-right_bg_box">
+      <div class="login_box">
+        <div class="login-left">
+          <img src="../assets/img/login/left.png" alt />
+        </div>
+        <div class="login-right" v-if="!RetrievePassword_show">
+          <div class="login-right_bg">
+            <div class="login-right-title"></div>
             <div class="login-box user">
               <img src="../assets/img/login/user.png" alt />
               <input
@@ -20,7 +21,7 @@
               />
             </div>
             <div class="login-box pwd">
-              <img src="../assets/img/login/pwd.png" alt />
+              <img style="width: 5%" src="../assets/img/login/pwd.png" alt />
               <input
                 type="password"
                 v-model="pwd"
@@ -29,7 +30,12 @@
               />
             </div>
             <div class="login-box code">
-              <input type="text" v-model="code" placeholder="请输入验证码" />
+              <input
+                type="text"
+                class="text_box"
+                v-model="code"
+                placeholder="请输入验证码"
+              />
               <img :src="codeUrl" alt="" @click="refreshImg" />
             </div>
             <div class="related">
@@ -41,15 +47,13 @@
                 <span @click="RetrievePassword_show = true">忘记密码?</span>
               </div>
             </div>
-            <div class="btn" @click="login">
-              <span>登 入</span>
-            </div>
-            <span class="count">访问次数:{{ count }}次</span>
-            <div class="notes">技术支持:上海域圆信息科技有限公司</div>
+            <button class="submit" @click="login">登 入</button>
           </div>
+          <span class="count">访问次数:{{ count }}次</span>
+          <div class="notes">技术支持:上海域圆信息科技有限公司</div>
         </div>
+        <RetrievePassword v-if="RetrievePassword_show" />
       </div>
-      <RetrievePassword v-if="RetrievePassword_show" />
     </div>
   </div>
 </template>
@@ -155,6 +159,7 @@ export default {
   height: 100%;
   color: rgb(255, 255, 255);
   position: relative;
+  color: #6f93fb;
   .login-bg {
     width: 100%;
     height: 100%;
@@ -176,13 +181,22 @@ export default {
         height: 100%;
       }
     }
+    .login_box {
+      width: 90%;
+      height: 80%;
+      background-color: rgb(255, 255, 255, 0.82);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .login-left {
       width: 50%;
       height: 100%;
+      text-align: center;
       img {
-        width: 100%;
-        height: 85%;
-        margin-top: 13%;
+        width: 78%;
+        height: 100%;
       }
     }
     .login-right {
@@ -191,113 +205,98 @@ export default {
       display: flex;
       align-items: center;
       justify-content: center;
-
+      position: relative;
       .login-right_bg {
-        width: 53%;
-        height: 60%;
-        background: url("../assets/img/login/login_bg.png") no-repeat;
-        background-size: 100% 100%;
+        width: 47%;
+        height: 82%;
         display: flex;
-        position: relative;
-        justify-content: flex-end;
         flex-direction: column;
-        align-items: center;
-        .login-right_bg_box {
+        .login-right-title {
+          background: url("../assets/img/login/title.png") no-repeat center;
+          background-size: 100% 100%;
+          width: 79.5%;
+          height: 23%;
+          margin-bottom: 2em;
+        }
+
+        .login-box {
+          width: 100%;
+          height: 7.5%;
+          background: rgb(240, 246, 255);
+          border: rgb(111, 147, 251) 1px solid;
+          border-radius: 6px;
           display: flex;
-          flex-direction: column;
-          justify-content: space-around;
           align-items: center;
-          width: 78%;
-          height: 65%;
-          .login-box {
-            width: 100%;
-            height: 14%;
-            border: 1px solid rgb(255, 255, 255);
-            background-color: rgb(20, 37, 75);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            input {
-              color: rgb(255, 255, 255);
-              background-color: rgb(20, 37, 75);
-              border: none;
-              outline: none;
-            }
-            img {
-              margin: 0 3%;
-              height: 52%;
-              width: 6%;
-            }
-          }
-          .code {
-            width: 100%;
+          margin-bottom: 2em;
+          input {
             border: none;
-            align-items: center;
-            justify-content: flex-end;
-            input {
-              text-align: center;
-              border: rgb(255, 255, 255) 1px solid;
-              height: 100%;
-              width: 29%;
-              border-radius: 6px;
-              margin-right: 3%;
-            }
-            img {
-              border-radius: 6px;
-              width: 27%;
-              height: 100%;
-              margin: 0 0;
-            }
+            outline: none;
+            background: rgb(240, 246, 255);
           }
-          .related {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            .related_left,
-            .related_right {
-              display: flex;
-              align-items: center;
-              width: 50%;
-              .checkbox {
-                margin-right: 3%;
-              }
-              label {
-                width: 86%;
-              }
-            }
-            .related_right {
-              display: flex;
-              justify-content: flex-end;
-              span {
-                cursor: pointer;
-              }
-            }
-          }
-          .btn {
-            width: 51%;
-            height: 14%;
-            background: url("../assets/img/login/btn.png") no-repeat center;
-            background-size: 100% 100%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-          .btn:hover {
-            background: url("../assets/img/login/btnmove.png") no-repeat center;
-            background-size: 100% 100%;
-          }
-          .count {
-            position: absolute;
-            bottom: -7%;
-            right: 0;
-          }
-          .notes {
-            position: absolute;
-            right: 0;
-            bottom: -30%;
+          img {
+            margin: 0 3%;
+            height: 52%;
+            width: 6%;
           }
         }
+        .code {
+          width: 100%;
+          height: 7.5%;
+          border: none;
+          background: transparent;
+          align-items: center;
+
+          input {
+            border: 1px solid rgb(111, 147, 251);
+            border-radius: 5px;
+            width: 8em;
+            margin-right: 1em;
+          }
+          img {
+            border-radius: 6px;
+            width: 27%;
+            height: 100%;
+            margin: 0 0;
+          }
+        }
+        .related {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          height: 7.5%;
+          .related_left,
+          .related_right {
+            display: flex;
+            align-items: center;
+            width: 50%;
+            label {
+              width: 86%;
+            }
+          }
+          .related_right {
+            display: flex;
+            justify-content: flex-end;
+            span {
+              cursor: pointer;
+            }
+          }
+        }
+        .submit {
+          width: 80%;
+          cursor: pointer;
+          margin-top: 2em;
+          margin-left: 10%;
+        }
+      }
+      .count {
+        position: absolute;
+        right: 2%;
+        bottom: 6%;
+      }
+      .notes {
+        position: absolute;
+        right: 2%;
+        bottom: 2%;
       }
     }
   }

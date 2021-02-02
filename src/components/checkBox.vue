@@ -26,10 +26,11 @@ export default {
 .checkbox {
   display: inline-block;
   width: 11%;
-  height: 100%;
-  background: #06498d;
-  border: 1px solid #0096ff;
+  background: rgb(240, 246, 255);
+  border: 1px solid rgb(111, 147, 251);
   border-radius: 3px;
+  height: 1.6em;
+  margin-right: 3%;
 }
 
 .checkbox.active {

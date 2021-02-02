@@ -5,7 +5,7 @@
       <logo :exam="exam"></logo>
       <div class="home_user">
         <div class="home_case_left">
-          <div class="stop" v-if="authority == 'STUDENT' && exam == null">
+          <div class="sonserve" v-if="authority == 'STUDENT' && exam == null">
             <img
               src="../../../assets/public/stop.png"
               alt=""
@@ -51,8 +51,7 @@
           >
             <span>{{ item.name }}</span>
           </li>
-          <div class="timer" v-if="exam">
-            <i></i>
+          <div class="timer" v-if="!exam">
             <div>
               <span v-if="hour >= 10">{{ hour }}:</span>
               <span v-else>0{{ hour }}:</span>
@@ -508,22 +507,28 @@ export default {
 
 <style lang="scss">
 .home_case_left {
-  margin-right: 50px;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
-
-  div {
+  justify-content: flex-end;
+  margin-right: 3em;
+  .sonserve {
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
-    img {
-      margin-bottom: 5px;
-    }
-  }
+    padding: 3px 0;
+    align-items: center;
+    justify-content: space-between;
+    height: 67%;
+    width: 15%;
 
-  div:hover {
-    cursor: pointer;
-    color: rgb(111, 147, 251);
+    img {
+      max-height: 59%;
+      max-width: 67%;
+    }
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 .case_container {
@@ -581,20 +586,28 @@ export default {
     position: relative;
     .timer {
       width: 100%;
-      bottom: 0;
+      height: 9%;
+      bottom: 4%;
+      left: 19%;
       position: absolute;
       text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      i {
-        width: 40px;
-        height: 40px;
-        background: url("../../../assets/public/time.png") no-repeat;
-      }
-      span {
-        font-size: 18px;
+      background: url("../../../assets/public/time1.png") no-repeat center;
+      background-size: 100% 100%;
+      div {
+        position: absolute;
+        bottom: 4%;
+        width: 100%;
+        height: 36%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: rgb(255, 255, 255);
       }
     }
   }
