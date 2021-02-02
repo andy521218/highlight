@@ -232,6 +232,7 @@ export default {
             border: none;
             outline: none;
             background: rgb(240, 246, 255);
+            color: rgb(111, 147, 251);
           }
           img {
             margin: 0 3%;

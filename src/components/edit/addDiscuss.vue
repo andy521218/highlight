@@ -112,8 +112,8 @@ export default {
   top: 17%;
   margin-left: -202px;
   z-index: 999999;
-  background: url("../../assets/public/box_1.png") no-repeat center;
-  background-size: 100% 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
   .discuss_header {
     height: 45px;
     display: flex;
@@ -121,11 +121,16 @@ export default {
     align-items: center;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
+    background: rgb(111, 147, 251);
+    color: rgb(255, 255, 255);
     .discuss_icon {
       width: 19px;
       height: 19px;
       margin-right: 20px;
       background: url("../../assets/public/switch.png") no-repeat center;
+      &:hover {
+        background: url("../../assets/public/switchmove1.png") no-repeat center;
+      }
     }
     span {
       margin-left: 25px;
@@ -138,6 +143,7 @@ export default {
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     position: relative;
+    text-align: center;
     .submit {
       width: 100px;
       margin: 10px auto;
@@ -147,14 +153,12 @@ export default {
       height: 220px;
       margin: 15px 23px;
       padding: 10px 15px;
-      background: rgb(9, 54, 97);
-      color: rgb(255, 255, 255);
-      border: 1px solid rgb(111,147,251);
     }
     span {
       position: absolute;
       right: 30px;
       bottom: 105px;
+      color: rgb(111, 147, 251);
     }
   }
 }

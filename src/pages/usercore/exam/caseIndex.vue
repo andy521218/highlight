@@ -38,7 +38,11 @@
           @click="startExam(item)"
         >
           <div class="case_user_item_box">
-            <img :src="$url + item.picUrl" alt="" />
+            <img
+              style="max-height: 100%; max-width: 100%"
+              :src="$url + item.picUrl"
+              alt=""
+            />
             <div class="case_current">
               <span>姓名:{{ item.name }}</span>
               <span style="text-align: right"
