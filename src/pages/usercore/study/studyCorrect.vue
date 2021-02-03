@@ -498,7 +498,7 @@ export default {
       background: rgb(240, 246, 255);
     }
     li:hover {
-      background-color: rgb(111, 147, 251, 0.62);
+      background-color: #cddbff;
     }
     .study_main_left {
       width: 23%;

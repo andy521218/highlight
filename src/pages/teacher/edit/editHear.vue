@@ -48,6 +48,14 @@
           </div>
         </main>
       </div>
+      <div class="case_right">
+        <div class="case_right_cont">
+          <div
+            class="main_mask"
+            :style="{ 'background-image': 'url(' + imgurl + ')' }"
+          ></div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -65,6 +73,7 @@ export default {
       radioName: "",
       caseId: "",
       listenData: {},
+      imgurl: "",
     };
   },
   components: {
@@ -74,8 +83,19 @@ export default {
   mounted() {
     this.caseId = localStorage.getItem("caseId");
     this.getListenData();
+    this.getwatchdata();
   },
   methods: {
+    getwatchdata() {
+      this.axios.get(`/case/manage/${this.caseId}/watch/1`).then((res) => {
+        this.watchData = res.data.list;
+        if (/localhost/.test(res.data.url)) {
+          this.imgurl = res.data.url.replace(/localhost/, "101.132.150.87");
+        } else {
+          this.imgurl = this.$url + res.data.url;
+        }
+      });
+    },
     openOption(e) {
       this.option = e;
       this.optionShow = true;
@@ -128,6 +148,21 @@ export default {
             padding-left: 15px;
           }
         }
+      }
+    }
+  }
+  .case_right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .case_right_cont {
+      height: 85% !important;
+      width: 90% !important;
+      position: relative;
+
+      .main_mask {
+        background: no-repeat center;
+        background-size: contain;
       }
     }
   }

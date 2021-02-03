@@ -51,7 +51,7 @@
           >
             <span>{{ item.name }}</span>
           </li>
-          <div class="timer" v-if="!exam">
+          <div class="timer" v-if="exam">
             <div>
               <span v-if="hour >= 10">{{ hour }}:</span>
               <span v-else>0{{ hour }}:</span>

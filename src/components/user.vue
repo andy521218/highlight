@@ -368,7 +368,7 @@ export default {
       margin-right: 7%;
       width: 3.5em;
       height: 3.5em;
-      padding: 4px;
+      padding: 5.5px;
       border-radius: 50%;
       img {
         border-radius: 50%;

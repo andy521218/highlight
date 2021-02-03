@@ -595,6 +595,7 @@ export default {
     .layout_left {
       width: 57%;
       height: 100%;
+      padding: 0 1%;
       border-right: 1px solid rgb(111, 147, 251);
       .title {
         font-size: 16px;

@@ -79,6 +79,8 @@ export default {
       position: absolute;
       left: 50%;
       top: 50%;
+      max-height: 100%;
+      max-width: 100%;
       transform: translate(-50%, -50%);
     }
     .logo_file {

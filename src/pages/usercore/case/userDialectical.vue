@@ -944,7 +944,7 @@ export default {
     border-radius: 10px;
 
     ul {
-      width: 97%;
+      width: 94%;
       margin-left: 3%;
       li {
         margin-top: 20px;

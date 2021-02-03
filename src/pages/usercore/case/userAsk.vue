@@ -455,11 +455,12 @@ export default {
     width: 38.5%;
     height: 94.5%;
     margin-top: 1%;
+    font-size: 1.1em;
     ul {
       width: 99%;
       height: 100%;
       overflow-y: auto;
-      padding-top: 10px;
+      padding-top: 25px;
       li {
         width: 100%;
         margin-bottom: 10px;
@@ -485,8 +486,8 @@ export default {
             }
             i {
               display: block;
-              width: 20px;
-              height: 20px;
+              width: 15px;
+              height: 15px;
               position: absolute;
             }
           }
@@ -503,8 +504,8 @@ export default {
             background: rgb(169, 197, 251);
             i {
               background: rgb(169, 197, 251);
-              right: -10px;
-              top: 10px;
+              right: -5px;
+              top: 12px;
               transform: rotate(-45deg);
             }
           }
@@ -516,8 +517,8 @@ export default {
             background: rgb(255, 255, 255);
             i {
               background: rgb(255, 255, 255);
-              left: -10px;
-              top: 10px;
+              left: -5px;
+              top: 12px;
               transform: rotate(-45deg);
             }
           }

@@ -700,11 +700,12 @@ export default {
   .layout_left {
     width: 57%;
     height: 100%;
-    border-right: 1px solid rgb(212, 229, 255);
+    padding: 0 1%;
+    border-right: 1px solid rgb(111, 147, 251);
     .title {
       font-size: 16px;
       width: 99%;
-      border-bottom: 1px solid rgb(212, 229, 255);
+      border-bottom: 1px solid rgb(111, 147, 251);
       height: 15%;
       display: flex;
       flex-direction: column;
@@ -787,7 +788,7 @@ export default {
       margin-top: 1%;
       .main_left {
         width: 43%;
-        border-right: 1px solid rgb(212, 229, 255);
+        border-bottom: 1px solid rgb(111, 147, 251);
         li {
           height: 40px;
           line-height: 40px;

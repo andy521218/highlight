@@ -973,7 +973,7 @@ export default {
     background-color: rgb(212, 229, 255, 0.4);
     border-radius: 10px;
     ul {
-      width: 97%;
+      width: 94%;
       margin-left: 3%;
       li {
         margin-top: 20px;

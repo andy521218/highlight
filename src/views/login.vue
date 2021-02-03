@@ -177,8 +177,8 @@ export default {
       width: 21%;
       height: 5%;
       img {
-        width: 100%;
-        height: 100%;
+        max-height: 100%;
+        max-height: 100%;
       }
     }
     .login_box {

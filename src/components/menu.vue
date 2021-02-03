@@ -120,7 +120,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid rgb(111, 147, 251);
+    border: 2px solid rgb(111, 147, 251);
     border-left: none;
     border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;

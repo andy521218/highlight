@@ -194,7 +194,7 @@ export default {
       position: absolute;
       border-radius: 3px;
       width: 0.5em;
-      background-color: rgb(111, 147, 251);
+      background-color: rgb(111, 147, 251, 0.82);
       right: 0.1em;
       top: 1%;
       z-index: 99;

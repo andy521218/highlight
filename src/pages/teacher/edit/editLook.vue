@@ -185,7 +185,7 @@ export default {
       width: 90%;
       position: relative;
       .main_mask {
-        background: no-repeat;
+        background: no-repeat center;
         background-size: contain;
         .userlogo {
           max-width: 100%;

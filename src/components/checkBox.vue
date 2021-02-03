@@ -35,7 +35,7 @@ export default {
 
 .checkbox.active {
   border: none;
-  background: url("../assets/public/checkbox.png") no-repeat center;
+  background: url("../assets/public/checkbox1.png") no-repeat center;
   background-size: 100% 100%;
 }
 </style>

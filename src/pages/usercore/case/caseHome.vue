@@ -11,7 +11,9 @@
         :key="index"
         @click="getCaseData('1', item.id, index)"
       >
-        <span>{{ item.name }}</span>
+        <span :class="{ border_none: active_index + 1 == index }">{{
+          item.name
+        }}</span>
       </li>
     </ul>
     <div class="case_user_main">
@@ -161,11 +163,17 @@ export default {
     &:hover {
       background: rgb(111, 147, 251);
       color: rgb(255, 255, 255);
+      span {
+        border-color: rgb(111, 147, 251);
+      }
     }
   }
   .active {
     background: rgb(111, 147, 251);
     color: rgb(255, 255, 255);
+  }
+  .border_none {
+    border-color: rgb(255, 255, 255);
   }
   li:first-child {
     border-top-left-radius: 12px;

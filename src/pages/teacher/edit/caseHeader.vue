@@ -87,6 +87,7 @@ export default {
   width: 100%;
   height: 15%;
   align-items: center;
+  font-size: 1.2em;
   .case_header_logo {
     width: 70px;
     height: 70px;
