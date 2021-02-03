@@ -55,7 +55,7 @@
           </li>
           <i class="tips" @click="opneTips"></i>
         </ul>
-        <div class="content scrollbar">
+        <div class="content scrollbar" style="height: 80%">
           <div class="content_scrollbar teacher_case_ask" ref="scroll">
             <ul>
               <li v-for="(item, index) in askData" :key="index">
@@ -362,6 +362,7 @@ export default {
 .teacher_case_ask {
   ul {
     li {
+      padding: 3px 15px !important;
       height: auto !important;
       .item_cont {
         width: 91%;

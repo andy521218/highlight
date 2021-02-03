@@ -16,7 +16,7 @@
             </li>
             <i class="tips"></i>
           </ul>
-          <div class="content scrollbar">
+          <div class="content scrollbar" style="height: 80%">
             <div class="content_scrollbar">
               <!-- 主诉 -->
               <ul v-show="'主诉' == typeName">
