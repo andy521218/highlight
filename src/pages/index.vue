@@ -6,7 +6,7 @@
       <div class="tab problem" @click="routerMessagemy"></div>
       <div class="tab care" @click="routerCare"></div>
       <edit-password
-        style="top: -50%"
+        style="top: 10%"
         v-if="$store.state.editPwd"
       ></edit-password>
       <edit-user
@@ -15,7 +15,7 @@
         :email="true"
         :title="'信息'"
         :upData="$store.state.current"
-        style="top: -50%"
+        style="top: 10%"
         v-if="$store.state.editCurrent"
       >
         <template v-slot:user>

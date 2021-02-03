@@ -382,8 +382,8 @@ export default {
         .uploadImg1 {
           width: 70%;
           height: 9em;
-          background-color: rgb(5, 61, 118);
-          border: rgb(111,147,251) 1px solid;
+          background: rgb(240, 246, 255);
+          border: rgb(111, 147, 251) 1px solid;
           position: relative;
           display: flex;
           align-items: center;
@@ -404,8 +404,8 @@ export default {
             z-index: 100;
           }
           img {
-            width: 35%;
-            height: 80%;
+            max-width: 100%;
+            max-height: 100%;
             position: absolute;
           }
           .option {
@@ -423,8 +423,8 @@ export default {
           text-align: left;
           span {
             padding: 0 2%;
-            color:rgb(111,147,251);
-            border-left: 1px solid rgb(111,147,251);
+            color: rgb(111, 147, 251);
+            border-left: 1px solid rgb(111, 147, 251);
           }
         }
       }

@@ -116,10 +116,9 @@
           class="text_box"
           :placeholder="emailPlaceholder"
           v-model="updataEmail"
-          style="width: 190px"
         />
         <span class="edit_text_i_email" @click="editEamil">{{ codeText }}</span>
-        <p class="edit_tips" style="left: 115px">{{ emailText }}</p>
+        <p class="edit_tips">{{ emailText }}</p>
       </li>
     </ul>
     <div class="edit_btn_box">

@@ -435,7 +435,7 @@ export default {
       }
       .addList {
         display: inline-block;
-        background: rgb(8, 75, 130);
+        background: rgb(240, 246, 255);
         border: rgb(111, 147, 251) 1px solid;
         font-size: 30px;
         width: 30px;
@@ -444,6 +444,7 @@ export default {
         font-weight: bold;
         margin-top: 1.5em;
         cursor: pointer;
+        color: rgb(111, 147, 251);
       }
     }
   }
