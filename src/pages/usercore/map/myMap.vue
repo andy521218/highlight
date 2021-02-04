@@ -1,5 +1,5 @@
 <template>
-  <div class="g6_map">
+  <div class="g6_map" ref="mymap">
     <div class="none_data" v-if="mapShow">
       <span>暂无数据</span>
     </div>
@@ -72,19 +72,27 @@ export default {
       treat: "",
       agentia: "",
       mapShow: false,
+      caseName: "",
+      width: "",
+      height: "",
     };
   },
   mounted() {
     this.caseId = localStorage.getItem("caseId");
     this.examNo = localStorage.getItem("examNo");
+    this.caseName = localStorage.getItem("caseName");
+    this.mapData.nodes[0].label[0] = this.caseName;
     this.getDisease();
     this.getdiseaseName();
     this.gettreat();
     this.getagentia();
+    this.width = this.$refs.mymap.offsetWidth;
+    this.height = this.$refs.mymap.offsetHeight;
     this.mytmap = new G6.Graph({
       container: "mymap",
-      width: 1420,
-      height: 700,
+      width: this.width,
+      height: this.height,
+      fitView: "fitView",
       modes: {
         default: ["drag-canvas", "drag-node", "zoom-canvas"],
       },
@@ -95,15 +103,15 @@ export default {
         ranksep: 35,
       },
       defaultNode: {
-        size: [110, 30],
+        size: [120, 30],
         labelCfg: {
           style: {
-            fill: "#fff",
+            fill: "rgb(111,147,251)",
           },
         },
         style: {
-          fill: "rgb(5,60,118)",
-          stroke: "#097ca8 ",
+          fill: "rgb(240,246,255)",
+          stroke: "rgb(111,147,251)",
           lineWidth: 1,
           radius: 5,
         },
@@ -379,7 +387,7 @@ export default {
 
       //治疗
       let treatArr = [];
-      let height = 90;
+      let height = 100;
       let boxY = 32;
       let flag = true;
       try {
@@ -405,7 +413,7 @@ export default {
                   `遣方用药: ${[this.agentia[0].agentiaAnswer]}`,
                   `药物组成: ${[treatArr.toString().replace(/,/g, " ")]}`,
                 ],
-                size: [300, height],
+                size: [330, height],
                 name: "agentia",
                 shape: "multipleLabelsNode",
                 treat: this.treat.correct,
@@ -513,7 +521,7 @@ export default {
                   textAlign: "center",
                   y: 5,
                   x: 5,
-                  fill: "rgb(255,255,255)",
+                  fill: "rgb(111,147,251)",
                 },
               });
             }
@@ -527,7 +535,7 @@ export default {
                 attrs: {
                   width: 10,
                   height: 20,
-                  x: -45,
+                  x: -55,
                   y: -10,
                   fill: blockcolor,
                 },
@@ -536,9 +544,9 @@ export default {
                 attrs: {
                   text: cfg.label,
                   textAlign: "left",
-                  x: -30,
+                  x: -40,
                   y: 6,
-                  fill: "rgb(255,255,255)",
+                  fill: "rgb(111,147,251)",
                 },
               });
             }
@@ -558,7 +566,7 @@ export default {
                   text: cfg.label,
                   x: -15,
                   y: 6,
-                  fill: "rgb(255,255,255)",
+                  fill: "rgb(111,147,251)",
                 },
               });
             }
@@ -577,9 +585,9 @@ export default {
                 group.addShape("text", {
                   attrs: {
                     text: cfg.label[0] || "",
-                    x: -130,
+                    x: -140,
                     y: -28,
-                    fill: "rgb(255,255,255)",
+                    fill: "rgb(111,147,251)",
                   },
                 });
               } else {
@@ -587,7 +595,7 @@ export default {
                   attrs: {
                     width: 10,
                     height: 20,
-                    x: -145,
+                    x: -155,
                     y: -46,
                     fill: "rgb(254, 98, 102)",
                   },
@@ -596,9 +604,9 @@ export default {
                 group.addShape("text", {
                   attrs: {
                     text: cfg.label[0] || "",
-                    x: -130,
+                    x: -140,
                     y: -28,
-                    fill: "rgb(255,255,255)",
+                    fill: "rgb(111,147,251)",
                   },
                 });
               }
@@ -608,7 +616,7 @@ export default {
                   attrs: {
                     width: 10,
                     height: 20,
-                    x: -145,
+                    x: -155,
                     y: -16,
                     fill: "rgb(111,147,251)",
                   },
@@ -617,9 +625,9 @@ export default {
                 group.addShape("text", {
                   attrs: {
                     text: cfg.label[1] || "",
-                    x: -130,
+                    x: -140,
                     y: 0,
-                    fill: "rgb(255,255,255)",
+                    fill: "rgb(111,147,251)",
                   },
                 });
               } else {
@@ -627,7 +635,7 @@ export default {
                   attrs: {
                     width: 10,
                     height: 20,
-                    x: -145,
+                    x: -155,
                     y: -16,
                     fill: "rgb(254, 98, 102)",
                   },
@@ -636,9 +644,9 @@ export default {
                 group.addShape("text", {
                   attrs: {
                     text: cfg.label[1] || "",
-                    x: -130,
+                    x: -140,
                     y: 0,
-                    fill: "rgb(255,255,255)",
+                    fill: "rgb(111,147,251)",
                   },
                 });
               }
@@ -648,7 +656,7 @@ export default {
                   attrs: {
                     width: 10,
                     height: 20,
-                    x: -145,
+                    x: -155,
                     y: 14,
                     fill: "rgb(111,147,251)",
                   },
@@ -658,9 +666,9 @@ export default {
                 group.addShape("text", {
                   attrs: {
                     text: cfg.label[2] || "",
-                    x: -130,
+                    x: -140,
                     y: boxY,
-                    fill: "rgb(255,255,255)",
+                    fill: "rgb(111,147,251)",
                   },
                 });
               } else {
@@ -668,7 +676,7 @@ export default {
                   attrs: {
                     width: 10,
                     height: 20,
-                    x: -145,
+                    x: -155,
                     y: 14,
                     fill: "rgb(254, 98, 102)",
                   },
@@ -677,9 +685,9 @@ export default {
                 group.addShape("text", {
                   attrs: {
                     text: cfg.label[2] || "",
-                    x: -130,
+                    x: -140,
                     y: boxY,
-                    fill: "rgb(255,255,255)",
+                    fill: "rgb(111,147,251)",
                   },
                 });
               }

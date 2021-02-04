@@ -206,8 +206,11 @@ export default {
 <style lang="scss">
 .user_map {
   padding: 1%;
+  width: 100%;
+  height: 100%;
   header {
     width: 98%;
+    height: 5%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -242,12 +245,11 @@ export default {
     }
   }
   main {
-    width: 100%;
-    height: 710px;
+    width: 98%;
+    height: 95%;
     div {
-      width: 1420px;
-      height: 700px;
-      margin: 0 auto;
+      width: 100%;
+      height: 100%;
     }
     .none_data {
       background: url("../../../assets/public/classroom.png") no-repeat center;
