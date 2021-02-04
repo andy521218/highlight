@@ -47,8 +47,11 @@
       }
       .prose_one_right_top_main {
         width: 100%;
-        height: 80%;
-        padding: 5% 5%;
+        height: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 3%;
         font-size: 1.15em;
         line-height: 2em;
         text-indent: 2em;
@@ -65,7 +68,11 @@
       .prose_one_right_bottom_main {
         width: 100%;
         height: 80%;
-        padding: 5% 5%;
+        height: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 3%;
         font-size: 1.15em;
         line-height: 2em;
         text-indent: 2em;

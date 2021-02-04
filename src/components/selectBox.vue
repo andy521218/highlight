@@ -165,6 +165,7 @@ export default {
     width: 16em;
     height: 100%;
     border: 1px solid rgb(111, 147, 251);
+    border-radius: 3px;
     background: rgb(240, 246, 255);
     color: rgb(111, 147, 251);
     display: flex;
@@ -203,10 +204,11 @@ export default {
       width: 16em;
       max-height: 23em;
       border: 1px solid rgb(111, 147, 251);
+      border-radius: 3px;
       background: rgb(240, 246, 255);
       position: absolute;
       left: -1px;
-      top: 2.9em;
+      top: 2.8em;
       overflow: hidden;
       ul {
         width: 25em;

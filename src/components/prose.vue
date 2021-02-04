@@ -83,7 +83,7 @@ export default {
         justify-content: center;
         align-items: center;
         margin-right: 2%;
-        border: 3px solid rgb(111, 147, 251);
+        border: 2px solid rgb(111, 147, 251);
         color: rgb(111, 147, 251);
         border-radius: 5px;
       }
@@ -99,7 +99,7 @@ export default {
     }
   }
   .prose_main {
-    background-color: rgb(212, 229, 255, 0.4);
+    background-color: rgb(255,255,255,0.82);
     border-radius: 10px;
     width: 100%;
     height: 90%;

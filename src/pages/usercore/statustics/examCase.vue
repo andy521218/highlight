@@ -8,12 +8,14 @@
           <p class="train_bottom_right_people">分数</p>
           <div class="tarin_top_item_title_itps">注:滚动鼠标滑轮翻页</div>
         </div>
-        <img
-          v-show="exam_show"
-          class="case_exam_top_itps"
-          src="../../../assets/public/number.png"
-          alt=""
-        />
+        <div class="exam_none" v-show="exam_show">
+          <img
+            class="case_exam_top_itps"
+            src="../../../assets/public/number.png"
+            alt=""
+          />
+          <span>暂无数据</span>
+        </div>
         <div class="case_exam_main_number">
           <div
             class="case_exam_main_number_block"
@@ -41,12 +43,15 @@
           <p class="train_bottom_right_people">名次</p>
           <div class="tarin_top_item_title_itps">注:滚动鼠标滑轮翻页</div>
         </div>
-        <img
-          v-show="!classroom_show"
-          class="case_exam_top_itps"
-          src="../../../assets/public/number.png"
-          alt=""
-        />
+        <div class="exam_none" v-show="!classroom_show">
+          <img
+            class="case_exam_top_itps"
+            src="../../../assets/public/number.png"
+            alt=""
+          />
+          <span>暂无数据</span>
+        </div>
+
         <div class="case_exam_main_classroom" ref="classroom">
           <canvas id="canvas"></canvas>
         </div>
@@ -230,6 +235,23 @@ export default {
   width: 100%;
   height: 100%;
   padding: 1% 0;
+  .exam_none {
+    position: absolute;
+    width: 32.5%;
+    height: 33.5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    span {
+      color: rgb(111, 147, 251);
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  }
   .tarin_top_item_title_itps {
     position: absolute;
     right: 15px;
@@ -301,11 +323,7 @@ export default {
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      .case_exam_top_itps {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-      }
+
       .case_exam_main_classroom {
         width: 90%;
         height: 75%;

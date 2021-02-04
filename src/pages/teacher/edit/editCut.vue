@@ -278,12 +278,13 @@ export default {
   .case_right {
     text-align: center;
     img {
-      width: 90%;
-      height: 30%;
+      max-width: 70%;
+      margin-top: 3%;
     }
     .seedesc {
       text-align: left;
       margin-left: 20px;
+      font-size: 1.2em;
     }
   }
 }

@@ -46,7 +46,7 @@
           <i-circle
             :percent="parseInt((report.caseCnt / report.totalCaseCnt) * 100)"
             class="item"
-            style="width: 25.5%; height: 100%"
+            style="width: 25.5%; height: 91%"
             stroke-color="rgb(40,210,208)"
             trail-color="rgb(40,210,208,0.62)"
           >
@@ -84,12 +84,14 @@
             <span>平均分</span>
           </div>
           <div class="train_bottom_left_main_block">
-            <img
-              v-show="!score_show"
-              class="train_bottom_left_main_itps"
-              src="../../../assets/public/number.png"
-              alt=""
-            />
+            <div class="data_none" v-show="!score_show">
+              <img
+                class="train_bottom_left_main_itps"
+                src="../../../assets/public/number.png"
+                alt=""
+              />
+              <span>暂无数据</span>
+            </div>
             <div v-show="min && score_show == true">
               <img
                 src="../../../assets/public/yellowblock.png"
@@ -131,66 +133,74 @@
         </div>
         <div class="train_bottom_right_main">
           <div class="train_bottom_right_main_box">
-            <img
-              v-show="!number_show"
-              class="train_bottom_right_main_itps"
-              src="../../../assets/public/number.png"
-              alt=""
-            />
-            <div class="train_bottom_right_main_box_item">
-              <span v-show="report.historgram050"
-                >{{ report.historgram050 }}次</span
-              >
+            <div class="data_none" v-show="!number_show">
+              <img
+                class="train_bottom_right_main_itps"
+                src="../../../assets/public/number.png"
+                alt=""
+              />
+              <span>暂无数据</span>
+            </div>
+            <div
+              class="train_bottom_right_main_box_item"
+              v-show="report.historgram050"
+            >
+              <span>{{ report.historgram050 }}次</span>
               <img
                 src="../../../assets/public/452f0ad494a800823f29c9f1608c38d.png"
                 :style="{ height: historgram050 + '%' }"
                 alt=""
               />
             </div>
-            <div class="train_bottom_right_main_box_item">
-              <span v-show="report.historgram5060"
-                >{{ report.historgram5060 }}次</span
-              >
+            <div
+              class="train_bottom_right_main_box_item"
+              v-show="report.historgram5060"
+            >
+              <span>{{ report.historgram5060 }}次</span>
               <img
                 src="../../../assets/public/452f0ad494a800823f29c9f1608c38d.png"
                 :style="{ height: historgram5060 + '%' }"
                 alt=""
               />
             </div>
-            <div class="train_bottom_right_main_box_item">
-              <span v-show="report.historgram6070"
-                >{{ report.historgram6070 }}次</span
-              >
+            <div
+              class="train_bottom_right_main_box_item"
+              v-show="report.historgram6070"
+            >
+              <span>{{ report.historgram6070 }}次</span>
               <img
                 src="../../../assets/public/452f0ad494a800823f29c9f1608c38d.png"
                 :style="{ height: historgram6070 + '%' }"
                 alt=""
               />
             </div>
-            <div class="train_bottom_right_main_box_item">
-              <span v-show="report.historgram7080"
-                >{{ report.historgram7080 }}次</span
-              >
+            <div
+              class="train_bottom_right_main_box_item"
+              v-show="report.historgram7080"
+            >
+              <span>{{ report.historgram7080 }}次</span>
               <img
                 src="../../../assets/public/452f0ad494a800823f29c9f1608c38d.png"
                 :style="{ height: historgram7080 + '%' }"
                 alt=""
               />
             </div>
-            <div class="train_bottom_right_main_box_item">
-              <span v-show="report.historgram8090"
-                >{{ report.historgram8090 }}次</span
-              >
+            <div
+              class="train_bottom_right_main_box_item"
+              v-show="report.historgram8090"
+            >
+              <span>{{ report.historgram8090 }}次</span>
               <img
                 src="../../../assets/public/452f0ad494a800823f29c9f1608c38d.png"
                 :style="{ height: historgram8090 + '%' }"
                 alt=""
               />
             </div>
-            <div class="train_bottom_right_main_box_item">
-              <span v-show="report.historgram90"
-                >{{ report.historgram90 }}次</span
-              >
+            <div
+              class="train_bottom_right_main_box_item"
+              v-show="report.historgram90"
+            >
+              <span>{{ report.historgram90 }}次</span>
               <img
                 src="../../../assets/public/452f0ad494a800823f29c9f1608c38d.png"
                 :style="{ height: historgram90 + '%' }"
@@ -392,12 +402,21 @@ export default {
             margin-left: 10px;
           }
         }
-        .train_bottom_left_main_itps {
-          width: 42%;
-          height: 79%;
-          left: 50%;
-          margin-left: -21%;
-          position: absolute;
+        .data_none {
+          width: 21%;
+          height: 42%;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          .train_bottom_left_main_itps {
+            width: 100%;
+            height: 100%;
+          }
+          span {
+            color: rgb(111, 147, 251);
+            font-size: 1.2em;
+            font-weight: bold;
+          }
         }
       }
     }
@@ -430,12 +449,21 @@ export default {
             color: rgb(111, 147, 251);
           }
         }
-        .train_bottom_right_main_itps {
-          width: 42%;
-          height: 79%;
-          left: 50%;
-          margin-left: -21%;
-          position: absolute;
+        .data_none {
+          width: 19%;
+          height: 42%;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          .train_bottom_right_main_itps {
+            width: 100%;
+            height: 100%;
+          }
+          span {
+            color: rgb(111, 147, 251);
+            font-size: 1.2em;
+            font-weight: bold;
+          }
         }
       }
       .train_bottom_right_main_item {

@@ -32,11 +32,11 @@
               <i class="train_bottom_left_i"></i>
               <span>考试参与人数</span>
             </div>
-            <img
-              v-show="people_show"
-              src="../../../assets/public/classroom.png"
-              alt=""
-            />
+            <div class="state_none" v-show="people_show">
+              <img src="../../../assets/public/classroom.png" alt="" />
+              <span>暂无数据</span>
+            </div>
+
             <div class="exam_left_top_peopleTotal_main">
               <i-circle
                 v-show="!people_show"
@@ -65,11 +65,11 @@
               <i class="train_bottom_left_i orange"></i>
               <span>考试平均用时</span>
             </div>
-            <img
-              v-show="examtime_show"
-              src="../../../assets/public/classroom.png"
-              alt=""
-            />
+            <div class="state_none" v-show="examtime_show">
+              <img src="../../../assets/public/classroom.png" alt="" />
+              <span>暂无数据</span>
+            </div>
+
             <div class="exam_left_top_averageTime_main" v-show="!examtime_show">
               <span>{{ parseInt(report.avgCostTime / 60000) }}</span>
               <span style="font-size: 30px">分</span>
@@ -89,11 +89,11 @@
             <i class="train_bottom_left_i yellow"></i>
             <span>分数分析</span>
           </div>
-          <img
-            v-show="avgnumber_show"
-            src="../../../assets/public/classroom.png"
-            alt=""
-          />
+          <div class="state_none" v-show="avgnumber_show">
+            <img src="../../../assets/public/classroom.png" alt="" />
+            <span>暂无数据</span>
+          </div>
+
           <div class="exam_left_bottom_main" v-show="!avgnumber_show">
             <div class="exam_left_bottom_main_title">
               <span>最低分</span>
@@ -140,12 +140,11 @@
           <i class="train_bottom_left_i blue"></i>
           <span>考试成绩分布</span>
         </div>
-        <img
-          class="itps_none"
-          v-show="examNumber_show"
-          src="../../../assets/public/classroom.png"
-          alt=""
-        />
+        <div class="state_none" v-show="examNumber_show">
+          <img src="../../../assets/public/classroom.png" alt="" />
+          <span>暂无数据</span>
+        </div>
+
         <div class="exam_right_main" v-show="!examNumber_show">
           <div class="exam_right_main_block">
             <div class="exam_right_main_block_item">
@@ -392,6 +391,26 @@ export default {
         height: 50%;
         display: flex;
         text-align: center;
+        .state_none {
+          width: 50%;
+          height: 40%;
+          top: 50%;
+          left: 50%;
+          margin-left: -25%;
+          margin-top: -20%;
+          position: absolute;
+          display: flex;
+          flex-direction: column;
+          img {
+            max-height: 100%;
+            max-width: 100%;
+          }
+          span {
+            color: rgb(111, 147, 251);
+            font-size: 1.2em;
+            font-weight: bold;
+          }
+        }
         .exam_left_top_peopleTotal {
           width: 48%;
           height: 100%;
@@ -405,15 +424,6 @@ export default {
             display: flex;
             align-items: center;
             justify-content: center;
-          }
-          img {
-            width: 50%;
-            height: 40%;
-            top: 50%;
-            left: 50%;
-            margin-left: -25%;
-            margin-top: -20%;
-            position: absolute;
           }
         }
         .exam_left_top_averageTime {
@@ -433,15 +443,6 @@ export default {
               font-size: 80px;
               color: rgb(251, 138, 94);
             }
-          }
-          img {
-            width: 50%;
-            height: 40%;
-            top: 50%;
-            left: 50%;
-            margin-left: -25%;
-            margin-top: -20%;
-            position: absolute;
           }
         }
       }
@@ -490,10 +491,21 @@ export default {
             }
           }
         }
-        img {
+        .state_none {
           width: 34%;
           height: 66%;
-          margin-top: 3%;
+          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          img {
+            max-height: 100%;
+            max-width: 100%;
+          }
+          span {
+            color: rgb(111, 147, 251);
+            font-size: 1.2em;
+            font-weight: bold;
+          }
         }
       }
     }
@@ -552,7 +564,7 @@ export default {
           height: 50%;
         }
       }
-      .itps_none {
+      .state_none {
         width: 34%;
         height: 30%;
         left: 50%;
@@ -560,6 +572,17 @@ export default {
         margin-left: -17%;
         margin-top: -15%;
         position: absolute;
+        display: flex;
+        flex-direction: column;
+        img {
+          max-height: 100%;
+          max-width: 100%;
+        }
+        span {
+          color: rgb(111, 147, 251);
+          font-size: 1.2em;
+          font-weight: bold;
+        }
       }
     }
   }

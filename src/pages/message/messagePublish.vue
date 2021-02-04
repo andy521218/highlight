@@ -1,48 +1,49 @@
 <template>
   <div class="message_publish">
-    <img alt="" />
-    <div class="publish_select">
-      <selectBox
-        :title="'病系'"
-        :listData="list"
-        :typeId="'diseaseType'"
-        :itemName="'name'"
-        :itemId="'diseaseType'"
-        :defaultTitle="'请选择病系'"
-      ></selectBox>
-    </div>
-    <div class="publish_text">
-      <label for>标题</label>
-      <input
-        type="text"
-        placeholder="请输入问题标题..."
-        maxlength="30"
-        class="text_box"
-        v-model="title"
-      />
-      <span>{{ title.length }}/30</span>
-    </div>
-    <div class="publish_area">
-      <label for>内容</label>
-      <textarea
-        placeholder="请输入问题内容..."
-        v-model="message"
-        maxlength="130"
-      ></textarea>
-      <span>{{ message.length }}/130</span>
-    </div>
-    <div class="input_file">
-      <div
-        class="preview_img"
-        :class="{ small: index > 0 }"
-        v-for="(item, index) in imgUrl"
-        :key="index"
-      >
-        <i @click="deleImg(index)"></i>
-        <img :src="item" alt="" />
+    <div class="publish_box">
+      <div class="publish_select">
+        <selectBox
+          :title="'病系'"
+          :listData="list"
+          :typeId="'diseaseType'"
+          :itemName="'name'"
+          :itemId="'diseaseType'"
+          :defaultTitle="'请选择病系'"
+        ></selectBox>
       </div>
-      <input type="file" accept="image/*" @change="uploadImgs" ref="imgs" />
-      <p>+</p>
+      <div class="publish_text">
+        <label for>标题</label>
+        <input
+          type="text"
+          placeholder="请输入问题标题..."
+          maxlength="30"
+          class="text_box"
+          v-model="title"
+        />
+        <span>{{ title.length }}/30</span>
+      </div>
+      <div class="publish_area">
+        <label for>内容</label>
+        <textarea
+          placeholder="请输入问题内容..."
+          v-model="message"
+          maxlength="130"
+        ></textarea>
+        <span>{{ message.length }}/130</span>
+      </div>
+      <div class="input_file">
+        <div
+          class="preview_img"
+          :class="{ small: index > 0 }"
+          v-for="(item, index) in imgUrl"
+          :key="index"
+        >
+          <i @click="deleImg(index)"></i>
+          <img :src="item" alt="" />
+        </div>
+        <input type="file" accept="image/*" @change="uploadImgs" ref="imgs" />
+        <p>+</p>
+      </div>
     </div>
     <button class="submit" @click="submit">提交</button>
   </div>
@@ -171,6 +172,8 @@ export default {
   height: 80%;
   margin-top: 3%;
   margin-left: 25%;
+  position: relative;
+  
   label {
     margin-right: 1em;
   }
@@ -202,6 +205,7 @@ export default {
       width: 93%;
       height: 20em;
       padding: 1%;
+      border-radius: 6px;
     }
 
     span {
@@ -231,6 +235,7 @@ export default {
     p {
       color: rgb(255, 255, 255);
       background-color: rgb(111, 147, 251);
+      border-radius: 6px;
       width: 2.3em;
       height: 2.3em;
       line-height: 2.3em;

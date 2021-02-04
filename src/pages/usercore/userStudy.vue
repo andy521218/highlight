@@ -17,8 +17,8 @@
         <i-circle
           :percent="(Math.floor(scoreData.total) / 100) * 100"
           class="item"
-          stroke-color="rgb(50,168,255)"
-          trail-color="rgb(196,217,232)"
+          stroke-color="rgb(117,147,251)"
+          trail-color="rgb(117,147,251,0.3)"
         >
           <span class="demo-Circle-inner" style="font-size: 24px">
             {{ Math.floor(scoreData.total) }}分</span
@@ -36,7 +36,7 @@
           :percent="(Math.floor(scoreData.ask) / askscore) * 100"
           class="item"
           stroke-color="rgb(117,147,251)"
-          trail-color="rgb(196,217,232)"
+          trail-color="rgb(117,147,251,0.3)"
         >
           <span class="demo-Circle-inner" style="font-size: 24px">
             {{ Math.floor(scoreData.ask) }}分
@@ -55,7 +55,7 @@
           :percent="(Math.floor(scoreData.watch) / watchscore) * 100"
           class="item"
           stroke-color="rgb(117,147,251)"
-          trail-color="rgb(196,217,232)"
+          trail-color="rgb(117,147,251,0.3)"
         >
           <span class="demo-Circle-inner" style="font-size: 24px">
             {{ Math.floor(scoreData.watch) }}分
@@ -73,7 +73,7 @@
           :percent="(Math.floor(scoreData.listen) / listenscore) * 100"
           class="item"
           stroke-color="rgb(117,147,251)"
-          trail-color="rgb(196,217,232)"
+          trail-color="rgb(117,147,251,0.3)"
         >
           <span class="demo-Circle-inner" style="font-size: 24px">
             {{ Math.floor(scoreData.listen) }}分
@@ -91,7 +91,7 @@
           :percent="(Math.floor(scoreData.feel) / feelscore) * 100"
           class="item"
           stroke-color="rgb(117,147,251)"
-          trail-color="rgb(196,217,232)"
+          trail-color="rgb(117,147,251,0.3)"
         >
           <span class="demo-Circle-inner" style="font-size: 24px">
             {{ Math.floor(scoreData.feel) }}分
@@ -111,7 +111,7 @@
           :percent="(Math.floor(scoreData.disease) / dialecticalscore) * 100"
           class="item"
           stroke-color="rgb(117,147,251)"
-          trail-color="rgb(196,217,232)"
+          trail-color="rgb(117,147,251,0.3)"
         >
           <span class="demo-Circle-inner" style="font-size: 24px">
             {{ Math.floor(scoreData.disease) }}分
@@ -129,7 +129,7 @@
           :percent="(Math.floor(scoreData.treat) / treatmentscore) * 100"
           class="item"
           stroke-color="rgb(117,147,251)"
-          trail-color="rgb(196,217,232)"
+          trail-color="rgb(117,147,251,0.3)"
         >
           <span class="demo-Circle-inner" style="font-size: 24px">
             {{ Math.floor(scoreData.treat) }}分</span
@@ -295,6 +295,7 @@ export default {
         position: absolute;
         height: 30px;
         line-height: 30px;
+        color: rgb(255, 255, 255);
       }
       .item {
         margin-top: 25%;
