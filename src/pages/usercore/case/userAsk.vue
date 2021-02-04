@@ -1,6 +1,7 @@
 <template>
   <div class="user_ask">
     <div class="case_layout">
+      <edit-module v-if="module_show"></edit-module>
       <div class="case_left">
         <case-header></case-header>
         <main>
@@ -14,7 +15,16 @@
               {{ item.name }}
               <div :class="{ active: typeId == item.moduleId }"></div>
             </li>
-            <i class="tips"></i>
+            <div class="voice">
+              <i-switch
+                true-color="rgb(111,147,251)"
+                v-model="status"
+              ></i-switch>
+              <span>语 音</span>
+            </div>
+            <div class="tips" @click="module_show = true">
+              <i></i><span>提示</span>
+            </div>
           </ul>
           <div class="content scrollbar" style="height: 80%">
             <div class="content_scrollbar">
@@ -205,11 +215,12 @@
 
 <script>
 import caseHeader from "../../teacher/edit/caseHeader";
-
+import editModule from "../../../components/edit/editModule";
 export default {
   name: "user-ask",
   components: {
     caseHeader,
+    editModule,
   },
   data() {
     return {
@@ -280,6 +291,8 @@ export default {
       answerSong: "",
       questionSong: "",
       sex: "",
+      status: "",
+      module_show: false,
     };
   },
   mounted() {
@@ -372,6 +385,7 @@ export default {
           }, 300);
           this.askedArr.push(item);
         });
+      if (!this.status) return;
       clearTimeout(this.questionSong);
       this.questionSong = setTimeout(() => {
         this.song(item.question);

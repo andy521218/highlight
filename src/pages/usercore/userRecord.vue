@@ -127,13 +127,13 @@ export default {
     },
     toMapping(e) {
       localStorage.setItem("examNo", e.examNo);
-      localStorage.setItem("caseId", e.userId);
+      localStorage.setItem("caseId", e.caseId);
       this.$router.push("usermap");
     },
     toStudy(e) {
       localStorage.setItem("examNo", e.examNo);
       localStorage.setItem("caseId", e.caseId);
-      this.$router.push("userstudy");
+      this.$router.push("ask");
     },
     getTrain(page) {
       this.page = page;

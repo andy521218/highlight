@@ -1,6 +1,6 @@
 <template>
   <div class="message_forum scrollbar">
-    <div class="main_mask" v-show="discuss_show"></div>
+    <div class="main_mask" v-show="discuss_show || imgs_show"></div>
     <add-discuss
       v-if="discuss_show"
       :discussData="discussData"

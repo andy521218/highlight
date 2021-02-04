@@ -3,7 +3,6 @@
     <header>
       <ul>
         <li>
-         
           <div class="custom_radio">
             <span
               class="custom_text"
@@ -21,7 +20,6 @@
           <label>我的答案</label>
         </li>
         <li>
-         
           <div class="custom_radio">
             <span
               class="custom_text"
@@ -37,7 +35,6 @@
           <label>答案对比</label>
         </li>
         <li>
-       
           <div class="custom_radio">
             <span
               class="custom_text"
@@ -233,7 +230,7 @@ export default {
           width: 15px;
         }
         .correct {
-          background:rgb(111,147,251);
+          background: rgb(111, 147, 251);
         }
         .error {
           background: rgb(254, 98, 102);

@@ -631,12 +631,12 @@ export default {
           align-content: center;
           a {
             text-decoration: none;
-            color: rgb(255, 255, 255);
+            color: rgb(111, 147, 251);
             font-size: 16px;
             position: relative;
             &::after {
               content: "";
-              background: url("../../../assets/public/search1.png") no-repeat
+              background: url("../../../assets/public/search.png") no-repeat
                 center;
               width: 34px;
               height: 34px;

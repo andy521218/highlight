@@ -10,6 +10,7 @@
             v-model="searchTreat"
             @focus="treatShow = true"
             @blur="timerOuttreat"
+            style="background-position: 99% 50%"
           />
           <div class="search_down scrollbar" v-show="treatShow">
             <div
@@ -733,7 +734,7 @@ export default {
         align-content: center;
         a {
           text-decoration: none;
-          color: rgb(255, 255, 255);
+          color: rgb(111, 147, 251);
           font-size: 16px;
           position: relative;
           &::after {
@@ -787,15 +788,15 @@ export default {
       display: flex;
       margin-top: 1%;
       .main_left {
-        width: 43%;
-        border-bottom: 1px solid rgb(111, 147, 251);
+        width: 44%;
+        border-right: 1px solid rgb(111, 147, 251);
         li {
           height: 40px;
           line-height: 40px;
         }
       }
       .main_right {
-        width: 57%;
+        width: 56%;
         height: 100%;
         ul {
           width: 100%;
