@@ -1,5 +1,5 @@
 <template>
-  <div class="g6_map">
+  <div class="g6_map" ref="contrast">
     <div class="none_data" v-if="mapShow">
       <span>暂无数据</span>
     </div>
@@ -11,14 +11,23 @@
 import G6 from "@antv/g6";
 export default {
   name: "contrast-map",
-  props: ["ask", "watch", "listen", "press", "pulse", "correct"],
+  props: [
+    "ask",
+    "watch",
+    "listen",
+    "press",
+    "pulse",
+    "correct",
+    "width",
+    "height",
+  ],
   data() {
     return {
       mapData: {
         nodes: [
           {
             id: "0",
-            label: ["范再娟"],
+            label: [""],
           },
           {
             id: "1.0",
@@ -73,51 +82,57 @@ export default {
       agentia: "",
       treatcorrect: "",
       mapShow: false,
+      caseName: "",
     };
   },
   mounted() {
     this.caseId = localStorage.getItem("caseId");
     this.examNo = localStorage.getItem("examNo");
+    this.caseName = localStorage.getItem("caseName");
+    this.mapData.nodes[0].label[0] = this.caseName;
     this.getDisease();
     this.getdiseaseName();
     this.gettreat();
     this.getagentia();
     this.gettreatcorrect();
-    this.mytmap = new G6.Graph({
-      container: "contrast",
-      width: 1420,
-      height: 700,
-      modes: {
-        default: ["drag-canvas", "drag-node", "zoom-canvas"],
-      },
-      layout: {
-        type: "dagre",
-        rankdir: "LR",
-        nodesep: 1,
-        ranksep: 35,
-      },
-      defaultNode: {
-        size: [110, 30],
-        labelCfg: {
-          style: {
-            fill: "#fff",
-          },
-        },
-        style: {
-          fill: "rgb(5,60,118)",
-          stroke: "#097ca8 ",
-          lineWidth: 1,
-          radius: 5,
-        },
-        type: "rect",
-      },
-      defaultEdge: {
-        size: 1,
-        color: "rgb(111,147,251)",
-      },
-    });
   },
   methods: {
+    init() {
+      this.mytmap = new G6.Graph({
+        container: "contrast",
+        width: this.width,
+        height: this.height,
+        fitView: "fitView",
+        modes: {
+          default: ["drag-canvas", "drag-node", "zoom-canvas"],
+        },
+        layout: {
+          type: "dagre",
+          rankdir: "LR",
+          nodesep: 1,
+          ranksep: 35,
+        },
+        defaultNode: {
+          size: [120, 30],
+          labelCfg: {
+            style: {
+              fill: "rgb(111,147,251)",
+            },
+          },
+          style: {
+            fill: "rgb(240,246,255)",
+            stroke: "rgb(111,147,251)",
+            lineWidth: 1,
+            radius: 5,
+          },
+          type: "rect",
+        },
+        defaultEdge: {
+          size: 1,
+          color: "rgb(111,147,251)",
+        },
+      });
+    },
     checkAnswer(correct) {
       //问诊
       if (
@@ -570,7 +585,7 @@ export default {
       //治疗
       try {
         let treatArr = [];
-        let height = 90;
+        let height = 100;
         let boxY = 32;
         let flag = true;
         this.agentia[0].druggeries.forEach((ele) => {
@@ -596,7 +611,7 @@ export default {
                 `遣方用药: ${[this.agentia[0].agentiaAnswer]}`,
                 `药物组成: ${[treatArr.toString().replace(/,/g, " ")]}`,
               ],
-              size: [300, height],
+              size: [330, height],
               name: "agentia",
               shape: "multipleLabelsNode",
               treat: this.treat.correct,
@@ -625,7 +640,7 @@ export default {
                   `遣方用药: ${[this.agentia[0].agentiaCorrectAnswer]}`,
                   `药物组成: ${[treatArr.toString().replace(/,/g, " ")]}`,
                 ],
-                size: [300, height],
+                size: [330, height],
                 name: "agentia",
                 shape: "multipleLabelsNode",
                 treat: true,
@@ -815,7 +830,7 @@ export default {
                   textAlign: "center",
                   y: 5,
                   x: 5,
-                  fill: "rgb(255,255,255)",
+                  fill: "rgb(111,147,251)",
                 },
               });
             }
@@ -835,7 +850,7 @@ export default {
                   textAlign: "center",
                   y: 5,
                   x: 5,
-                  fill: "rgb(255,255,255)",
+                  fill: "rgb(111,147,251)",
                 },
               });
             }
@@ -859,7 +874,7 @@ export default {
                   textAlign: "left",
                   x: -30,
                   y: 6,
-                  fill: "rgb(255,255,255)",
+                  fill: "rgb(111,147,251)",
                 },
               });
             }
@@ -884,7 +899,7 @@ export default {
                   textAlign: "left",
                   x: -30,
                   y: 6,
-                  fill: "rgb(255,255,255)",
+                  fill: "rgb(111,147,251)",
                 },
               });
             }
@@ -904,7 +919,7 @@ export default {
                   text: cfg.label,
                   x: -15,
                   y: 6,
-                  fill: "rgb(255,255,255)",
+                  fill: "rgb(111,147,251)",
                 },
               });
             }
@@ -924,7 +939,7 @@ export default {
                   text: cfg.label,
                   x: -15,
                   y: 6,
-                  fill: "rgb(255,255,255)",
+                  fill: "rgb(111,147,251)",
                 },
               });
             }
@@ -945,7 +960,7 @@ export default {
                     text: cfg.label[0] || "",
                     x: -130,
                     y: -28,
-                    fill: "rgb(255,255,255)",
+                    fill: "rgb(111,147,251)",
                   },
                 });
               } else {
@@ -964,7 +979,7 @@ export default {
                     text: cfg.label[0] || "",
                     x: -130,
                     y: -28,
-                    fill: "rgb(255,255,255)",
+                    fill: "rgb(111,147,251)",
                   },
                 });
               }
@@ -985,7 +1000,7 @@ export default {
                     text: cfg.label[1] || "",
                     x: -130,
                     y: 0,
-                    fill: "rgb(255,255,255)",
+                    fill: "rgb(111,147,251)",
                   },
                 });
               } else {
@@ -1004,7 +1019,7 @@ export default {
                     text: cfg.label[1] || "",
                     x: -130,
                     y: 0,
-                    fill: "rgb(255,255,255)",
+                    fill: "rgb(111,147,251)",
                   },
                 });
               }
@@ -1029,13 +1044,13 @@ export default {
                     text: cfg.label[2] || "",
                     x: -130,
                     y: y,
-                    fill: "rgb(255,255,255)",
+                    fill: "rgb(111,147,251)",
                   },
                 });
               } else {
-                let y = 32;
+                let y = 27;
                 if (cfg.label[2].length > 21) {
-                  y = 42;
+                  y = 32;
                 }
                 group.addShape("rect", {
                   attrs: {
@@ -1052,7 +1067,7 @@ export default {
                     text: cfg.label[2] || "",
                     x: -130,
                     y: y,
-                    fill: "rgb(255,255,255)",
+                    fill: "rgb(111,147,251)",
                   },
                 });
               }
@@ -1128,6 +1143,9 @@ export default {
     },
   },
   watch: {
+    width: function () {
+      this.init();
+    },
     ask: function () {
       this.askData = this.ask;
       setTimeout(() => {

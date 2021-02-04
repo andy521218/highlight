@@ -3,7 +3,7 @@
     <div class="user_top">
       <div class="user_big">
         <input type="file" class="uploadlogo" @change="uploadlogo" ref="logo" />
-        <img :src="$url + current.avatar" v-if="current.avatar" />
+        <img :src="imgurl" v-if="current.avatar" />
       </div>
       <span class="edit_logo">点击修改头像</span>
     </div>
@@ -49,6 +49,7 @@ export default {
       emailPlaceholder: "请输入邮箱",
       codeText: "验证邮箱",
       initEamail: "",
+      imgurl: "",
     };
   },
   mounted() {
@@ -58,6 +59,7 @@ export default {
     getCurrent() {
       this.axios.get("/users/current").then((res) => {
         this.current = res.data;
+        this.imgurl = this.$url + this.current.avatar;
         this.initEamail = this.email = res.data.email;
       });
     },
@@ -68,7 +70,7 @@ export default {
       let fileExample = new FileReader();
       fileExample.readAsDataURL(logo);
       fileExample.onload = (ev) => {
-        this.current.avatar = ev.target.result;
+        this.imgurl = ev.target.result;
         this.$store.state.avatar = ev.target.result;
       };
       let formData = new window.FormData();
@@ -208,7 +210,7 @@ export default {
     .user_big {
       width: 18em;
       height: 18em;
-      border: 1px solid rgb(111,147,251);
+      border: 1px solid rgb(111, 147, 251);
       border-radius: 50%;
       padding: 5px;
       position: relative;

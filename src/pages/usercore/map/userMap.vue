@@ -65,7 +65,7 @@
         </li>
       </ul>
     </header>
-    <main>
+    <main ref="map">
       <my-map
         v-show="show == 'myanswer'"
         :ask="ask"
@@ -82,6 +82,8 @@
         :press="press"
         :pulse="pulse"
         :correct="correct"
+        :width="width"
+        :height="height"
       ></correct-map>
       <contrast-map
         v-show="show == 'contrast'"
@@ -91,6 +93,8 @@
         :press="press"
         :pulse="pulse"
         :correct="correct"
+        :width="width"
+        :height="height"
       />
     </main>
   </div>
@@ -118,9 +122,13 @@ export default {
       press: [],
       pulse: [],
       correct: "",
+      width: "",
+      height: "",
     };
   },
   mounted() {
+    this.width = this.$refs.map.offsetWidth;
+    this.height = this.$refs.map.offsetHeight;
     this.caseId = localStorage.getItem("caseId");
     this.examNo = localStorage.getItem("examNo");
     this.getAsk();
