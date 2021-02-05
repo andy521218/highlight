@@ -1,9 +1,9 @@
 <template>
-  <div class="g6_map" ref="contrast">
+  <div class="g6_map">
     <div class="none_data" v-if="mapShow">
       <span>暂无数据</span>
     </div>
-    <div id="contrast" v-show="!mapShow"></div>
+    <div id="contrast" ref="contrast" v-show="!mapShow"></div>
   </div>
 </template>
 
@@ -97,6 +97,15 @@ export default {
     this.gettreatcorrect();
   },
   methods: {
+    repaint() {
+      console.log(111);
+      let node = this.$refs.contrast.children[0];
+      if (!node) return;
+      this.$refs.contrast.removeChild(node);
+      this.checkAnswer(this.correct);
+      this.mytmap.data(this.mapData);
+      this.mytmap.render();
+    },
     init() {
       this.mytmap = new G6.Graph({
         container: "contrast",
@@ -134,6 +143,7 @@ export default {
       });
     },
     checkAnswer(correct) {
+      this.init();
       //问诊
       if (
         this.disease.length == 0 &&
@@ -863,7 +873,7 @@ export default {
                 attrs: {
                   width: 10,
                   height: 20,
-                  x: -45,
+                  x: -55,
                   y: -10,
                   fill: blockcolor,
                 },
@@ -872,7 +882,7 @@ export default {
                 attrs: {
                   text: cfg.label,
                   textAlign: "left",
-                  x: -30,
+                  x: -40,
                   y: 6,
                   fill: "rgb(111,147,251)",
                 },
@@ -1144,7 +1154,7 @@ export default {
   },
   watch: {
     width: function () {
-      this.init();
+      this.repaint();
     },
     ask: function () {
       this.askData = this.ask;

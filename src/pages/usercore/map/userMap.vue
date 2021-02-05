@@ -73,6 +73,8 @@
         :listen="listen"
         :press="press"
         :pulse="pulse"
+        :width="width"
+        :height="height"
       ></my-map>
       <correct-map
         v-show="show == 'correct'"
@@ -124,9 +126,18 @@ export default {
       correct: "",
       width: "",
       height: "",
+      time: "",
     };
   },
   mounted() {
+    window.onresize = () => {
+      if (this.timer) return;
+      this.time = setTimeout(() => {
+        this.width = this.$refs.map.offsetWidth;
+        this.height = this.$refs.map.offsetHeight;
+        clearTimeout(this.time);
+      }, 1000);
+    };
     this.width = this.$refs.map.offsetWidth;
     this.height = this.$refs.map.offsetHeight;
     this.caseId = localStorage.getItem("caseId");

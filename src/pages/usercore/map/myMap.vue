@@ -1,9 +1,9 @@
 <template>
-  <div class="g6_map" ref="mymap">
+  <div class="g6_map">
     <div class="none_data" v-if="mapShow">
       <span>暂无数据</span>
     </div>
-    <div id="mymap" v-show="!mapShow"></div>
+    <div id="mymap" ref="mymap" v-show="!mapShow"></div>
   </div>
 </template>
 
@@ -11,7 +11,7 @@
 import G6 from "@antv/g6";
 export default {
   name: "my-map",
-  props: ["ask", "watch", "listen", "press", "pulse"],
+  props: ["ask", "watch", "listen", "press", "pulse", "width", "height"],
   data() {
     return {
       mapData: {
@@ -73,8 +73,6 @@ export default {
       agentia: "",
       mapShow: false,
       caseName: "",
-      width: "",
-      height: "",
     };
   },
   mounted() {
@@ -86,45 +84,54 @@ export default {
     this.getdiseaseName();
     this.gettreat();
     this.getagentia();
-    this.width = this.$refs.mymap.offsetWidth;
-    this.height = this.$refs.mymap.offsetHeight;
-    this.mytmap = new G6.Graph({
-      container: "mymap",
-      width: this.width,
-      height: this.height,
-      fitView: "fitView",
-      modes: {
-        default: ["drag-canvas", "drag-node", "zoom-canvas"],
-      },
-      layout: {
-        type: "dagre",
-        rankdir: "LR",
-        nodesep: 1,
-        ranksep: 35,
-      },
-      defaultNode: {
-        size: [120, 30],
-        labelCfg: {
-          style: {
-            fill: "rgb(111,147,251)",
-          },
-        },
-        style: {
-          fill: "rgb(240,246,255)",
-          stroke: "rgb(111,147,251)",
-          lineWidth: 1,
-          radius: 5,
-        },
-        type: "rect",
-      },
-      defaultEdge: {
-        size: 1,
-        color: "rgb(111,147,251)",
-      },
-    });
   },
   methods: {
+    repaint() {
+      let node = this.$refs.mymap.children[0];
+      if (!node) return;
+      this.$refs.mymap.removeChild(node);
+      this.checkAnswer();
+      this.mytmap.data(this.mapData);
+      this.mytmap.render();
+    },
+    init() {
+      this.mytmap = new G6.Graph({
+        container: "mymap",
+        width: this.width,
+        height: this.height,
+        fitView: "fitView",
+        modes: {
+          default: ["drag-canvas", "drag-node", "zoom-canvas"],
+        },
+        layout: {
+          type: "dagre",
+          rankdir: "LR",
+          nodesep: 1,
+          ranksep: 35,
+        },
+        defaultNode: {
+          size: [120, 30],
+          labelCfg: {
+            style: {
+              fill: "rgb(111,147,251)",
+            },
+          },
+          style: {
+            fill: "rgb(240,246,255)",
+            stroke: "rgb(111,147,251)",
+            lineWidth: 1,
+            radius: 5,
+          },
+          type: "rect",
+        },
+        defaultEdge: {
+          size: 1,
+          color: "rgb(111,147,251)",
+        },
+      });
+    },
     checkAnswer() {
+      this.init();
       //问诊
       if (
         this.disease.length == 0 &&
@@ -724,6 +731,9 @@ export default {
     },
   },
   watch: {
+    width: function () {
+      this.repaint();
+    },
     ask: function () {
       this.askData = this.ask;
       this.checkAnswer(this.correct);

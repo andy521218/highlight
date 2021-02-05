@@ -1,5 +1,5 @@
 <template>
-  <div id="correct"></div>
+  <div id="correct" ref="correct"></div>
 </template>
 
  <script>
@@ -81,6 +81,14 @@ export default {
     this.mapData.nodes[0].label[0] = this.caseName;
   },
   methods: {
+    repaint() {
+      let node = this.$refs.correct.children[0];
+      if (!node) return;
+      this.$refs.correct.removeChild(node);
+      this.getcorrect(this.correct);
+      this.correctmap.data(this.mapData);
+      this.correctmap.render();
+    },
     init() {
       this.correctmap = new G6.Graph({
         container: "correct",
@@ -144,6 +152,7 @@ export default {
       this.checkFeel(nameId + 0.5, feel, diseases);
       this.checkEdges(name, nameId + 0.5, diseaseNameIssues, diseases);
       this.gettreat(nameId + 0.5, diseases);
+      this.init();
     },
     gettreat(nameId, diseases) {
       this.axios
@@ -502,7 +511,7 @@ export default {
   },
   watch: {
     width: function () {
-      this.init();
+      this.repaint();
     },
     ask: function () {
       this.askData = this.ask;
