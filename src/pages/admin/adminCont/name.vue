@@ -260,6 +260,9 @@ export default {
       }
     }
   }
+  .item_container_between:hover {
+    background: rgb(255, 255, 255);
+  }
 }
 </style>
 

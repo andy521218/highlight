@@ -26,7 +26,13 @@
             </div>
           </div>
           <div class="item_container" :class="{ active: indexShow == index }">
-            <p v-for="(i, index) in item.options" :key="index">{{ i }}</p>
+            <p
+              style="height: 2.2em"
+              v-for="(i, index) in item.options"
+              :key="index"
+            >
+              {{ i }}
+            </p>
           </div>
         </li>
       </ul>
@@ -82,4 +88,5 @@ export default {
   },
 };
 </script>
+
 

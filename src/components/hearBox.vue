@@ -114,5 +114,8 @@ export default {
   .cont_bg ul {
     height: auto;
   }
+  .item_container_between:hover {
+    background: rgb(255, 255, 255);
+  }
 }
 </style>

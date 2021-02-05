@@ -377,8 +377,14 @@ export default {
       }
     }
     ul {
-      .display {
+      li {
         align-items: flex-start;
+      }
+      .edit_text_i {
+        width: 70%;
+        text-align: left;
+      }
+      .display {
         .uploadImg1 {
           width: 70%;
           height: 9em;
