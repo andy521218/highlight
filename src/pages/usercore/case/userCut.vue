@@ -85,7 +85,7 @@
         <img
           src="../../../assets/public/girl1.png"
           alt=""
-          class="seeimg"
+          class="follow"
           usemap="#mapgirl"
           style="margin-top: 8%; width: 85.7%; height: 77.2%"
           ref="mapGirl"
@@ -114,7 +114,7 @@
           <img
             src="../../../assets/public/boy1.png"
             alt=""
-            class="seeimg"
+            class="follow"
             usemap="#mapboy"
             ref="mapBoy"
             style="margin-top: 8%; width: 85.7%; height: 77.2%"
@@ -723,6 +723,12 @@ export default {
       text-align: left;
       margin-left: 20px;
       font-size: 1.2em;
+    }
+    &:hover {
+      .follow {
+        margin-top: 2% !important;
+        transform: scale(1.3);
+      }
     }
   }
 }
