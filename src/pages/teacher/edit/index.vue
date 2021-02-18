@@ -78,11 +78,7 @@
               </li>
             </ul>
             <div class="edit_btn_box">
-              <button
-                class="edit_cancel"
-                style="margin-right: 40px"
-                @click="$router.push('index')"
-              >
+              <button class="edit_cancel" @click="$router.push('index')">
                 返回首页
               </button>
               <button
@@ -110,7 +106,6 @@
             <div class="edit_btn_box">
               <button
                 class="edit_cancel"
-                style="margin-right: 40px"
                 @click="
                   confirm_show = false;
                   fractionshow = false;
@@ -134,11 +129,7 @@
               </li>
             </ul>
             <div class="edit_btn_box">
-              <button
-                class="edit_cancel"
-                style="margin-right: 40px"
-                @click="$router.push('index')"
-              >
+              <button class="edit_cancel" @click="$router.push('index')">
                 返回首页
               </button>
               <button class="submit" @click="startTime">继续训练</button>
@@ -160,11 +151,7 @@
               </li>
             </ul>
             <div class="edit_btn_box">
-              <button
-                class="edit_cancel"
-                style="margin-right: 40px"
-                @click="$router.push('index')"
-              >
+              <button class="edit_cancel" @click="$router.push('index')">
                 返回首页
               </button>
               <button class="submit" @click="startTime">继续训练</button>

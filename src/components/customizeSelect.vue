@@ -109,7 +109,7 @@ export default {
       width: 0;
       height: 0;
       border: 8px solid transparent;
-      border-top-color: rgb(255, 255, 255);
+      border-top-color: rgb(111, 147, 251);
       margin-right: 15px;
     }
   }
