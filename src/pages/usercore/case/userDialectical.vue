@@ -966,7 +966,7 @@ export default {
         flex-wrap: wrap;
         div {
           margin-bottom: 20px;
-          width: 175px;
+          width: 25%;
           display: flex;
           align-items: center;
         }
@@ -1056,12 +1056,11 @@ export default {
       align-items: center;
       justify-content: center;
       position: relative;
-      margin-right: 1%;
     }
 
     .active {
       position: absolute;
-      width: 100%;
+      width: 80%;
       bottom: 0;
       border: 3px solid rgb(111, 147, 251);
       border-radius: 3px;

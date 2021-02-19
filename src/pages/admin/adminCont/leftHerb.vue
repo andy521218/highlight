@@ -6,7 +6,7 @@
         <span class="title">添加常见方剂</span>
         <span class="edit_switch" @click="close()"></span>
       </div>
-      <ul class="edit_class" ref="list">
+      <ul class="edit_class" style="overflow-y: visible" ref="list">
         <li>
           <div class="edit_left">
             <span class="edit_red">*</span>
@@ -63,18 +63,6 @@
     </edit-dele>
 
     <div class="cont_header">常见方剂</div>
-    <!-- <ul>
-      <li class="display">
-        <input
-          type="text"
-          class="text_box"
-          v-model="prescriptionSearch"
-          @blur="prescriptionSearchShow = false"
-          @focus="prescriptionSearchShow = true"
-        />
-        <button class="submit" @click="getPrescriptionData()">检索</button>
-      </li>
-    </ul> -->
     <div class="search_title">
       <input
         type="text"

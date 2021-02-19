@@ -636,7 +636,7 @@ export default {
             position: relative;
             &::after {
               content: "";
-              background: url("../../../assets/public/search.png") no-repeat
+              background: url("../../../assets/public/search1.png") no-repeat
                 center;
               width: 34px;
               height: 34px;

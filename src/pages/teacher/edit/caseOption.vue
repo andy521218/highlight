@@ -12,7 +12,11 @@
           <span>请根据音频选出正确答案</span>
         </div>
         <ul>
-          <li v-for="(item, index) in option.options" :key="index">
+          <li
+            class="case_option_li"
+            v-for="(item, index) in option.options"
+            :key="index"
+          >
             <div class="custom_radio">
               <span
                 class="custom_text"
@@ -79,11 +83,12 @@ export default {
       display: flex;
       flex-wrap: wrap;
       width: 100%;
-      li {
+      .case_option_li {
         display: flex;
-        margin-left: 70px;
-        width: 150px;
+        width: 50%;
+        margin: 1.5em 0 0 0;
         .custom_radio {
+          margin-left: 30%;
           margin-right: 10px;
         }
       }

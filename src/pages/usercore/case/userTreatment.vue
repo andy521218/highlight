@@ -739,8 +739,8 @@ export default {
           position: relative;
           &::after {
             content: "";
-            background: url("../../../assets/public/cef75fb33557bcdbbe2c217b6f0bce2.png") no-repeat
-              center;
+            background: url("../../../assets/public/cef75fb33557bcdbbe2c217b6f0bce2.png")
+              no-repeat center;
             width: 34px;
             height: 34px;
             position: absolute;

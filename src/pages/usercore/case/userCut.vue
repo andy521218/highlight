@@ -728,6 +728,7 @@ export default {
       .follow {
         margin-top: 2% !important;
         transform: scale(1.3);
+        transition: 0.5s;
       }
     }
   }

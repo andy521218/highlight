@@ -1,10 +1,6 @@
 <template>
   <div class="case_look">
-    <div
-      class="main_mask"
-      v-show="mask"
-      style="height: 730px; width: 87.5%"
-    ></div>
+    <div class="main_mask" v-show="mask"></div>
     <case-option
       :option="option"
       v-if="optionShow"
@@ -184,6 +180,7 @@ export default {
       height: 85%;
       width: 90%;
       position: relative;
+      z-index: 98;
       .main_mask {
         background: no-repeat center;
         background-size: contain;

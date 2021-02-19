@@ -81,6 +81,20 @@
         <img :src="imgsUrl" v-if="imgsUrl" alt="" class="seeimg" />
         <p class="seedesc">{{ imgDesc }}</p>
       </div>
+      <div class="case_right" style="text-align: center" v-if="typeId == 1">
+        <img
+          v-if="sex == 'false'"
+          src="../../../assets/public/boy1.png"
+          alt=""
+          style="max-height: 100%; margin-top: 10%"
+        />
+        <img
+          v-if="sex == 'true'"
+          src="../../../assets/public/girl1.png"
+          alt=""
+          style="max-height: 100%; margin-top: 10%"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -111,12 +125,14 @@ export default {
       pressData: {},
       pulseData: {},
       option: {},
+      sex: false,
     };
   },
   mounted() {
     this.caseId = localStorage.getItem("caseId");
     this.getpressData();
     this.getpulseData();
+    this.sex = localStorage.getItem("sex");
   },
   methods: {
     container(i) {
@@ -223,6 +239,7 @@ export default {
 .case_cut {
   width: 100%;
   height: 100%;
+
   .content_scrollbar_ {
     width: 100%;
     height: 100%;
