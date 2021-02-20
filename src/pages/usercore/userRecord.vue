@@ -34,7 +34,7 @@
           <th class="table_10">查看</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-show="!main_show">
         <tr v-for="(item, index) in trainData" :key="index">
           <td>{{ index | sortNumber(page) }}</td>
           <td>{{ checkDisease(item.diseaseType) }}</td>
@@ -54,8 +54,8 @@
           </td>
         </tr>
       </tbody>
+      <main-itps v-show="main_show"></main-itps>
     </table>
-    <main-itps v-show="main_show"></main-itps>
     <turn-page
       v-show="total > size"
       :totaltotal="Number(total)"

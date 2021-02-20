@@ -124,8 +124,8 @@
             <p @click="seeRecord(item)">学习记录</p>
           </td>
         </tr>
-        <main-itps v-show="main_show"></main-itps>
       </tbody>
+      <main-itps v-show="main_show"></main-itps>
     </table>
     <turn-page
       v-show="total > size"
