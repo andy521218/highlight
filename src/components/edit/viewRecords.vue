@@ -133,6 +133,7 @@ export default {
   z-index: 9999;
   background-color: rgb(212, 229, 255);
   border-radius: 10px;
+  border: 1px solid rgb(111, 147, 251);
   .edit_title {
     width: 100%;
     height: 3em;

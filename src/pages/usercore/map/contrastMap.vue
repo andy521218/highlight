@@ -98,7 +98,6 @@ export default {
   },
   methods: {
     repaint() {
-      console.log(111);
       let node = this.$refs.contrast.children[0];
       if (!node) return;
       this.$refs.contrast.removeChild(node);

@@ -372,7 +372,6 @@ export default {
             return;
           }
           this.replyTwoData = res.data.rows;
-          console.log(this.replyTwoData);
           this.notice_top_show = index;
           this.discussData = item;
         });

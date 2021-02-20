@@ -43,8 +43,8 @@
                 :percent="parseInt((report.userDone / report.totalUser) * 100)"
                 class="item"
                 style="width: 47%; height: 70%"
-                stroke-color="rgb(0,235,245)"
-                trail-color="rgb(25,72,114)"
+                stroke-color="rgb(40,210,208)"
+                trail-color="rgb(40,210,208,0.62)"
               >
                 <span class="demo-Circle-inner" style="font-size: 3em">
                   {{
@@ -57,7 +57,7 @@
               <span
                 >当前参与人数:{{ report.userDone }}/{{ report.totalUser }}</span
               >
-              <p style="border: 3px rgb(0, 235, 245) solid"></p>
+              <p style="border: 3px rgb(40, 210, 208) solid"></p>
             </div>
           </div>
           <div class="exam_left_top_averageTime analysis_background">

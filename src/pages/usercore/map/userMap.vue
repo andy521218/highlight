@@ -273,10 +273,14 @@ export default {
     .none_data {
       background: url("../../../assets/public/classroom.png") no-repeat center;
       position: relative;
+      display: flex;
+      justify-content: center;
       span {
         position: absolute;
-        top: 400px;
-        left: 680px;
+        top: 60%;
+        color: rgb(111, 147, 251);
+        font-weight: bold;
+        font-size: 1.1em;
       }
     }
   }
