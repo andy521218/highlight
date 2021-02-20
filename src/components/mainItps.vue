@@ -17,12 +17,13 @@ export default {
   width: 100em;
   height: 10em;
   margin: 5% auto;
-  border: 1px solid rgb(111,147,251);
-  background: rgb(11, 59, 105);
+  border: 1px solid rgb(111, 147, 251);
+  background: fff;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  border-radius: 5px;
   span {
     font-size: 1.8em;
   }
@@ -30,7 +31,7 @@ export default {
     position: absolute;
     width: 40em;
     height: 0.5em;
-    background:rgb(111,147,251);
+    background: rgb(111, 147, 251);
     border-radius: 3px;
     bottom: 0px;
   }

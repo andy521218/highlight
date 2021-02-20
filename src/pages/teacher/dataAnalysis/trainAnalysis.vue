@@ -27,7 +27,7 @@
           <th>平均用时</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-show="!main_show">
         <tr v-for="(item, index) in trainData" :key="index">
           <td>{{ index | sortNumber(page) }}</td>
           <td>{{ list[item.diseaseType - 1].name }}</td>
@@ -39,8 +39,8 @@
           <td>{{ parseInt(item.avgCostTime / 60) }}分</td>
         </tr>
       </tbody>
+      <main-itps v-show="main_show"></main-itps>
     </table>
-    <main-itps v-show="main_show"></main-itps>
     <turn-page
       v-show="total > 10"
       :totaltotal="Number(total)"

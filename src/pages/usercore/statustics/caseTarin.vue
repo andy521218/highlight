@@ -399,7 +399,7 @@ export default {
             border-bottom-right-radius: 7px;
           }
           span {
-            margin-left: 10px;
+            // margin-left: 10px;
           }
         }
         .data_none {

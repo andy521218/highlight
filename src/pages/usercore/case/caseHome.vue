@@ -17,7 +17,7 @@
       </li>
     </ul>
     <div class="case_user_main">
-      <ul>
+      <ul v-show="!main_show">
         <li
           class="case_user_item"
           v-for="(item, index) in caseData"

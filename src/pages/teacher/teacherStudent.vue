@@ -107,7 +107,7 @@
           <th>主观成绩</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-show="!main_show">
         <tr v-for="(item, index) in examNumber" :key="index">
           <td>{{ index | sortNumber(page) }}</td>
           <td>{{ item.examName }}</td>
@@ -173,8 +173,8 @@
           </td>
         </tr>
       </tbody>
+      <main-itps v-show="main_show"></main-itps>
     </table>
-    <main-itps v-show="main_show"></main-itps>
     <turn-page
       v-show="total > 10"
       :totaltotal="Number(total)"

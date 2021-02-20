@@ -100,7 +100,7 @@
           <th class="table_10">查看</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-show="!main_show">
         <tr v-for="(item, index) in studentData" :key="index">
           <td>{{ index | sortNumber(page) }}</td>
           <td>{{ item.userName }}</td>
@@ -124,9 +124,9 @@
             <p @click="seeRecord(item)">学习记录</p>
           </td>
         </tr>
+        <main-itps v-show="main_show"></main-itps>
       </tbody>
     </table>
-    <main-itps v-show="main_show"></main-itps>
     <turn-page
       v-show="total > size"
       :totaltotal="Number(total)"

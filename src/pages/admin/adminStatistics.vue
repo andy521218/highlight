@@ -65,7 +65,7 @@
           <th class="table_10">操作</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-show="!main_show">
         <tr v-for="(item, index) in classroomsData" :key="index">
           <td>{{ index | sortNumber(page) }}</td>
           <td>{{ item.departmentName }}</td>
@@ -85,8 +85,9 @@
           </td>
         </tr>
       </tbody>
+      <main-itps v-show="main_show"></main-itps>
     </table>
-    <main-itps v-show="main_show"></main-itps>
+
     <turn-page
       v-show="total > size"
       :totaltotal="Number(total)"
