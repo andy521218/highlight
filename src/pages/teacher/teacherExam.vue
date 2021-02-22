@@ -278,9 +278,9 @@ export default {
   }
 }
 .see_dele {
-  width: 200px;
+  display: flex;
+  justify-content: center;
   p {
-    display: inline-block;
     margin: 0 10px !important;
   }
   p:last-child {

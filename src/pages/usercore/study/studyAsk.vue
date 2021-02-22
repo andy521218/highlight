@@ -73,7 +73,7 @@
         </li>
       </ul>
       <!-- 正确答案 -->
-      <ul class="study_main_item" v-show="correct && title == '总问题'">
+      <ul class="study_main_item" v-if="correct && title == '总问题'">
         <li
           v-for="(item, index) in correctaskked"
           :key="index"

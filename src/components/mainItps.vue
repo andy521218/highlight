@@ -26,6 +26,7 @@ export default {
   border-radius: 5px;
   span {
     font-size: 1.8em;
+    color: rgb(111, 147, 251);
   }
   .main_table_none_title_bottm {
     position: absolute;
