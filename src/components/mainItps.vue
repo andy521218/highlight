@@ -18,7 +18,7 @@ export default {
   height: 10em;
   margin: 5% auto;
   border: 1px solid rgb(111, 147, 251);
-  background: fff;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;

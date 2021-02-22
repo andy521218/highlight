@@ -125,6 +125,7 @@ export default {
   computed: {
     ...mapState(["examId"]),
   },
+  inject: ["reload"],
   data() {
     return {
       select: [

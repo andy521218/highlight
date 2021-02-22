@@ -138,7 +138,7 @@
       </div>
     </header>
     <div class="user_main_item">
-      <router-view></router-view>
+      <router-view v-if="isRouterAlive"></router-view>
     </div>
   </div>
 </template>
@@ -150,6 +150,11 @@ export default {
   name: "study-main",
   computed: {
     ...mapState(["examId"]),
+  },
+  provide() {
+    return {
+      reload: this.reload,
+    };
   },
   data() {
     return {
@@ -167,6 +172,7 @@ export default {
       authority: "",
       caseList: [],
       caseIndex: "0",
+      isRouterAlive: true,
     };
   },
   mounted() {
@@ -181,11 +187,18 @@ export default {
     }
   },
   methods: {
+    reload() {
+      this.isRouterAlive = false;
+      this.$nextTick(function () {
+        this.isRouterAlive = true;
+      });
+    },
     routerDisease(caseId, index) {
       localStorage.setItem("caseId", caseId);
       this.$router.push("ask");
       this.titleIndex = 1;
       this.caseIndex = index;
+      this.reload();
     },
     getSettingScore() {
       this.axios.get("/case/manage/score/setting").then((res) => {
