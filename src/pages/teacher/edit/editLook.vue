@@ -6,6 +6,11 @@
       v-if="optionShow"
       @editcaseData="editcaseData"
     ></case-option>
+    <case-complexion
+      :option="option"
+      v-if="complexion"
+      @editcaseData="editcaseData"
+    ></case-complexion>
     <div class="case_layout teacher_case_look">
       <div class="case_left">
         <case-header></case-header>
@@ -71,11 +76,13 @@
 <script>
 import caseOption from "../edit/caseOption";
 import caseHeader from "../edit/caseHeader";
+import caseComplexion from "../edit/caseComplexion";
 export default {
   name: "edit-look",
   components: {
     caseOption,
     caseHeader,
+    caseComplexion,
   },
   data() {
     return {
@@ -89,6 +96,7 @@ export default {
       watchData: "",
       imgurl: "",
       mask: false,
+      complexion: false,
     };
   },
   mounted() {
@@ -106,6 +114,12 @@ export default {
       this.tips = true;
     },
     openOption(e) {
+      if (e.name == "望面色") {
+        this.complexion = true;
+        this.option = e;
+        this.mask = true;
+        return;
+      }
       this.option = e;
       this.optionShow = true;
       this.mask = true;

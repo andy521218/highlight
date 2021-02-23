@@ -32,7 +32,38 @@
                 <li style="border: none">
                   <p>点击右侧空白处选择一个设置为正确选项:</p>
                 </li>
-                <li v-for="(item, index) in pulseData.optinos" :key="index">
+                <li style="border: none" class="pulse_title">
+                  <span>浮脉类</span>
+                  <span>沉脉类</span>
+                  <span>迟脉类</span>
+                  <span>数脉类</span>
+                  <span>虚脉类</span>
+                  <span>实脉类</span>
+                  <span>相兼脉类</span>
+                </li>
+                <li class="pulse_item">
+                  <ul v-for="(item, index) in pulseData.optinos" :key="index">
+                    <li v-for="(i, index) in item" :key="index">
+                      <div class="custom_radio" style="margin-right: 10px">
+                        <span
+                          class="custom_text"
+                          :class="{ active_radio: i.name == answer }"
+                        ></span>
+                        <input
+                          type="radio"
+                          class="custom_none"
+                          v-model="answer"
+                          :value="i.name"
+                          @change="putPulse(i)"
+                        />
+                      </div>
+                      <p class="item_cont_title" @click="seeImg(i)">
+                        {{ i.name }}
+                      </p>
+                    </li>
+                  </ul>
+                </li>
+                <!-- <li v-for="(item, index) in pulseData.optinos" :key="index">
                   <div
                     class="item_cont"
                     v-for="(i, index) in item"
@@ -55,7 +86,7 @@
                       {{ i.name }}
                     </p>
                   </div>
-                </li>
+                </li> -->
               </ul>
               <ul class="content_scrollbar_press" v-show="typeId == 1">
                 <li>
@@ -187,20 +218,61 @@ export default {
     getpulseData() {
       this.axios.get(`/case/manage/${this.caseId}/feel/pulse`).then((res) => {
         this.pulseData.optinos = [];
-        let arr = [];
-        let flag = false;
+        let arr = [],
+          arr1 = [],
+          arr2 = [],
+          arr3 = [],
+          arr4 = [],
+          arr5 = [],
+          arr6 = [];
+        let data = res.data.optinos;
         for (let i = 0; i < res.data.optinos.length; i++) {
-          flag = false;
-          arr.push(res.data.optinos[i]);
-          if (i % 8 == "7") {
+          if (/1/.test(data[i].name)) {
+            let str = data[i].name.replace(/\d+/g, "");
+            data[i].name = str;
+            arr.push(data[i]);
+          }
+          if (/2/.test(data[i].name)) {
+            let str = data[i].name.replace(/\d+/g, "");
+            data[i].name = str;
+            arr1.push(data[i]);
+          }
+          if (/3/.test(data[i].name)) {
+            let str = data[i].name.replace(/\d+/g, "");
+            data[i].name = str;
+            arr2.push(data[i]);
+          }
+          if (/4/.test(data[i].name)) {
+            let str = data[i].name.replace(/\d+/g, "");
+            data[i].name = str;
+            arr3.push(data[i]);
+          }
+          if (/5/.test(data[i].name)) {
+            let str = data[i].name.replace(/\d+/g, "");
+            data[i].name = str;
+            arr4.push(data[i]);
+          }
+          if (/6/.test(data[i].name)) {
+            let str = data[i].name.replace(/\d+/g, "");
+            data[i].name = str;
+            arr5.push(data[i]);
+          }
+          if (/7/.test(data[i].name)) {
+            let str = data[i].name.replace(/\d+/g, "");
+            data[i].name = str;
+            arr6.push(data[i]);
+          }
+          if (i == res.data.optinos.length - 1) {
             this.pulseData.optinos.push(arr);
-            arr = [];
-            flag = true;
+            this.pulseData.optinos.push(arr1);
+            this.pulseData.optinos.push(arr2);
+            this.pulseData.optinos.push(arr3);
+            this.pulseData.optinos.push(arr4);
+            this.pulseData.optinos.push(arr5);
+            this.pulseData.optinos.push(arr6);
           }
         }
-        if (!flag) {
-          this.pulseData.optinos.push(arr);
-        }
+
         this.answer = res.data.answer;
         res.data.optinos.forEach((item) => {
           if (res.data.answer == item.name) {
@@ -258,6 +330,24 @@ export default {
           align-items: center;
           .item_cont_title {
             margin-left: 5%;
+          }
+        }
+      }
+      .pulse_title {
+        span {
+          flex: 1;
+        }
+      }
+      .pulse_item {
+        height: auto;
+        border: none;
+        align-items: flex-start;
+        ul {
+          flex: 1;
+          li {
+            padding-left: 0;
+            text-align: center;
+            border: none;
           }
         }
       }

@@ -307,27 +307,38 @@ export default {
       if (!this.pulse.name) return this.$Message.warning("请填写脉诊名称");
       if (!this.pulse.description)
         return this.$Message.warning("请填写脉诊描述");
-      if (!this.imgsData) return this.$Message.error("请先选择图片");
-
-      let imgData = new window.FormData();
-      imgData.append("file", this.imgsData);
-
-      this.upload.post("/upload", imgData).then((res) => {
-        if (res.code == "000000") {
-          this.pulse.picUrl = res.data;
-          this.http[methods](url, this.pulse).then((res) => {
-            if (res.code == "000000") {
-              this.$Message.warning(`${config}成功!`);
-              this.editSwitch();
-              this.imgShow = false;
-            } else {
-              this.$Message.error(res.msg);
-            }
-          });
-        } else {
-          this.$Message.error(res.msg);
-        }
-      });
+      if (!this.imgUrl) {
+        if (!this.imgsData) return this.$Message.error("请先选择图片");
+        let imgData = new window.FormData();
+        imgData.append("file", this.imgsData);
+        this.upload.post("/upload", imgData).then((res) => {
+          if (res.code == "000000") {
+            this.pulse.picUrl = res.data;
+            this.http[methods](url, this.pulse).then((res) => {
+              if (res.code == "000000") {
+                this.$Message.warning(`${config}成功!`);
+                this.editSwitch();
+                this.imgShow = false;
+              } else {
+                this.$Message.error(res.msg);
+              }
+            });
+          } else {
+            this.$Message.error(res.msg);
+          }
+        });
+      } else {
+        this.picUrl = this.imgUrl;
+        this.http[methods](url, this.pulse).then((res) => {
+          if (res.code == "000000") {
+            this.$Message.warning(`${config}成功!`);
+            this.editSwitch();
+            this.imgShow = false;
+          } else {
+            this.$Message.error(res.msg);
+          }
+        });
+      }
     },
     uploadImg1() {
       this.imgsData = this.$refs.imgs.files[0];
