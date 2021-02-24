@@ -166,6 +166,7 @@ export default {
           if (res.code == "000000") {
             this.$Message.warning("编辑成功!");
             this.optionShow = false;
+            this.complexion = false;
             this.mask = false;
             this.getwatchdata();
           }

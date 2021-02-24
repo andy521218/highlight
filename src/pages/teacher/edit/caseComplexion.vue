@@ -77,7 +77,7 @@ export default {
   methods: {
     init() {
       let arr = this.option.options;
-      let arr1 = [],
+      let arr1 = ['面色正常'],
         arr2 = [],
         arr3 = [],
         arr4 = [],
