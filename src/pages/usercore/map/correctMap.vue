@@ -280,7 +280,7 @@ export default {
                         attrs: {
                           width: 10,
                           height: 20,
-                          x: -45,
+                          x: -cfg.size[0] / 2 + 5,
                           y: -10,
                           fill: "rgb(111,147,251)",
                         },
@@ -288,8 +288,8 @@ export default {
                       group.addShape("text", {
                         attrs: {
                           text: cfg.label,
-                          textAlign: "left",
-                          x: -30,
+                          textAlign: "center",
+                          x: 5,
                           y: 6,
                           fill: "rgb(111,147,251)",
                         },
@@ -301,7 +301,7 @@ export default {
                         attrs: {
                           width: 10,
                           height: 20,
-                          x: -30,
+                          x: -47,
                           y: -10,
                           fill: "rgb(111,147,251)",
                         },
@@ -309,7 +309,7 @@ export default {
                       group.addShape("text", {
                         attrs: {
                           text: cfg.label,
-                          x: -15,
+                          x: -35,
                           y: 6,
                           fill: "rgb(111,147,251)",
                         },
@@ -365,7 +365,10 @@ export default {
     checkWatch(nameId, watch, disease) {
       //获取望诊各项
       try {
-        let watchList = JSON.parse(JSON.stringify(watch.issueIds));
+        let watchList = [];
+        if (watch) {
+          watchList = JSON.parse(JSON.stringify(watch.issueIds));
+        }
         disease.forEach((ele) => {
           ele.issues.forEach((item) => {
             if (item.stageId == "2") {
@@ -374,15 +377,17 @@ export default {
           });
         });
         watchList = [].concat(...watchList);
-        watchList = new Set(watchList);
+        watchList = Array.from(new Set(watchList));
         watchList.forEach((ele) => {
           this.watchData.forEach((item) => {
             if (ele == item.id) {
               //望诊>=望诊各项
+              let width = item.name.length + item.correctAnswer.length;
               let nodes = {
                 id: `${ele}`,
                 label: `${item.name}--${item.correctAnswer}`,
                 shape: "multipleLabelsNode",
+                size: [(width + 4) * 13, 30],
                 name: "standard",
               };
               let edges = {
@@ -478,7 +483,6 @@ export default {
         label: name.toString(),
         shape: "multipleLabelsNode",
         name: "edges",
-        size: [80, 30],
       });
       //添加病症
       diseases.forEach((ele) => {
@@ -487,7 +491,6 @@ export default {
           label: ele.name.toString(),
           shape: "multipleLabelsNode",
           name: "edges",
-          size: [80, 30],
         });
         ele.issues.forEach((item) => {
           item.issueIds.forEach((e) => {

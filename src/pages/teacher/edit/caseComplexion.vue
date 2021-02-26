@@ -29,28 +29,6 @@
           </li>
         </ul>
       </div>
-      <!-- <li
-          class="case_option_li"
-          v-for="(item, index) in option.options"
-          :key="index"
-        >
-          <div class="custom_radio">
-            <span
-              class="custom_text"
-              :class="{
-                active_radio: radioData == (item.name ? item.name : item),
-              }"
-            ></span>
-            <input
-              type="radio"
-              class="custom_none"
-              style="width: 22px; height: 22px"
-              :value="item.name ? item.name : item"
-              v-model="radioData"
-            />
-          </div>
-          <label for="">{{ item.name ? item.name : item }} </label> 
-   </li> -->
 
       <div class="edit_btn_box">
         <button class="edit_cancel" @click="close">取消</button>
@@ -77,7 +55,7 @@ export default {
   methods: {
     init() {
       let arr = this.option.options;
-      let arr1 = ['面色正常'],
+      let arr1 = ["面色正常"],
         arr2 = [],
         arr3 = [],
         arr4 = [],

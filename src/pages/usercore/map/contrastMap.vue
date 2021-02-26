@@ -345,10 +345,12 @@ export default {
           ele.forEach((item) => {
             this.watchData.forEach((k) => {
               if (item.issueId == k.id) {
+                let width = k.name.length + k.answer.length;
                 this.mapData.nodes.push({
                   id: (watchindex + k.id).toString(),
                   label: `${k.name}--${k.answer}`,
                   correct: item.correct,
+                  size: [(width + 4) * 13, 30],
                   shape: "multipleLabelsNode",
                   name: "watch",
                 });
@@ -384,9 +386,11 @@ export default {
         forgetWatch.forEach((ele) => {
           this.watchData.forEach((item) => {
             if (ele == item.id) {
+              let width = item.name.length + item.answer.length;
               this.mapData.nodes.push({
                 id: (ele + 0.9).toString(),
                 label: `${item.name}--${item.answer}`,
+                size: [(width + 4) * 13, 30],
                 shape: "multipleLabelsNode",
                 name: "errorwatch",
               });
@@ -400,9 +404,11 @@ export default {
         diseasewatch.forEach((ele) => {
           this.watchData.forEach((item) => {
             if (ele.issueId == item.id) {
+              let width = item.name.length + item.answer.length;
               this.mapData.nodes.push({
                 id: (item.id + 0.6).toString(),
                 label: `${item.name}--${item.answer}`,
+                size: [(width + 4) * 13, 30],
                 correct: ele.correct,
                 shape: "multipleLabelsNode",
                 name: "watch",
@@ -685,7 +691,6 @@ export default {
           correct: this.diseasename.correct,
           shape: "multipleLabelsNode",
           name: "treat",
-          size: [80, 30],
         });
         //当前病名错误
         if (!this.diseasename.correct) {
@@ -694,7 +699,6 @@ export default {
             label: this.diseasename.correctAnswer.toString(),
             shape: "multipleLabelsNode",
             name: "errortreat",
-            size: [80, 30],
           });
           correctname.forEach((ele) => {
             ele.issueIds.forEach((item) => {
@@ -872,7 +876,7 @@ export default {
                 attrs: {
                   width: 10,
                   height: 20,
-                  x: -55,
+                  x: -cfg.size[0] / 2 + 5,
                   y: -10,
                   fill: blockcolor,
                 },
@@ -880,9 +884,9 @@ export default {
               group.addShape("text", {
                 attrs: {
                   text: cfg.label,
-                  textAlign: "left",
-                  x: -40,
-                  y: 6,
+                  textAlign: "center",
+                  y: 5,
+                  x: 5,
                   fill: "rgb(111,147,251)",
                 },
               });
@@ -897,7 +901,7 @@ export default {
                 attrs: {
                   width: 10,
                   height: 20,
-                  x: -45,
+                  x: -cfg.size[0] / 2 + 5,
                   y: -10,
                   fill: "rgb(255,200,40)",
                 },
@@ -905,9 +909,9 @@ export default {
               group.addShape("text", {
                 attrs: {
                   text: cfg.label,
-                  textAlign: "left",
-                  x: -30,
-                  y: 6,
+                  textAlign: "center",
+                  y: 5,
+                  x: 5,
                   fill: "rgb(111,147,251)",
                 },
               });

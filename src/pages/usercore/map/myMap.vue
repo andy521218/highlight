@@ -18,7 +18,7 @@ export default {
         nodes: [
           {
             id: "0",
-            label: ["范再娟"],
+            label: [""],
           },
           {
             id: "1.0",
@@ -248,9 +248,11 @@ export default {
           ele.forEach((item) => {
             this.watchData.forEach((k) => {
               if (item.issueId == k.id) {
+                let width = k.name.length + k.answer.length;
                 this.mapData.nodes.push({
                   id: (watchindex + k.id).toString(),
                   label: `${k.name}--${k.answer}`,
+                  size: [(width + 4) * 13, 30],
                   correct: item.correct,
                   shape: "multipleLabelsNode",
                   name: "watch",
@@ -271,10 +273,12 @@ export default {
         diseasewatch.forEach((ele) => {
           this.watchData.forEach((item) => {
             if (ele.issueId == item.id) {
+              let width = item.name.length + item.answer.length;
               this.mapData.nodes.push({
                 id: (item.id + 0.6).toString(),
                 label: `${item.name}--${item.answer}`,
                 correct: ele.correct,
+                size: [(width + 4) * 13, 30],
                 shape: "multipleLabelsNode",
                 name: "watch",
               });
@@ -348,11 +352,19 @@ export default {
           ele.forEach((item) => {
             this.feelData.forEach((k) => {
               if (item.issueId == k.id) {
+                let length = "";
+                if (!k.name) {
+                  length = 2;
+                } else {
+                  length = k.name.length;
+                }
+                let width = length + k.answer.length;
                 this.mapData.nodes.push({
                   id: (feelindex + k.id).toString(),
                   label: `${k.name ? k.name : "切诊"}--${
                     k.answer ? k.answer : ""
                   }`,
+                  size: [(width + 4) * 13, 30],
                   correct: item.correct,
                   shape: "multipleLabelsNode",
                   name: "feel",
@@ -372,11 +384,19 @@ export default {
         diseasefeel.forEach((ele) => {
           this.feelData.forEach((item) => {
             if (ele.issueId == item.id) {
+              let length = "";
+              if (!item.name) {
+                length = 2;
+              } else {
+                length = item.name.length;
+              }
+              let width = length + item.answer.length;
               this.mapData.nodes.push({
                 id: (item.id + 0.6).toString(),
                 label: `${item.name ? item.name : "切诊"}--${
                   item.answer ? item.answer : ""
                 }`,
+                size: [(width + 4) * 13, 30],
                 correct: ele.correct,
                 shape: "multipleLabelsNode",
                 name: "feel",
@@ -442,7 +462,6 @@ export default {
           correct: this.diseasename.correct,
           shape: "multipleLabelsNode",
           name: "treat",
-          size: [80, 30],
         });
         this.disease.forEach((ele) => {
           treatindex += 0.1;
@@ -453,7 +472,6 @@ export default {
             correct: ele.correct,
             shape: "multipleLabelsNode",
             name: "treat",
-            size: [80, 30],
           });
           //四诊连接证型
           ele.issueResults.forEach((item) => {
@@ -542,17 +560,17 @@ export default {
                 attrs: {
                   width: 10,
                   height: 20,
-                  x: -55,
-                  y: -10,
+                  x: -cfg.size[0] / 2 + 5,
+                  y: -12,
                   fill: blockcolor,
                 },
               });
               group.addShape("text", {
                 attrs: {
                   text: cfg.label,
-                  textAlign: "left",
-                  x: -40,
-                  y: 6,
+                  textAlign: "center",
+                  y: 5,
+                  x: 5,
                   fill: "rgb(111,147,251)",
                 },
               });
@@ -563,7 +581,7 @@ export default {
                 attrs: {
                   width: 10,
                   height: 20,
-                  x: -30,
+                  x: -57,
                   y: -10,
                   fill: blockcolor,
                 },
@@ -571,7 +589,7 @@ export default {
               group.addShape("text", {
                 attrs: {
                   text: cfg.label,
-                  x: -15,
+                  x: -45,
                   y: 6,
                   fill: "rgb(111,147,251)",
                 },

@@ -5,6 +5,11 @@
       v-if="optionShow"
       @editcaseData="editcaseData"
     ></case-option>
+    <look-option
+      v-if="checkboxShow"
+      @editcaseData="editcaseData"
+      :option="option"
+    ></look-option>
     <div class="case_layout">
       <div class="main_mask" v-show="optionShow"></div>
       <div class="case_left">
@@ -57,11 +62,13 @@
 <script>
 import caseHeader from "../../teacher/edit/caseHeader";
 import caseOption from "../../teacher/edit/caseOption";
+import LookOption from "./LookOption";
 export default {
   name: "user-look",
   components: {
     caseHeader,
     caseOption,
+    LookOption,
   },
   data() {
     return {
@@ -76,6 +83,7 @@ export default {
       imgurl: "",
       name: "",
       normal_show: "",
+      checkboxShow: false,
     };
   },
   mounted() {
@@ -107,7 +115,11 @@ export default {
     openOption(e) {
       this.id = e.id;
       this.option = e;
-      this.optionShow = true;
+      if (e.name == "望舌形") {
+        this.checkboxShow = true;
+      } else {
+        this.optionShow = true;
+      }
     },
     editcaseData() {
       this.axios
@@ -117,6 +129,7 @@ export default {
         .then((res) => {
           if (res.code == "000000") {
             this.optionShow = false;
+            this.checkboxShow = false;
             this.getwatchdata();
           } else {
             this.$Message.error(res.msg);

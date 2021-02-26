@@ -97,7 +97,7 @@
       <div class="mask" v-if="addCont"></div>
       <div class="edit" v-if="addCont">
         <div class="edit_title">
-          <span class="title">添加诊断结果</span>
+          <span class="title">添加按诊结果</span>
           <span class="edit_switch" @click="addSwitch()"></span>
         </div>
         <ul class="edit_class">
@@ -221,6 +221,7 @@ export default {
       imgUrl: "",
       feelId: "",
       selectdefault: undefined,
+      diagnosisName: "",
     };
   },
   mounted() {
@@ -269,8 +270,10 @@ export default {
     },
     submitDiagnosis() {
       if (!this.feelId) {
-        if (!this.diagnosis.name)
+        if (!this.diagnosisName) {
+          this.diagnosis.name = this.diagnosisName;
           return this.$Message.warning("请选择按诊类别");
+        }
         if (!this.diagnosis.options)
           return this.$Message.warning("请填写按诊结果");
         this.diagnosis.options = this.diagnosis.options.split(",");
