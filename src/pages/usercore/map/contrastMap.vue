@@ -734,7 +734,6 @@ export default {
             correct: ele.correct,
             shape: "multipleLabelsNode",
             name: "treat",
-            size: [80, 30],
           });
           //病症漏选项 如果病症错误
           if (!ele.correct) {
@@ -743,7 +742,6 @@ export default {
               label: ele.correctAnswer.toString(),
               shape: "multipleLabelsNode",
               name: "errortreat",
-              size: [80, 30],
             });
             correctdisease.forEach((y) => {
               y.issues.forEach((item) => {
@@ -901,7 +899,7 @@ export default {
                 attrs: {
                   width: 10,
                   height: 20,
-                  x: -cfg.size[0] / 2 + 5,
+                  x: -45,
                   y: -10,
                   fill: "rgb(255,200,40)",
                 },
@@ -922,7 +920,7 @@ export default {
                 attrs: {
                   width: 10,
                   height: 20,
-                  x: -30,
+                  x: -55,
                   y: -10,
                   fill: blockcolor,
                 },
@@ -930,7 +928,8 @@ export default {
               group.addShape("text", {
                 attrs: {
                   text: cfg.label,
-                  x: -15,
+                  textAlign: "center",
+                  x: 5,
                   y: 6,
                   fill: "rgb(111,147,251)",
                 },
@@ -942,7 +941,7 @@ export default {
                 attrs: {
                   width: 10,
                   height: 20,
-                  x: -30,
+                  x: -55,
                   y: -10,
                   fill: "rgb(255,200,40)",
                 },
@@ -950,7 +949,8 @@ export default {
               group.addShape("text", {
                 attrs: {
                   text: cfg.label,
-                  x: -15,
+                  textAlign: "center",
+                  x: 5,
                   y: 6,
                   fill: "rgb(111,147,251)",
                 },
