@@ -47,6 +47,11 @@ export default {
     editPassword,
     editUser,
   },
+  data() {
+    return {
+      text: "",
+    };
+  },
   mounted() {
     localStorage.removeItem("bgindex");
     localStorage.removeItem("examNo");

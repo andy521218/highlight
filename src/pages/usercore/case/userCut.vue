@@ -365,6 +365,17 @@ export default {
           "," +
           height * 0.983,
       };
+      arr[14] = {
+        name: "皮肤",
+        area:
+          width * 0.48 +
+          "," +
+          height * 0.187 +
+          "," +
+          width * 0.593 +
+          "," +
+          height * 0.224,
+      };
       arr.forEach((item) => this.mapArea.push(item));
     },
     boy(width, height) {
@@ -376,9 +387,9 @@ export default {
           "," +
           height * 0.2016 +
           "," +
-          width * 0.484 +
+          width * 0.583 +
           "," +
-          height * 0.275,
+          height * 0.224,
       };
       arr[1] = {
         name: "胸膺",
@@ -522,6 +533,17 @@ export default {
           width * 0.472 +
           "," +
           height * 0.98,
+      };
+      arr[14] = {
+        name: "皮肤",
+        area:
+          width * 0.675 +
+          "," +
+          height * 0.3792 +
+          "," +
+          width * 0.74 +
+          "," +
+          height * 0.488,
       };
       arr.forEach((item) => this.mapArea.push(item));
     },
