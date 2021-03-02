@@ -26,7 +26,38 @@
                 <li style="border: none">
                   <p>点击右侧空白处选择一个设置为正确选项:</p>
                 </li>
-                <li v-for="(item, index) in pulseData" :key="index">
+                 <li style="border: none" class="pulse_title">
+                  <span>浮脉类</span>
+                  <span>沉脉类</span>
+                  <span>迟脉类</span>
+                  <span>数脉类</span>
+                  <span>虚脉类</span>
+                  <span>实脉类</span>
+                  <span>相兼脉类</span>
+                </li>
+                <li class="pulse_item">
+                  <ul v-for="(item, index) in pulseData" :key="index">
+                    <li v-for="(i, index) in item" :key="index">
+                      <div class="custom_radio" style="margin-right: 10px">
+                        <span
+                          class="custom_text"
+                          :class="{ active_radio: i.name == answer }"
+                        ></span>
+                        <input
+                          type="radio"
+                          class="custom_none"
+                          v-model="answer"
+                          :value="i.name"
+                          @change="putPulse"
+                        />
+                      </div>
+                     <p class="item_cont_title">
+                      {{ i }}
+                    </p>
+                    </li>
+                  </ul>
+                </li>
+                <!-- <li v-for="(item, index) in pulseData" :key="index">
                   <div
                     class="item_cont"
                     v-for="(i, index) in item"
@@ -49,7 +80,7 @@
                       {{ i }}
                     </p>
                   </div>
-                </li>
+                </li> -->
               </ul>
               <div class="normal_edit" v-if="normal_edit_show && typeId == 1">
                 按诊的结果均为正常
@@ -598,20 +629,62 @@ export default {
         .get(`/answer/${this.examNo}/${this.caseId}/feel/pulse`)
         .then((res) => {
           this.pulseData = [];
-          let arr = [];
-          let flag = false;
+          let arr = [],
+          arr1 = [],
+          arr2 = [],
+          arr3 = [],
+          arr4 = [],
+          arr5 = [],
+          arr6 = [];
+        let data = res.data.options;
           for (let i = 0; i < res.data.options.length; i++) {
-            flag = false;
-            arr.push(res.data.options[i]);
-            if (i % 8 == "7") {
-              this.pulseData.push(arr);
-              arr = [];
-              flag = true;
-            }
+            console.log(i)
+          if (/1/.test(data[i])) {
+            let str = data[i].replace(/\d+/g, "");
+            data[i] = str;
+            arr.push(data[i]);
           }
-          if (!flag) {
+          if (/2/.test(data[i])) {
+            let str = data[i].replace(/\d+/g, "");
+            data[i]= str;
+            arr1.push(data[i]);
+          }
+          if (/3/.test(data[i])) {
+            let str = data[i].replace(/\d+/g, "");
+            data[i] = str;
+            arr2.push(data[i]);
+          }
+          if (/4/.test(data[i])) {
+            let str = data[i].replace(/\d+/g, "");
+            data[i] = str;
+            arr3.push(data[i]);
+          }
+          if (/5/.test(data[i])) {
+            let str = data[i].replace(/\d+/g, "");
+            data[i] = str;
+            arr4.push(data[i]);
+          }
+          if (/6/.test(data[i])) {
+            let str = data[i].replace(/\d+/g, "");
+            data[i] = str;
+            arr5.push(data[i]);
+          }
+          if (/7/.test(data[i])) {
+            let str = data[i].replace(/\d+/g, "");
+            data[i] = str;
+            arr6.push(data[i]);
+          }
+          if (i ==  res.data.options.length - 1) {
             this.pulseData.push(arr);
+            this.pulseData.push(arr1);
+            this.pulseData.push(arr2);
+            this.pulseData.push(arr3);
+            this.pulseData.push(arr4);
+            this.pulseData.push(arr5);
+            this.pulseData.push(arr6);
           }
+        }
+         
           if (/localhost/.test(res.data.picUrl)) {
             this.imgsUrl = res.data.picUrl.replace(
               /localhost/,
@@ -690,6 +763,24 @@ export default {
     height: 100%;
     overflow-y: auto;
     .content_scrollbar_pulse {
+         .pulse_title {
+        span {
+          flex: 1;
+        }
+      }
+      .pulse_item {
+        height: auto;
+        border: none;
+        align-items: flex-start;
+        ul {
+          flex: 1;
+          li {
+            padding-left: 0;
+            text-align: center;
+            border: none;
+          }
+        }
+      }
       li {
         display: flex;
         width: 100%;
