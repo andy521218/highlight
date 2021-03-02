@@ -30,6 +30,7 @@ export default {
       this.$parent.caseId = "";
       this.$parent.mask = false;
       this.$parent.trainshow = false;
+      this.$parent.updata_show = false;
       this.$parent.check = "";
       this.$parent.active = "";
     },

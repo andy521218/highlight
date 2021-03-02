@@ -21,7 +21,7 @@
               placeholder="请输入脉诊名称"
               v-model="pulse.name"
             />
-            <span class="edit_text_i" v-else>{{ pulse.name }}</span>
+            <span class="edit_text_i" v-else>{{ regClass(pulse.name) }}</span>
           </li>
           <li>
             <div class="edit_left">
@@ -37,14 +37,14 @@
             />
             <span class="edit_text_i" v-else>{{ pulse.description }}</span>
           </li>
-          <li class="display">
+          <li class="display" style="align-items: flex-start">
             <div class="edit_left">
               <span class="edit_red">*</span>
               <span class="edit_text">脉诊图片:</span>
             </div>
             <div class="uploadImg1">
               <div class="mask" v-show="!imgUrl"></div>
-              <img :src="imgUrl" v-show="imgUrl" class="tipsImg" alt="" />
+              <img :src="imgUrl" v-show="imgUrl" class="tipsImg" alt=""/>
               <input
                 type="file"
                 ref="imgs"
@@ -77,6 +77,7 @@
             <div class="item_cont">
               <div class="item_left">
                 <i></i>
+                <!--                <span>{{reg(item.name) }}</span>-->
                 <span>{{ item.name }}</span>
               </div>
               <div class="item_container_between">
@@ -144,8 +145,8 @@
               </div>
               <div class="ietm_options">
                 <span v-for="(i, index) in item.options" :key="index">{{
-                  i
-                }}</span>
+                    i
+                  }}</span>
               </div>
             </div>
           </li>
@@ -158,6 +159,7 @@
 
 <script>
 import selectBox from "../../../components/selectBox";
+
 export default {
   name: "pulse-diagnosis",
   components: {
@@ -173,6 +175,36 @@ export default {
       diagnosis: {},
       diagnosisData: "",
       puleseTitle: "",
+      calssItem: [
+        {
+          name: '浮脉类',
+          value: '1'
+        },
+        {
+          name: '沉脉类',
+          value: '2'
+        },
+        {
+          name: '迟脉类',
+          value: '3'
+        },
+        {
+          name: '数脉类',
+          value: '4'
+        },
+        {
+          name: '虚脉类',
+          value: '5'
+        },
+        {
+          name: '实脉类',
+          value: '6'
+        },
+        {
+          name: '相兼脉类',
+          value: '7'
+        },
+      ],
       itemDown: [
         {
           name: "右胸",
@@ -307,7 +339,7 @@ export default {
     },
 
     postPulse(methods, url, config) {
-      if (!this.pulse.name) return this.$Message.warning("请填写脉诊名称");
+      if (!this.pulse.name) return this.$Message.error("请填写脉诊名称");
       if (!this.pulse.description)
         return this.$Message.warning("请填写脉诊描述");
       if (!this.imgUrl) {
@@ -372,6 +404,7 @@ export default {
       this.pulse = item;
       this.imgShow = true;
       this.puleseTitle = "编辑";
+      this.class_show = false
     },
   },
 };
@@ -383,22 +416,25 @@ export default {
 
     .edit {
       margin: 0 12%;
+
       ul {
         height: auto;
+
         li {
           border: none;
         }
       }
     }
+
     ul {
-      li {
-        align-items: flex-start;
-      }
       .edit_text_i {
         width: 70%;
         text-align: left;
       }
+
       .display {
+        display: flex;
+
         .uploadImg1 {
           width: 70%;
           height: 9em;
@@ -408,6 +444,7 @@ export default {
           display: flex;
           align-items: center;
           justify-content: center;
+
           .tipsImg {
             position: absolute;
             width: 100%;
@@ -416,6 +453,7 @@ export default {
             top: 0;
             left: 0;
           }
+
           input {
             width: 35%;
             height: 80%;
@@ -423,24 +461,29 @@ export default {
             opacity: 0;
             z-index: 100;
           }
+
           img {
             max-width: 100%;
             max-height: 100%;
             position: absolute;
           }
+
           .option {
             opacity: 0.7;
             z-index: 99;
           }
+
           .mask {
             pointer-events: none;
           }
         }
       }
+
       li {
         .ietm_options {
           width: 90%;
           text-align: left;
+
           span {
             padding: 0 2%;
             color: rgb(111, 147, 251);
@@ -449,21 +492,26 @@ export default {
         }
       }
     }
+
     .edit.big ul li input,
     .edit.big ul li .select {
       width: 410px;
     }
+
     .edit.big .edit_cancel {
       margin-left: 165px;
     }
   }
+
   .right {
     .edit_class {
       overflow-y: visible;
+
       input {
         width: 53%;
       }
     }
+
     .select_title_text {
       text-align: left;
     }

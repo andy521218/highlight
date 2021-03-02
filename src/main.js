@@ -85,11 +85,11 @@ router.beforeEach((to, from, next) => {
   let url = window.location.href;
   url = url.match(/http:\/\/.+\//)[0]
   Vue.prototype.$url = url + 'api/download/'
-   const token=sessionStorage.getItem('token')
-  if(to.name =='login'){
+  const token = sessionStorage.getItem('token')
+  if (to.name == 'login') {
     next()
-  }else{
-    if(!token){
+  } else {
+    if (!token) {
       MessageBox.alert("你尚未登陆,请先登入后查看!", "提示", {
         confirmButtonText: "确定",
         type: "error",
@@ -99,10 +99,10 @@ router.beforeEach((to, from, next) => {
       });
     }
   }
-  if(to.name=='index'){
-    store.state.flag=false
-  }else{
-    store.state.flag=true
+  if (to.name == 'index') {
+    store.state.flag = false
+  } else {
+    store.state.flag = true
   }
   //获取提示消息
   if (to.name != 'login') {
@@ -122,7 +122,7 @@ router.beforeEach((to, from, next) => {
           }
         });
       });
-    }
+  }
   NProgress.start()
   next()
 })

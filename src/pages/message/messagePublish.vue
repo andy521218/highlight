@@ -41,7 +41,7 @@
           <i @click="deleImg(index)"></i>
           <img :src="item" alt="" />
         </div>
-        <input type="file" accept="image/*" @change="uploadImgs" ref="imgs" />
+        <input type="file" multiple="multiple" accept="image/*" @change="uploadImgs" ref="imgs" />
         <p>+</p>
       </div>
     </div>
@@ -173,7 +173,7 @@ export default {
   margin-top: 3%;
   margin-left: 25%;
   position: relative;
-  
+
   label {
     margin-right: 1em;
   }

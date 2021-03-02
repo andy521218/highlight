@@ -25,6 +25,14 @@
     </edit-dele>
     <!-- 新增案例 -->
     <add-case v-if="addCase" :list="list" @getManage="getManage"></add-case>
+
+    <!--更新弹窗-->
+    <edit-dele :title="`案例更新`" @deleSubmit="updata" v-if=" updata_show">
+      <template v-slot:edit_p>
+        <p>如果您想获得最新的案例元素据,请点击确定.</p>
+        <p class="edit_dele_p">(更新后此案例将删除正确答案,可进入案例执行撤销此次操作!)</p>
+      </template>
+    </edit-dele>
     <div class="main_header">
       <div class="main_header_left">
         <button class="add" @click="add">新增案例</button>
@@ -57,7 +65,7 @@
         <li v-for="(item, index) in manageData" :key="index">
           <div class="case_user_item_box">
             <div class="case_top">
-              <img :src="$url + item.picUrl" alt="" v-if="item.picUrl" />
+              <img :src="$url + item.picUrl" alt="" v-if="item.picUrl"/>
               <div class="state">
                 <div class="custom_radio">
                   <span
@@ -74,9 +82,9 @@
                 </div>
                 <div class="state_item">
                   <div class="item_one" v-if="!item.complete">
-                    未<br />完<br />成
+                    未<br/>完<br/>成
                   </div>
-                  <div class="item_draft" v-if="item.draft">草<br />稿</div>
+                  <div class="item_draft" v-if="item.draft">草<br/>稿</div>
                   <div class="item_two" v-if="item.train">训</div>
                   <div class="item_three" v-if="item.exam">考</div>
                 </div>
@@ -90,12 +98,16 @@
                   <i></i>
                   删 除
                 </span>
+                <span class="bottom_updata" @click="updata(item)">
+                  <i></i>
+                  更新
+                </span>
               </div>
             </div>
             <div class="case_bottom">
               <span>姓名: {{ item.name }}</span>
               <span style="text-align: right"
-                >性别: {{ item.gender ? "男" : "女" }}</span
+              >性别: {{ item.gender ? "男" : "女" }}</span
               >
               <span>年龄: {{ item.age }}岁</span>
             </div>
@@ -175,6 +187,7 @@ export default {
       addCase: false,
       deleshow: false,
       allShow: false,
+      updata_show: false,
       text: "",
       itps: "",
       diseaseType: "",
@@ -190,6 +203,7 @@ export default {
       screenWidth: "",
       main_show: false,
       active: null,
+      updataId: ''
     };
   },
   mounted() {
@@ -197,6 +211,21 @@ export default {
     this.getManage();
   },
   methods: {
+    updata(e) {
+      if (this.updata_show == true) {
+        this.axios.post(`/case/manage/update/draft/${this.updataId}`).then(res => {
+          if (res.code == '000000') {
+            this.updata_show=false
+            this.$Message.warning('案例更新成功!')
+          }else {
+            this.$Message.error(res.msg)
+          }
+        })
+        return
+      }
+      this.updataId = e.caseId
+      this.updata_show = true
+    },
     dele(e) {
       this.deleshow = true;
       this.mask = true;
@@ -309,4 +338,3 @@ export default {
   },
 };
 </script>
-
