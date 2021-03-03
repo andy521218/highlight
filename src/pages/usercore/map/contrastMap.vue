@@ -519,7 +519,7 @@ export default {
               if (item.issueId == k.id) {
                 this.mapData.nodes.push({
                   id: (feelindex + k.id).toString(),
-                  label: `${k.name ? k.name : "切诊"}--${
+                  label: `${k.name ? k.name : "脉诊"}--${
                     k.answer ? k.answer : ""
                   }`,
                   correct: item.correct,
@@ -559,7 +559,7 @@ export default {
             if (ele == item.id) {
               this.mapData.nodes.push({
                 id: (item.id + 0.9).toString(),
-                label: `${item.name ? item.name : "切诊"}--${
+                label: `${item.name ? item.name : "脉诊"}--${
                   item.answer ? item.answer : ""
                 }`,
                 correct: ele.correct,
@@ -579,7 +579,7 @@ export default {
             if (ele.issueId == item.id) {
               this.mapData.nodes.push({
                 id: (item.id + 0.6).toString(),
-                label: `${item.name ? item.name : "切诊"}--${
+                label: `${item.name ? item.name : "脉诊"}--${
                   item.answer ? item.answer : ""
                 }`,
                 correct: ele.correct,

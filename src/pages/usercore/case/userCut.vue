@@ -41,13 +41,13 @@
                       <div class="custom_radio" style="margin-right: 10px">
                         <span
                           class="custom_text"
-                          :class="{ active_radio: i.name == answer }"
+                          :class="{ active_radio: i == answer }"
                         ></span>
                         <input
                           type="radio"
                           class="custom_none"
                           v-model="answer"
-                          :value="i.name"
+                          :value="i"
                           @change="putPulse"
                         />
                       </div>

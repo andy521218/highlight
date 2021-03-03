@@ -457,7 +457,7 @@ export default {
             if (ele == item.id) {
               let nodes = {
                 id: ele.toString(),
-                label: `${item.name ? item.name : "切诊"}--${
+                label: `${item.name ? item.name : "脉诊"}--${
                   item.correctAnswer
                 }`,
                 shape: "multipleLabelsNode",

@@ -27,21 +27,21 @@ const routes = [
 ]
 
 
-export function initRoutes(){
- const token= sessionStorage.getItem('token')
-const currentRouter=router.options.routes
-  if(token=='ADMIN'){
-    admin.forEach(item=>{
+export function initRoutes() {
+  const token = sessionStorage.getItem('token')
+  const currentRouter = router.options.routes
+  if (token == 'ADMIN') {
+    admin.forEach(item => {
       currentRouter.push(item)
     })
   }
-  if(token=='TEACHER'){
-   teacher.forEach(item=>{
-     currentRouter.push(item)
-   })
+  if (token == 'TEACHER') {
+    teacher.forEach(item => {
+      currentRouter.push(item)
+    })
   }
-  if(token=='STUDENT'){
-    user.forEach(item=>{
+  if (token == 'STUDENT') {
+    user.forEach(item => {
       currentRouter.push(item)
     })
   }

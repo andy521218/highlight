@@ -109,6 +109,8 @@ export default {
 };
 </script>
 
+
+
 <style lang="scss">
 .admin_menu_item {
   width: 81.5%;

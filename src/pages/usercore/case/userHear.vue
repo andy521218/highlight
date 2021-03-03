@@ -7,8 +7,8 @@
       @editcaseData="editcaseData"
     ></case-option>
     <div class="case_layout">
-      <div class="case_left">
         <div class="main_mask" v-show="optionShow"></div>
+      <div class="case_left">
         <case-header></case-header>
         <main>
           <ul class="main_tab">

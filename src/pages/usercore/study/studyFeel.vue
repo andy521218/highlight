@@ -40,7 +40,7 @@
           style="height: 40px"
         >
           <span style="width: 30%; padding-left: 10px">{{
-            item.name ? item.name : "按诊"
+            item.name ? item.name : "脉诊"
           }}</span>
           <span style="width: 30%">{{ item.correctAnswer }}</span>
           <span style="width: 35%">{{ item.answer }}</span>
@@ -61,8 +61,8 @@ export default {
   data() {
     return {
       list: [
-        { id: 0, name: "切诊" },
-        { id: 1, name: "按诊" },
+        { id: 0, name: "按诊" },
+        { id: 1, name: "脉诊" },
       ],
       title: "切诊",
       feel_item_data: [],

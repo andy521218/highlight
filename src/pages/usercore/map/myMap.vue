@@ -361,7 +361,7 @@ export default {
                 let width = length + k.answer.length;
                 this.mapData.nodes.push({
                   id: (feelindex + k.id).toString(),
-                  label: `${k.name ? k.name : "切诊"}--${
+                  label: `${k.name ? k.name : "脉诊"}--${
                     k.answer ? k.answer : ""
                   }`,
                   size: [(width + 4) * 13, 30],
@@ -393,7 +393,7 @@ export default {
               let width = length + item.answer.length;
               this.mapData.nodes.push({
                 id: (item.id + 0.6).toString(),
-                label: `${item.name ? item.name : "切诊"}--${
+                label: `${item.name ? item.name : "脉诊"}--${
                   item.answer ? item.answer : ""
                 }`,
                 size: [(width + 4) * 13, 30],
