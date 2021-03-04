@@ -573,6 +573,7 @@ export default {
         .get("/meta/agentia", {
           params: {
             name: this.searchAgentia,
+             size:'1000'
           },
         })
         .then((res) => {

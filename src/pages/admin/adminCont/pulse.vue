@@ -175,36 +175,6 @@ export default {
       diagnosis: {},
       diagnosisData: "",
       puleseTitle: "",
-      calssItem: [
-        {
-          name: '浮脉类',
-          value: '1'
-        },
-        {
-          name: '沉脉类',
-          value: '2'
-        },
-        {
-          name: '迟脉类',
-          value: '3'
-        },
-        {
-          name: '数脉类',
-          value: '4'
-        },
-        {
-          name: '虚脉类',
-          value: '5'
-        },
-        {
-          name: '实脉类',
-          value: '6'
-        },
-        {
-          name: '相兼脉类',
-          value: '7'
-        },
-      ],
       itemDown: [
         {
           name: "右胸",

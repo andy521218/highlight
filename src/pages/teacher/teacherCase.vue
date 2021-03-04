@@ -98,10 +98,10 @@
                   <i></i>
                   删 除
                 </span>
-                <span class="bottom_updata" @click="updata(item)">
+                <!-- <span class="bottom_updata" @click="updata(item)">
                   <i></i>
                   更新
-                </span>
+                </span> -->
               </div>
             </div>
             <div class="case_bottom">

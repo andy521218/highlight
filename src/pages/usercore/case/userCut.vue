@@ -57,30 +57,6 @@
                     </li>
                   </ul>
                 </li>
-                <!-- <li v-for="(item, index) in pulseData" :key="index">
-                  <div
-                    class="item_cont"
-                    v-for="(i, index) in item"
-                    :key="index"
-                  >
-                    <div class="custom_radio">
-                      <span
-                        class="custom_text"
-                        :class="{ active_radio: i == answer }"
-                      ></span>
-                      <input
-                        type="radio"
-                        class="custom_none"
-                        v-model="answer"
-                        :value="i"
-                        @change="putPulse"
-                      />
-                    </div>
-                    <p class="item_cont_title">
-                      {{ i }}
-                    </p>
-                  </div>
-                </li> -->
               </ul>
               <div class="normal_edit" v-if="normal_edit_show && typeId == 1">
                 按诊的结果均为正常
@@ -638,39 +614,38 @@ export default {
           arr6 = [];
         let data = res.data.options;
           for (let i = 0; i < res.data.options.length; i++) {
-            console.log(i)
-          if (/1/.test(data[i])) {
-            let str = data[i].replace(/\d+/g, "");
+          if (/浮脉类/.test(data[i])) {
+          let str = data[i].match(/(\S*)-/)[1];
             data[i] = str;
             arr.push(data[i]);
           }
-          if (/2/.test(data[i])) {
-            let str = data[i].replace(/\d+/g, "");
+          if (/沉脉类/.test(data[i])) {
+           let str = data[i].match(/(\S*)-/)[1];
             data[i]= str;
             arr1.push(data[i]);
           }
-          if (/3/.test(data[i])) {
-            let str = data[i].replace(/\d+/g, "");
+          if (/迟脉类/.test(data[i])) {
+          let str = data[i].match(/(\S*)-/)[1];
             data[i] = str;
             arr2.push(data[i]);
           }
-          if (/4/.test(data[i])) {
-            let str = data[i].replace(/\d+/g, "");
+          if (/数脉类/.test(data[i])) {
+          let str = data[i].match(/(\S*)-/)[1];
             data[i] = str;
             arr3.push(data[i]);
           }
-          if (/5/.test(data[i])) {
-            let str = data[i].replace(/\d+/g, "");
+          if (/虚脉类/.test(data[i])) {
+            let str = data[i].match(/(\S*)-/)[1];
             data[i] = str;
             arr4.push(data[i]);
           }
-          if (/6/.test(data[i])) {
-            let str = data[i].replace(/\d+/g, "");
+          if (/实脉类/.test(data[i])) {
+            let str = data[i].match(/(\S*)-/)[1];
             data[i] = str;
             arr5.push(data[i]);
           }
-          if (/7/.test(data[i])) {
-            let str = data[i].replace(/\d+/g, "");
+          if (/相兼脉类/.test(data[i])) {
+           let str = data[i].match(/(\S*)-/)[1];
             data[i] = str;
             arr6.push(data[i]);
           }

@@ -47,7 +47,16 @@
             </li>
           </ul>
         </div>
-        <i class="addList" @click="add()">+</i>
+        <div class="recite_options">
+          <i class="addList" @click="add()">+</i>
+          <div class="recite">
+            <div class="custom_radio">
+              <span class="custom_text" :class="{active_checkbox:recite==true}"></span>
+              <input type="checkbox" v-model="recite" class="custom_none" />
+            </div>
+            <label for="">是否背诵</label>
+          </div>
+        </div>
         <div class="edit_btn_box">
           <button class="edit_cancel" @click="closeDrug()">取消</button>
           <button class="edit_submit" @click="submitPrescription()">
@@ -210,6 +219,7 @@ export default {
       drugSee: false,
       addArr: ["1"],
       druggeryData: {},
+      recite:false
     };
   },
   mounted() {
@@ -309,10 +319,15 @@ export default {
         }
       }
       if (flag1) {
+        let strategy='NONE'
+        if(!this.recite){
+          strategy='HIDE_DRUG'
+        }
         this.http
           .post("/meta/agentia", {
             druggeryIds: this.prescription.druggeryIds,
             name: this.prescription.description,
+            strategy:strategy
           })
           .then((res) => {
             if (res.code == "000000") {
@@ -381,7 +396,7 @@ export default {
     },
   },
   watch: {
-    nameSearch: function () {
+    nameSearch: function() {
       this.axios
         .get("/meta/druggery", {
           params: {
@@ -394,7 +409,7 @@ export default {
           this.seacrhNamedata = res.data.rows;
         });
     },
-    prescriptionSearch: function () {
+    prescriptionSearch: function() {
       this.getPrescriptionData();
     },
   },
@@ -433,18 +448,33 @@ export default {
           }
         }
       }
-      .addList {
-        display: inline-block;
-        background: rgb(240, 246, 255);
-        border: rgb(111, 147, 251) 1px solid;
-        font-size: 30px;
-        width: 30px;
-        height: 30px;
-        line-height: 30px;
-        font-weight: bold;
-        margin-top: 1.5em;
-        cursor: pointer;
-        color: rgb(111, 147, 251);
+      .recite_options {
+        display: flex;
+        margin-top: 1rem;
+        width: 70%;
+        margin: 1rem auto;
+        align-items: center;
+        .recite {
+          display: flex;
+          margin-left: 2rem;
+          label{
+            margin-left: 0.5rem;
+            color: rgb(111, 147, 251);
+          }
+        }
+        .addList {
+          margin-left: 45%;
+          display: inline-block;
+          background: rgb(240, 246, 255);
+          border: rgb(111, 147, 251) 1px solid;
+          font-size: 30px;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+          font-weight: bold;
+          cursor: pointer;
+          color: rgb(111, 147, 251);
+        }
       }
     }
   }

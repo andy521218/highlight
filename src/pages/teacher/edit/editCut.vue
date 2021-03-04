@@ -63,30 +63,6 @@
                     </li>
                   </ul>
                 </li>
-                <!-- <li v-for="(item, index) in pulseData.optinos" :key="index">
-                  <div
-                    class="item_cont"
-                    v-for="(i, index) in item"
-                    :key="index"
-                  >
-                    <div class="custom_radio">
-                      <span
-                        class="custom_text"
-                        :class="{ active_radio: i.name == answer }"
-                      ></span>
-                      <input
-                        type="radio"
-                        class="custom_none"
-                        v-model="answer"
-                        :value="i.name"
-                        @change="putPulse(i)"
-                      />
-                    </div>
-                    <p class="item_cont_title" @click="seeImg(i)">
-                      {{ i.name }}
-                    </p>
-                  </div>
-                </li> -->
               </ul>
               <ul class="content_scrollbar_press" v-show="typeId == 1">
                 <li>
@@ -129,7 +105,6 @@
     </div>
   </div>
 </template>
-
 
 <script>
 import caseOption from "../edit/caseOption";
@@ -227,38 +202,38 @@ export default {
           arr6 = [];
         let data = res.data.optinos;
         for (let i = 0; i < res.data.optinos.length; i++) {
-          if (/1/.test(data[i].name)) {
-            let str = data[i].name.replace(/\d+/g, "");
+          if (/浮脉类/.test(data[i].name)) {
+            let str = data[i].name.match(/(\S*)-/)[1];
             data[i].name = str;
             arr.push(data[i]);
           }
-          if (/2/.test(data[i].name)) {
-            let str = data[i].name.replace(/\d+/g, "");
+          if (/沉脉类/.test(data[i].name)) {
+             let str = data[i].name.match(/(\S*)-/)[1];
             data[i].name = str;
             arr1.push(data[i]);
           }
-          if (/3/.test(data[i].name)) {
-            let str = data[i].name.replace(/\d+/g, "");
+          if (/迟脉类/.test(data[i].name)) {
+            let str = data[i].name.match(/(\S*)-/)[1];
             data[i].name = str;
             arr2.push(data[i]);
           }
-          if (/4/.test(data[i].name)) {
-            let str = data[i].name.replace(/\d+/g, "");
+          if (/数脉类/.test(data[i].name)) {
+            let str = data[i].name.match(/(\S*)-/)[1];
             data[i].name = str;
             arr3.push(data[i]);
           }
-          if (/5/.test(data[i].name)) {
-            let str = data[i].name.replace(/\d+/g, "");
+          if (/虚脉类/.test(data[i].name)) {
+           let str = data[i].name.match(/(\S*)-/)[1];
             data[i].name = str;
             arr4.push(data[i]);
           }
-          if (/6/.test(data[i].name)) {
-            let str = data[i].name.replace(/\d+/g, "");
+          if (/实脉类/.test(data[i].name)) {
+            let str = data[i].name.match(/(\S*)-/)[1];
             data[i].name = str;
             arr5.push(data[i]);
           }
-          if (/7/.test(data[i].name)) {
-            let str = data[i].name.replace(/\d+/g, "");
+          if (/相兼脉类/.test(data[i].name)) {
+            let str = data[i].name.match(/(\S*)-/)[1];
             data[i].name = str;
             arr6.push(data[i]);
           }

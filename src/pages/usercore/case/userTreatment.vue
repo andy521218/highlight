@@ -56,7 +56,7 @@
               </div>
             </div>
           </div>
-          <div class="prescription">
+          <div class="prescription" v-show="strategy">
             <p>药物组成</p>
             <div class="search scrollbar">
               <input
@@ -92,7 +92,9 @@
               </div>
             </div>
           </div>
-          <button class="submit" @click="submitDrug">确定</button>
+          <button class="submit" @click="submitDrug" v-show="strategy">
+            确定
+          </button>
         </div>
       </div>
       <div class="treatment_main" @click="searchDurhshow = false">
@@ -314,6 +316,7 @@ export default {
       upDrugitem: [],
       searchDurhshow: false,
       active: "0",
+      strategy: false,
     };
   },
   mounted() {
@@ -440,7 +443,7 @@ export default {
           }
         });
     },
-    //设置方剂正确答案
+    //设置方剂答案
     agentiaVal(e) {
       if (!this.agentiaListName) {
         this.searchAgentia = e.name;
@@ -451,6 +454,12 @@ export default {
           })
           .then((res) => {
             if (res.code == "000000") {
+              if (!e.druggeries) {
+                this.strategy = true;
+              } else {
+                this.recite(e.name);
+                this.strategy = false;
+              }
               this.getTreatVal();
             } else {
               this.$Message.error(res.msg);
@@ -471,6 +480,12 @@ export default {
             })
             .then((res) => {
               if (res.code == "000000") {
+                if (!e.druggeries) {
+                  this.strategy = true;
+                } else {
+                  this.recite(e.name);
+                  this.strategy = false;
+                }
                 this.getTreatVal();
               } else {
                 this.$Message.error(res.msg);
@@ -478,7 +493,40 @@ export default {
             });
         });
     },
-
+    //上传无需背诵方剂
+    recite(name) {
+      this.axios
+        .get("/meta/agentia", {
+          params: {
+            name: name,
+          },
+        })
+        .then((res) => {
+          let data = res.data.rows[0].druggeries;
+          let arr = [];
+          data.forEach((item) => {
+            arr.push(item.id);
+          });
+          this.axios
+            .delete(
+              `/answer/${this.examNo}/${this.caseId}/treat/agentia/${this.agentiaId}`
+            )
+            .then(() => {
+              this.http
+                .put(`/answer/${this.examNo}/${this.caseId}/treat/agentia`, {
+                  agentiaId: this.agentiaId,
+                  druggeryIds: arr,
+                })
+                .then((res) => {
+                  if (res.code == "000000") {
+                    this.getTreatVal();
+                  } else {
+                    this.$Message.error(res.msg);
+                  }
+                });
+            });
+        });
+    },
     // 辩证数据
     getdiseaseData() {
       this.axios
@@ -649,6 +697,7 @@ export default {
         .get("/meta/agentia", {
           params: {
             name: this.searchAgentia,
+            size: "1000",
           },
         })
         .then((res) => {
@@ -662,10 +711,10 @@ export default {
     },
   },
   watch: {
-    searchDrug: function () {
+    searchDrug: function() {
       this.getDruggery();
     },
-    searchTreat: function () {
+    searchTreat: function() {
       this.axios
         .get("/meta/treat", {
           params: {
@@ -676,11 +725,12 @@ export default {
           this.treatData = res.data;
         });
     },
-    searchAgentia: function () {
+    searchAgentia: function() {
       this.axios
         .get("/meta/agentia", {
           params: {
             name: this.searchAgentia,
+            size: "1000",
           },
         })
         .then((res) => {
