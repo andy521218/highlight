@@ -127,6 +127,7 @@ export default {
       this.itemIndex = index;
       if (item == "退出登入") {
         this.$router.push("/");
+        localStorage.removeItem('authority')
         window.sessionStorage.clear();
       }
       this.$router.push(item.router);

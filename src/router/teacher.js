@@ -184,6 +184,11 @@ export const teacher = [
         component: () => import('../pages/teacher/edit/editTreatment')
       },
     ]
+  },
+  {
+    path: '*',
+    name: 'notfound',
+    component: () => import('../pages/notfount')
   }
 ]
 

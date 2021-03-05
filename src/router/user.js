@@ -181,6 +181,11 @@ export const user = [
       },
     ]
   },
+  {
+    path: '*',
+    name: 'notfound',
+    component: () => import('../pages/notfount')
+  }
 ]
 
 export default user

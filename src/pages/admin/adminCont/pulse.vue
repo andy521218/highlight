@@ -9,6 +9,20 @@
           <span class="edit_switch" @click="editSwitch()"></span>
         </div>
         <ul class="edit_class">
+          <!-- <li>
+            <div class="edit_left">
+              <span class="edit_red">*</span>
+              <span class="edit_text">脉诊分类:</span>
+            </div>
+            <selectBox
+              style="text-align: left;"
+              :listData="classItem"
+              :typeId="'className'"
+              :itemName="'name'"
+              :itemId="'name'"
+              :defaultTitle="'请选择脉诊分类'"
+            ></selectBox>
+          </li> -->
           <li>
             <div class="edit_left">
               <span class="edit_red">*</span>
@@ -21,7 +35,7 @@
               placeholder="请输入脉诊名称"
               v-model="pulse.name"
             />
-            <span class="edit_text_i" v-else>{{ regClass(pulse.name) }}</span>
+            <span class="edit_text_i" v-else>{{ pulse.name }}</span>
           </li>
           <li>
             <div class="edit_left">
@@ -44,7 +58,7 @@
             </div>
             <div class="uploadImg1">
               <div class="mask" v-show="!imgUrl"></div>
-              <img :src="imgUrl" v-show="imgUrl" class="tipsImg" alt=""/>
+              <img :src="imgUrl" v-show="imgUrl" class="tipsImg" alt="" />
               <input
                 type="file"
                 ref="imgs"
@@ -91,8 +105,8 @@
         </ul>
       </div>
       <button class="addResult" @click="editImg()">+</button>
+      <!-- <button @click="fn">++++++++++++++</button> -->
     </div>
-
     <div class="cont_bg right">
       <!-- 弹窗 -->
       <div class="mask" v-if="addCont"></div>
@@ -145,8 +159,8 @@
               </div>
               <div class="ietm_options">
                 <span v-for="(i, index) in item.options" :key="index">{{
-                    i
-                  }}</span>
+                  i
+                }}</span>
               </div>
             </div>
           </li>
@@ -158,15 +172,16 @@
 </template>
 
 <script>
-import selectBox from "../../../components/selectBox";
+// import selectBox from "../../../components/selectBox";
 
 export default {
   name: "pulse-diagnosis",
-  components: {
-    selectBox,
-  },
+  // components: {
+  //   selectBox,
+  // },
   data() {
     return {
+      className: "",
       imgShow: false,
       addCont: false,
       pulse: {},
@@ -219,6 +234,32 @@ export default {
           name: "足背",
         },
       ],
+      classItem: [
+        {
+          name: "浮脉类",
+        },
+        {
+          name: "沉脉类",
+        },
+        {
+          name: "迟脉类",
+        },
+        {
+          name: "缓脉类",
+        },
+        {
+          name: "数脉类",
+        },
+        {
+          name: "虚脉类",
+        },
+        {
+          name: "实脉类",
+        },
+        {
+          name: "相兼脉类",
+        },
+      ],
       imgsData: "",
       imgUrl: "",
       feelId: "",
@@ -229,8 +270,19 @@ export default {
   mounted() {
     this.getData0();
     this.getData1();
+    // this.axios.get('/meta/pulse/group').then(res=>{
+    //   console.log(res);
+    // })
   },
   methods: {
+    // fn(){
+    //   this.http.post('/meta/pulse/group',{
+    //     name:"相兼脉类",
+    //     value:['浮滑脉,浮缓脉,浮紧脉,浮数脉,滑数脉,洪数脉,濡缓脉,濡数脉,沉迟脉,沉滑脉,沉弦脉,沉涩脉,沉缓脉,沉细数脉,沉细脉,弦滑数脉,弦紧脉,弦数脉,弦细脉,弦大脉,弦滑脉']
+    //   }).then(res=>{
+    //     console.log(res);
+    //   })
+    // },
     editImg() {
       this.puleseTitle = "添加";
       this.imgShow = true;
@@ -307,7 +359,8 @@ export default {
           });
       }
     },
-
+    //分组
+    upClass() {},
     postPulse(methods, url, config) {
       if (!this.pulse.name) return this.$Message.error("请填写脉诊名称");
       if (!this.pulse.description)
@@ -374,7 +427,7 @@ export default {
       this.pulse = item;
       this.imgShow = true;
       this.puleseTitle = "编辑";
-      this.class_show = false
+      this.class_show = false;
     },
   },
 };

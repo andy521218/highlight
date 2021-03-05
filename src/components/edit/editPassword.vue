@@ -29,18 +29,20 @@
           placeholder="请输入新密码"
           v-model="password.newPwd"
         />
-        <img
-          v-if="type == 'password'"
-          src="../../assets/public/pwd.png"
-          class="edit_pwd"
-          @click="type = 'text'"
-        />
-        <img
-          v-else
-          src="../../assets/public/pwdmove.png"
-          @click="type = 'password'"
-          class="edit_pwd"
-        />
+           <i-con
+            class="edit_pwd"
+            type="ios-eye-off-outline"
+            @click="type = 'text'"
+            v-if="type == 'password'"
+            style="color: rgb(111, 147, 251)"
+          />
+          <i-con
+            class="edit_pwd"
+            type="ios-eye-off-outline"
+            @click="type = 'password'"
+            v-else
+            style="color: red"
+          />
         <p class="edit_tips">{{ newPwd }}</p>
       </li>
       <li>
@@ -54,18 +56,20 @@
           placeholder="请确认新密码"
           v-model="password.confirmPwd"
         />
-        <img
-          v-if="type == 'password'"
-          src="../../assets/public/pwd.png"
-          class="edit_pwd"
-          @click="type = 'text'"
-        />
-        <img
-          v-else
-          src="../../assets/public/pwdmove.png"
-          @click="type = 'password'"
-          class="edit_pwd"
-        />
+          <i-con
+            class="edit_pwd"
+            type="ios-eye-off-outline"
+            @click="type = 'text'"
+            v-if="type == 'password'"
+            style="color: rgb(111, 147, 251)"
+          />
+          <i-con
+            class="edit_pwd"
+            type="ios-eye-off-outline"
+            @click="type = 'password'"
+            v-else
+            style="color: red"
+          />
         <p class="edit_tips">{{ confirmPwd }}</p>
       </li>
     </ul>

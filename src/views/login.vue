@@ -114,6 +114,7 @@ export default {
       this.codeUrl = this.url + "/metrics/captcha/?random=" + random;
     },
     login() {
+      if(localStorage.getItem('authority')) return this.$Message.error('您当前已经登入,请退出其他账号!')
       if (!this.userName() || !this.password()) {
         return this.$Message.error("用户名或密码不能为空");
       }
