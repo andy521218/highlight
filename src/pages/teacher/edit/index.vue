@@ -78,7 +78,11 @@
               </li>
             </ul>
             <div class="edit_btn_box">
-              <button class="edit_cancel" @click="$router.push('index')">
+              <button
+                class="edit_cancel"
+                :style="{ 'margin-right': exam ? '0px' : '45px' }"
+                @click="$router.push('index')"
+              >
                 返回首页
               </button>
               <button
@@ -308,8 +312,11 @@ export default {
         let diff_1 = endTime - beginTime;
         // 已用时间
         let diff_2 = systemTime - startTime;
-        //如果duringLimit<diff_1 则用duringLimit
-        if (duringLimit < diff_1) {
+        //当前剩余考试时间=结束时间-当前时间
+        let diff_3 = endTime - systemTime;
+        if (diff_3 < duringLimit) {
+          this.duringLimit = diff_3;
+        } else if (duringLimit < diff_1) {
           this.duringLimit = duringLimit - diff_2;
         } else {
           this.duringLimit = diff_1 - diff_2;
