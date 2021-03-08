@@ -14,7 +14,7 @@
         <li class="table_smal">成绩</li>
       </ul>
       <ul class="records_cont">
-        <li v-for="(item, index) in recordData.rows" :key="index">
+        <li v-for="(item, index) in recordData" :key="index">
           <p class="table_smal">
             {{ diseType(item.diseaseType) }}
           </p>

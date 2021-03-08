@@ -207,13 +207,15 @@ export default new Vuex.Store({
         if (res.code == '000000') {
           state.editCurrent = false
           return
-        } else if(res.code!='400003'){
+        } else if (res.code != '400003') {
           Message.error(res.msg)
         }
       })
     }
   },
   actions: {
+
+
   },
   modules: {
   }

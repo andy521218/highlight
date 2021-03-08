@@ -273,7 +273,8 @@ export default {
           }
           this.recordshow = true;
           this.mask = true;
-          this.recordData = res.data;
+          this.recordData = res.data.rows;
+          console.log(this.recordData);
         });
     },
     submit() {

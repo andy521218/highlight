@@ -704,6 +704,15 @@ export default {
             },
           ],
           name: e.name,
+        }).then(()=>{
+          this.diseaseAskData=[]
+          this.diseaseWatchData=[]
+          this.diseaselistenData=[]
+          this.diseasePressData=[]
+          this.nameAskData=[]
+          this.nameWatchData=[]
+          this.namelistenData=[]
+          this.namePressData=[]
         });
       });
     },

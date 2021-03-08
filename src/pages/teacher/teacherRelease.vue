@@ -293,6 +293,8 @@ export default {
       this.endtime = "";
       this.releaseExam_show = false;
       this.rommsId = "";
+      this.startText=''
+      this.endText ='';
       this.manageData.forEach((item) => (item.active = false));
     },
     //获取案例列表

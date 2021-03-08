@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import { initRoutes } from "./router/index";
+import  { initRoutes } from "./router/index";
 export default {
   mounted() {
-    initRoutes()
+    initRoutes();
   },
 };
 </script>
