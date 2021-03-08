@@ -169,7 +169,7 @@
               <span class="title">提示</span>
             </div>
             <ul>
-              <li style="text-align: center">
+              <li style="text-align: center;display:block;">
                 <span>确定放弃本次修改吗?</span>
               </li>
             </ul>

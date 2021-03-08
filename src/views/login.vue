@@ -113,7 +113,7 @@ export default {
       this.codeUrl = this.url + "/metrics/captcha/?random=" + new Date().getTime();
     },
     login() {
-      if(sessionStorage.getItem('token')) return this.$Message.error('您当前已经登入,请退出其他账号!')
+      // if(sessionStorage.getItem('token')) return this.$Message.error('您当前已经登入,请退出其他账号!')
       if (!this.userName() || !this.password()) {
         return this.$Message.error("用户名或密码不能为空");
       }
