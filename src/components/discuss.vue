@@ -294,7 +294,7 @@ export default {
     selectBox,
   },
   mounted() {
-    this.authority = localStorage.getItem("authority");
+    this.authority=sessionStorage.getItem('token')
     if (!this.privateTopic) {
       this.getTopic();
     } else {

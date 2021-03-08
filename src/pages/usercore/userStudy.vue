@@ -179,7 +179,7 @@ export default {
     this.examNo = localStorage.getItem("examNo");
     this.caseId = localStorage.getItem("caseId");
     this.userId = localStorage.getItem("caseUserId");
-    this.authority = localStorage.getItem("authority");
+    this.authority = sessionStorage.getItem('token')
     this.getscore();
     this.getSettingScore();
     if (this.authority == "TEACHER") {

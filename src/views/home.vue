@@ -71,7 +71,6 @@ export default {
     localStorage.removeItem("sex");
     this.axios.get("/users/current").then((res) => {
       this.$store.state.current = res.data;
-      localStorage.setItem("authority", res.data.authority);
     });
   },
   beforeRouteUpdate(to, from, next) {

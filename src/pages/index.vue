@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     routerCasehome() {
-      if (localStorage.getItem("authority") != "STUDENT")
+      if (sessionStorage.getItem('token') != "STUDENT")
         return this.$Message.error("无权访问");
       this.$router.push("casehome");
     },
@@ -73,7 +73,7 @@ export default {
       this.$router.push("messageforum");
     },
     routerSment() {
-      if (localStorage.getItem("authority") != "STUDENT")
+      if (sessionStorage.getItem('token') != "STUDENT")
         return this.$Message.error("无权访问");
       this.axios.get("/exam").then((res) => {
         if (!res.data.length != "0") {

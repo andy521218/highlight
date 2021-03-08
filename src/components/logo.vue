@@ -39,7 +39,7 @@ export default {
     },
   },
   mounted() {
-    this.authority = localStorage.getItem("authority");
+    this.authority = sessionStorage.getItem('token')
     if (/index/.test(window.location.href)) {
       this.$parent.index = false;
     } else {

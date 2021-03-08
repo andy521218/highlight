@@ -131,7 +131,7 @@ export default {
               this.diseaseType = "";
               this.message = "";
               this.title = "";
-              let authority = localStorage.getItem("authority");
+              let authority = sessionStorage.getItem('token')
               if (authority == "STUDENT") {
                 this.$store.state.menuId = 2;
                 this.$router.push("/messagemy");

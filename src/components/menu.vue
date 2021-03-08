@@ -51,7 +51,6 @@ export default {
       }
       this.axios.get("/users/current").then((res) => {
         if (res.code == "000000") {
-          localStorage.setItem("authority", res.data.authority);
           this.authority = res.data.authority;
           if (res.data.authority == "ADMIN") {
             this.menuData = this.adminMenu;
