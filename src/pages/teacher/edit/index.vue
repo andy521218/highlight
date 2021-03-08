@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="main_mask" v-if="fractionshow"></div>
+    <div class="main_mask" v-if="fractionshow || saveCase_show"></div>
     <header class="home_header">
       <logo :exam="exam"></logo>
       <div class="home_user">
@@ -207,7 +207,7 @@ export default {
           link: "editcut",
         },
         {
-          name: "辩证",
+          name: "辨证",
           link: "editdialectical",
         },
         {
@@ -241,42 +241,46 @@ export default {
     logo,
   },
   mounted() {
+    this.axios.get("/users/current").then((res) => {
+      // this.$store.state.current = res.data;
+      this.authority = res.data.authority;
+      if (this.authority == "STUDENT") {
+        this.item = [
+          {
+            name: "问",
+            link: "userask",
+          },
+          {
+            name: "望",
+            link: "userlook",
+          },
+          {
+            name: "闻",
+            link: "userHear",
+          },
+          {
+            name: "切",
+            link: "usercut",
+          },
+          {
+            name: "辨证",
+            link: "userdialectical",
+          },
+          {
+            name: "治疗",
+            link: "usertreatment",
+          },
+        ];
+      }
+      // localStorage.setItem("authority", res.data.authority);
+    });
     this.exam = localStorage.getItem("exam");
     this.examNo = localStorage.getItem("examNo");
-    this.authority = localStorage.getItem("authority");
+    // this.authority = localStorage.getItem("authority");
     if (this.bgIndex == "0") {
       localStorage.getItem("caseMenuId")
         ? (this.bgIndex = localStorage.getItem("caseMenuId"))
         : "0";
-    }
-
-    if (this.authority == "STUDENT") {
-      this.item = [
-        {
-          name: "问",
-          link: "userask",
-        },
-        {
-          name: "望",
-          link: "userlook",
-        },
-        {
-          name: "闻",
-          link: "userHear",
-        },
-        {
-          name: "切",
-          link: "usercut",
-        },
-        {
-          name: "辩证",
-          link: "userdialectical",
-        },
-        {
-          name: "治疗",
-          link: "usertreatment",
-        },
-      ];
     }
     this.totalExam = localStorage.getItem("total");
     if (!this.totalExam) {
@@ -414,10 +418,10 @@ export default {
     },
     //禁用考试项
     disableExam(flag) {
-      document.oncontextmenu = function () {
+      document.oncontextmenu = function() {
         return flag;
       };
-      document.onkeydown = function () {
+      document.onkeydown = function() {
         var e = window.event || arguments[0];
         if (e.keyCode == 123) {
           return flag;
@@ -429,7 +433,7 @@ export default {
         return;
       }
       let _this = this;
-      window.onblur = function () {
+      window.onblur = function() {
         let total = localStorage.getItem("total");
         if (total >= 4) {
           let examNo = localStorage.getItem("examNo");
@@ -462,7 +466,7 @@ export default {
         total++;
         localStorage.setItem("total", total);
       };
-      window.onbeforeunload = function (e) {
+      window.onbeforeunload = function(e) {
         var a = window.event || e;
         a.returnValue = "确定离开当前页面吗？";
       };

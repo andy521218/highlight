@@ -79,7 +79,7 @@ export default {
         height: 65%;
         width: 15%;
         display: flex;
-        font-size: 1.3em;
+        font-size: 1.2em;
         justify-content: center;
         align-items: center;
         margin-right: 2%;

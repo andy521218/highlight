@@ -1,5 +1,6 @@
 <template>
   <div class="teacher_student" style="width: 100%; height: 100%">
+    <div class="main_mask" v-show="load_show||editscore_show"></div>
     <edit-score
       v-show="editscore_show"
       :editData="editData"

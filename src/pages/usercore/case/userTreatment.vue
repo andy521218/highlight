@@ -118,7 +118,7 @@
       </div>
     </div>
     <div class="layout_right" @click="searchDurhshow = false">
-      <div class="title">辩证依据</div>
+      <div class="title">辨证依据</div>
       <div class="disease" style="margin-bottom: 5%">
         <div class="disease_title">病名: {{ diseaseName }}</div>
         <ul class="main_tab">
@@ -527,7 +527,7 @@ export default {
             });
         });
     },
-    // 辩证数据
+    // 辨证数据
     getdiseaseData() {
       this.axios
         .get(`/answer/${this.examNo}/${this.caseId}/disease`)

@@ -1,6 +1,6 @@
 <template>
   <div class="case_layout">
-    <div class="main_mask" v-if="main_mask"></div>
+    <div class="main_mask" v-if="main_mask||allShow"></div>
     <edit-errors v-if="errors" :errorData="errorsData"></edit-errors>
     <!-- 编辑弹窗 -->
     <case-problem

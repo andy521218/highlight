@@ -48,7 +48,7 @@
           </td>
           <td v-show="item.status == 2">
             <span style="margin-right: 0.8em" @click="toStudy(item)"
-              >辩证过程</span
+              >辨证过程</span
             >
             <span @click="toMapping(item)">思维导图</span>
           </td>

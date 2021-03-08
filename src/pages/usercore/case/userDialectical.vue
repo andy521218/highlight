@@ -138,7 +138,7 @@
     <div class="dialectical_layout_left_two" v-show="!step">
       <div class="title">
         病名:{{ searchDisease }}
-        <button class="submit" @click="submitName">添加到辩证</button>
+        <button class="submit" @click="submitName">添加到辨证</button>
       </div>
       <ul class="main_tab">
         <li

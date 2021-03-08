@@ -2,7 +2,7 @@
   <div class="study_disease">
     <div class="study_title">
       <div class="study_title_left">
-        <span>辩证</span>
+        <span>辨证</span>
         <div v-for="(item, index) in list" :key="index" style="display: flex">
           <div class="custom_radio" style="margin: 0 10px">
             <span

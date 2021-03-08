@@ -21,7 +21,7 @@
 
     <div class="admin_number_item">
       <div class="number_item_title">
-        <span>辩 证</span>
+        <span>辨 证</span>
       </div>
       <ul class="number_item_list">
         <li v-for="(item, index) in diagnosis" :key="index">
@@ -31,7 +31,7 @@
             class="text_box"
             :class="{ active: diagnosis_show == index }"
             @blur="upload($event, item)"
-            @click="submit(item, index, '辩证')"
+            @click="submit(item, index, '辨证')"
             :value="item.score"
           />
         </li>
@@ -191,7 +191,7 @@ export default {
       if (name == "问诊") {
         this.ask_show = index;
       }
-      if (name == "辩证") {
+      if (name == "辨证") {
         this.diagnosis_show = index;
       }
       if (name == "方药方剂") {

@@ -1,5 +1,6 @@
 <template>
   <div class="teacher_exam" style="width: 100%; height: 100%">
+    <div class="main_mask" v-show="exam_show"></div>
     <div class="edit release_exam" v-show="exam_show">
       <div class="edit_title">
         <span class="title">查看考试</span>

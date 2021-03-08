@@ -815,7 +815,7 @@ export default {
     &:hover {
       .follow {
         margin-top: 2% !important;
-        transform: scale(1.3);
+        transform: scale(1.27);
         transition: 0.5s;
       }
     }

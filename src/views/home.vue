@@ -65,7 +65,6 @@ export default {
     };
   },
   mounted() {
-    // localStorage.removeItem("bgindex");
     localStorage.removeItem("caseMenuId");
     localStorage.removeItem("askedArr");
     localStorage.removeItem("pressItemData");

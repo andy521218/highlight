@@ -1,6 +1,7 @@
 <template>
   <div class="user_ask">
     <div class="case_layout">
+       <div class="main_mask" v-show="module_show"></div>
       <edit-module v-if="module_show"></edit-module>
       <div class="case_left">
         <case-header></case-header>
@@ -422,7 +423,7 @@ export default {
     },
   },
   watch: {
-    keyword: function () {
+    keyword: function() {
       let exam_flag = localStorage.getItem("exam");
       if (exam_flag) {
         if (!this.keyword) return;

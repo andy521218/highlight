@@ -9,20 +9,6 @@
           <span class="edit_switch" @click="editSwitch()"></span>
         </div>
         <ul class="edit_class">
-          <!-- <li>
-            <div class="edit_left">
-              <span class="edit_red">*</span>
-              <span class="edit_text">脉诊分类:</span>
-            </div>
-            <selectBox
-              style="text-align: left;"
-              :listData="classItem"
-              :typeId="'className'"
-              :itemName="'name'"
-              :itemId="'name'"
-              :defaultTitle="'请选择脉诊分类'"
-            ></selectBox>
-          </li> -->
           <li>
             <div class="edit_left">
               <span class="edit_red">*</span>
@@ -234,32 +220,6 @@ export default {
           name: "足背",
         },
       ],
-      classItem: [
-        {
-          name: "浮脉类",
-        },
-        {
-          name: "沉脉类",
-        },
-        {
-          name: "迟脉类",
-        },
-        {
-          name: "缓脉类",
-        },
-        {
-          name: "数脉类",
-        },
-        {
-          name: "虚脉类",
-        },
-        {
-          name: "实脉类",
-        },
-        {
-          name: "相兼脉类",
-        },
-      ],
       imgsData: "",
       imgUrl: "",
       feelId: "",
@@ -270,19 +230,8 @@ export default {
   mounted() {
     this.getData0();
     this.getData1();
-    // this.axios.get('/meta/pulse/group').then(res=>{
-    //   console.log(res);
-    // })
   },
   methods: {
-    // fn(){
-    //   this.http.post('/meta/pulse/group',{
-    //     name:"相兼脉类",
-    //     value:['浮滑脉,浮缓脉,浮紧脉,浮数脉,滑数脉,洪数脉,濡缓脉,濡数脉,沉迟脉,沉滑脉,沉弦脉,沉涩脉,沉缓脉,沉细数脉,沉细脉,弦滑数脉,弦紧脉,弦数脉,弦细脉,弦大脉,弦滑脉']
-    //   }).then(res=>{
-    //     console.log(res);
-    //   })
-    // },
     editImg() {
       this.puleseTitle = "添加";
       this.imgShow = true;
@@ -325,9 +274,9 @@ export default {
     submitDiagnosis() {
       if (!this.feelId) {
         if (!this.diagnosisName) {
-          this.diagnosis.name = this.diagnosisName;
           return this.$Message.warning("请选择按诊类别");
         }
+        this.diagnosis.name = this.diagnosisName;
         if (!this.diagnosis.options)
           return this.$Message.warning("请填写按诊结果");
         this.diagnosis.options = this.diagnosis.options.split(",");
@@ -363,7 +312,7 @@ export default {
       if (!this.pulse.name) return this.$Message.error("请填写脉诊名称");
       if (!this.pulse.description)
         return this.$Message.warning("请填写脉诊描述");
-      if (this.imgUrl.length>1000) {
+      if (this.imgUrl.length > 1000) {
         if (!this.imgsData) return this.$Message.error("请先选择图片");
         let imgData = new window.FormData();
         imgData.append("file", this.imgsData);

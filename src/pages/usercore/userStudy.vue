@@ -105,7 +105,7 @@
       >
         <div class="chart_item_title"></div>
         <span class="chart_item_title_text"
-          >辩证({{ dialecticalscore }}分)</span
+          >辨证({{ dialecticalscore }}分)</span
         >
         <i-circle
           :percent="(Math.floor(scoreData.disease) / dialecticalscore) * 100"
@@ -215,7 +215,7 @@ export default {
           if (item.name == "切诊") {
             this.feelscore = item.score;
           }
-          if (item.name == "辩证") {
+          if (item.name == "辨证") {
             this.dialecticalscore = item.score;
           }
           if (item.name == "治则治法" || item.name == "方药方剂") {
