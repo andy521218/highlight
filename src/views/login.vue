@@ -110,8 +110,7 @@ export default {
       this.$refs.checkbox.isChecked = !this.$refs.checkbox.isChecked;
     },
     refreshImg() {
-      let random = Math.round(Math.random() * 10);
-      this.codeUrl = this.url + "/metrics/captcha/?random=" + random;
+      this.codeUrl = this.url + "/metrics/captcha/?random=" + new Date().getTime();
     },
     login() {
       if(localStorage.getItem('authority')) return this.$Message.error('您当前已经登入,请退出其他账号!')

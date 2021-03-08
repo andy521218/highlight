@@ -172,13 +172,13 @@
 </template>
 
 <script>
-// import selectBox from "../../../components/selectBox";
+import selectBox from "../../../components/selectBox";
 
 export default {
   name: "pulse-diagnosis",
-  // components: {
-  //   selectBox,
-  // },
+  components: {
+    selectBox,
+  },
   data() {
     return {
       className: "",
@@ -359,13 +359,11 @@ export default {
           });
       }
     },
-    //分组
-    upClass() {},
     postPulse(methods, url, config) {
       if (!this.pulse.name) return this.$Message.error("请填写脉诊名称");
       if (!this.pulse.description)
         return this.$Message.warning("请填写脉诊描述");
-      if (!this.imgUrl) {
+      if (this.imgUrl.length>1000) {
         if (!this.imgsData) return this.$Message.error("请先选择图片");
         let imgData = new window.FormData();
         imgData.append("file", this.imgsData);

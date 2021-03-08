@@ -3,7 +3,7 @@
     <!-- 左侧内容 -->
     <div class="cont_bg">
       <!-- 左侧弹窗 -->
-      <div class="mask" v-if="drug"></div>
+      <div class="mask" v-if="left_mask_show"></div>
       <div class="edit" v-show="drug">
         <div class="edit_title">
           <span class="title">添加常见方剂</span>
@@ -23,7 +23,6 @@
                 placeholder="请输入方剂名称"
                 v-model="prescription.description"
               />
-              <!-- <p class="edit_tips">1111111111</p> -->
             </li>
             <li v-for="(item, index) in addArr" :key="index">
               <div class="edit_left">
@@ -51,7 +50,10 @@
           <i class="addList" @click="add()">+</i>
           <div class="recite">
             <div class="custom_radio">
-              <span class="custom_text" :class="{active_checkbox:recite==true}"></span>
+              <span
+                class="custom_text"
+                :class="{ active_checkbox: recite == true }"
+              ></span>
               <input type="checkbox" v-model="recite" class="custom_none" />
             </div>
             <label for="">是否背诵</label>
@@ -219,7 +221,8 @@ export default {
       drugSee: false,
       addArr: ["1"],
       druggeryData: {},
-      recite:false
+      recite: false,
+      left_mask_show: false,
     };
   },
   mounted() {
@@ -263,6 +266,7 @@ export default {
       this.prescription = {};
       this.drugSee = false;
       this.drug = false;
+      this.left_mask_show = false;
     },
     addDrug() {
       this.drug = true;
@@ -272,7 +276,7 @@ export default {
     },
     seePrescription(e) {
       this.drugSee = true;
-      // this.drug = true;
+      this.left_mask_show = true;
       this.prescriptionItemData = e;
     },
     getPrescriptionData() {
@@ -319,15 +323,15 @@ export default {
         }
       }
       if (flag1) {
-        let strategy='NONE'
-        if(!this.recite){
-          strategy='HIDE_DRUG'
+        let strategy = "HIDE_DRUG";
+        if (!this.recite) {
+          strategy = "NONE";
         }
         this.http
           .post("/meta/agentia", {
             druggeryIds: this.prescription.druggeryIds,
             name: this.prescription.description,
-            strategy:strategy
+            strategy: strategy,
           })
           .then((res) => {
             if (res.code == "000000") {
@@ -437,6 +441,7 @@ export default {
           }
         }
         .flex-wrap {
+          margin-bottom: 2rem;
           align-items: flex-start;
           .flex-right {
             width: 70%;
@@ -457,7 +462,7 @@ export default {
         .recite {
           display: flex;
           margin-left: 2rem;
-          label{
+          label {
             margin-left: 0.5rem;
             color: rgb(111, 147, 251);
           }
