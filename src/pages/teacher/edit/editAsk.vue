@@ -76,8 +76,7 @@
           </div>
         </div>
         <div class="content_bottom teacher_case_ask_add">
-          <!-- <input type="checkbox" v-model="upDatacorrect" />
-          <label for="">干扰项</label> -->
+          <label for="" style="color: rgb(111, 147, 251);">干扰项</label>
           <div class="custom_radio">
             <span
               class="custom_text"
@@ -377,10 +376,10 @@ export default {
 .teacher_case_ask_add {
   justify-content: space-between;
   .text_box {
-    width: 42% !important;
+    width: 40% !important;
   }
   .submit {
-    margin: 0;
+   margin-left: 0 !important;
   }
 }
 .ask_add_color {

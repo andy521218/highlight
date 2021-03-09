@@ -316,7 +316,7 @@ export default {
       upDrugitem: [],
       searchDurhshow: false,
       active: "0",
-      strategy: false,
+      strategy: true,
     };
   },
   mounted() {
@@ -454,12 +454,12 @@ export default {
           })
           .then((res) => {
             if (res.code == "000000") {
-              if (!e.druggeries) {
-                this.strategy = true;
-              } else {
-                this.recite(e.name);
-                this.strategy = false;
-              }
+              // if (!e.druggeries) {
+              //   this.strategy = true;
+              // } else {
+              //   this.recite(e.name);
+              //   this.strategy = false;
+              // }
               this.getTreatVal();
             } else {
               this.$Message.error(res.msg);
@@ -480,12 +480,12 @@ export default {
             })
             .then((res) => {
               if (res.code == "000000") {
-                if (!e.druggeries) {
-                  this.strategy = true;
-                } else {
-                  this.recite(e.name);
-                  this.strategy = false;
-                }
+                // if (!e.druggeries) {
+                //   this.strategy = true;
+                // } else {
+                //   this.recite(e.name);
+                //   this.strategy = false;
+                // }
                 this.getTreatVal();
               } else {
                 this.$Message.error(res.msg);
