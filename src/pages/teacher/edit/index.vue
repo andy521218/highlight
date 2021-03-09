@@ -245,6 +245,7 @@ export default {
     logo,
   },
   mounted() {
+    localStorage.setItem('login',true)
     this.axios.get("/users/current").then((res) => {
       // this.$store.state.current = res.data;
       this.authority = res.data.authority;

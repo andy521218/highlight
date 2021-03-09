@@ -98,6 +98,7 @@ export default {
     ]),
   },
   mounted() {
+    localStorage.setItem('login',true)
     this.axios.get("/users/current").then((res) => {
       this.current = res.data;
       localStorage.setItem("userId", res.data.id);
@@ -126,6 +127,7 @@ export default {
       }
       this.itemIndex = index;
       if (item == "退出登入") {
+        localStorage.removeItem('login')
         this.$router.push("/");
         window.sessionStorage.clear();
       }
