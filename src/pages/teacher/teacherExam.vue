@@ -99,38 +99,38 @@
     <table class="main_table">
       <thead class="thead-dark">
         <tr>
-          <th>序号</th>
-          <th>考试名称</th>
-          <th>考试班级</th>
-          <th>开始时间</th>
-          <th>结束时间</th>
-          <th>考试时长</th>
-          <th>案例</th>
-          <th>状态</th>
-          <th>操作</th>
+          <th style="width:5%">序号</th>
+          <th style="width:10%">考试名称</th>
+          <th style="width:10%">考试班级</th>
+          <th style="width:15%">开始时间</th>
+          <th style="width:15%">结束时间</th>
+          <th style="width:5%">考试时长</th>
+          <th style="width:15%">案例</th>
+          <th style="width:10%">状态</th>
+          <th style="width:15%">操作</th>
         </tr>
       </thead>
       <tbody v-show="!main_show">
         <tr v-for="(item, index) in examData" :key="index">
-          <td>{{ index | sortNumber(page) }}</td>
-          <td>{{ item.name }}</td>
-          <td>{{ item.classrooms[0].classroonName }}</td>
-          <td>
+          <td style="width:5%">{{ index | sortNumber(page) }}</td>
+          <td style="width:10%">{{ item.name }}</td>
+          <td style="width:10%">{{ item.classrooms[0].classroonName }}</td>
+          <td style="width:15%">
             {{
               item.classrooms[0].beginTime
                 | lastTime(item.classrooms[0].beginTime)
             }}
           </td>
-          <td>
+          <td style="width:15%">
             {{
               item.classrooms[0].endTime | lastTime(item.classrooms[0].endTime)
             }}
           </td>
-          <td>{{ item.classrooms[0].duringLimit }}分</td>
-          <td>
+          <td style="width:5%">{{ item.classrooms[0].duringLimit }}分</td>
+          <td style="width:15%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">
             {{ caseName(item) }}
           </td>
-          <td class="status">
+          <td class="status" style="width:10%">
             <span
               v-if="item.classrooms[0].status == 2"
               style="color: rgb(111, 147, 251)"
@@ -143,7 +143,7 @@
               >未开始</span
             >
           </td>
-          <td class="see_dele">
+          <td class="see_dele" style="width:15%">
             <p
               @click="seeExam(item)"
               style="
@@ -273,6 +273,14 @@ export default {
 </script>
 
 <style lang="scss">
+.teacher_exam {
+  .main_table {
+    th,
+    td {
+      flex: none;
+    }
+  }
+}
 .status {
   span {
     border: none !important;
