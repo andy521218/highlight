@@ -73,7 +73,7 @@ axios.interceptors.response.use(function onFulfilled(response) {
 
 axios.defaults.validateStatus = function (status) {
   if (status == '401') {
-    // localStorage.removeItem('authority')
+    localStorage.removeItem('login')
     Message.error('长时间未操作,请重新登入!')
     router.push('/login')
   }
