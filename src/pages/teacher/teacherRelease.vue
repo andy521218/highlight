@@ -116,7 +116,6 @@
       </div>
       <div class="main_header_right">
         <selectBox
-          :title="'病系'"
           :listData="list"
           :typeId="'diseaseType'"
           :itemName="'name'"
