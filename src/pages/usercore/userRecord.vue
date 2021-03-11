@@ -138,7 +138,6 @@ export default {
     },
     getTrain(page) {
       this.page = page;
-      this.$store.state.dialecticalPage = page;
       this.axios
         .get("/my/train", {
           params: {

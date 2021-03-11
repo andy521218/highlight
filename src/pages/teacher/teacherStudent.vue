@@ -1,6 +1,6 @@
 <template>
   <div class="teacher_student" style="width: 100%; height: 100%">
-    <div class="main_mask" v-show="load_show||editscore_show"></div>
+    <div class="main_mask" v-show="load_show || editscore_show"></div>
     <edit-score
       v-show="editscore_show"
       :editData="editData"
@@ -203,9 +203,8 @@ export default {
     };
   },
   mounted() {
-    this.getResult()
+    this.getResult();
     this.getclassrooms();
-    console.log(this.$router.meta);
   },
   methods: {
     //班级
@@ -267,7 +266,6 @@ export default {
         this.$Message.error("当前考试无案例");
         return;
       }
-      this.$store.state.dialecticalPage=this.page
       localStorage.setItem("caseId", item.caseId[0]);
       localStorage.setItem("examNo", item.examNo);
       this.caseId = item.caseId;
@@ -312,10 +310,9 @@ export default {
           window.location.href = `${url}/exam/result/save?classroomId=${this.downloadClassroomId}&testPaperId=${this.downloadTestPaperId}&page=1&size=${res.data.total}`;
         });
     },
-  },
+  }
 };
 </script>
-
 
 <style lang="scss">
 .records {
@@ -366,4 +363,3 @@ export default {
   }
 }
 </style>
-

@@ -127,7 +127,6 @@ export default {
       }
       this.itemIndex = index;
       if (item == "退出登入") {
-        this.$store.state.dialecticalPage=1
         localStorage.removeItem('login')
         this.$router.push("/");
         window.sessionStorage.clear();
