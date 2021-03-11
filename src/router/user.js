@@ -33,7 +33,7 @@ export const user = [
         name: 'userrecord',
         components: {
           main: () => import('../pages/usercore/userRecord'),
-        }
+        },
       },
       {
         path: '/userstudy',

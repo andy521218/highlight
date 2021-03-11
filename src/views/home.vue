@@ -36,7 +36,7 @@
             }}</span>
           </template>
         </edit-user>
-        <router-view name="main"></router-view>
+        <router-view name="main" ></router-view>
       </div>
     </div>
     <router-view name="index" v-if="!this.$store.state.flag"></router-view>

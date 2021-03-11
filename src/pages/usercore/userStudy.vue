@@ -1,7 +1,12 @@
 <template>
   <div class="user_study">
-    <ul class="case_id" v-if="authority == 'TEACHER'">
+    <ul class="case_id">
+      <li class="return" @click="$router.go(-1)">
+       <img src="../../assets/public/return.png" alt="">
+       <p>返回</p>
+      </li>
       <li
+       v-show="authority == 'TEACHER'"
         v-for="(item, index) in caseList"
         :key="index"
         @click="routerDisease(item, index)"
@@ -179,7 +184,7 @@ export default {
     this.examNo = localStorage.getItem("examNo");
     this.caseId = localStorage.getItem("caseId");
     this.userId = localStorage.getItem("caseUserId");
-    this.authority = sessionStorage.getItem('token')
+    this.authority = sessionStorage.getItem("token");
     this.getscore();
     this.getSettingScore();
     if (this.authority == "TEACHER") {
@@ -189,7 +194,7 @@ export default {
   methods: {
     reload() {
       this.isRouterAlive = false;
-      this.$nextTick(function () {
+      this.$nextTick(function() {
         this.isRouterAlive = true;
       });
     },
@@ -251,11 +256,19 @@ export default {
   position: relative;
   .case_id {
     position: absolute;
-    width: 90%;
+    width: 100%;
     height: 5%;
     top: -5%;
     display: flex;
     align-items: center;
+    .return {
+      position: absolute;
+      right: 1%;
+      flex-direction: row;
+      img{
+       max-height: 55%;
+      }
+    }
     li {
       width: 4%;
       height: 100%;

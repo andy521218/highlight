@@ -8,7 +8,6 @@
 import { initRoutes } from "./router/index";
 export default {
   mounted() {
-    console.log(this.$route.name);
     window.addEventListener("beforeunload", () => {
       if(this.$route.name=='login'||this.$route.name==null) return
       localStorage.removeItem("login");

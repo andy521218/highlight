@@ -74,24 +74,6 @@
         <button class="submit" @click="getResult(1)">检索</button>
       </div>
     </div>
-    <!-- 学习记录 -->
-    <!-- <div class="records" v-if="records_show">
-      <div class="records_tile">
-        <ul>
-          <li
-            v-for="(item, index) in caseId"
-            :key="index"
-            @click="tapExam(item, index)"
-          >
-            案例{{ index + 1 }}
-            <p :class="{ active: title_index == index }"></p>
-          </li>
-        </ul>
-        <div class="switch_close" @click="close">X</div>
-      </div>
-      <study-main></study-main>
-    </div> -->
-
     <table class="main_table">
       <thead class="thead-dark">
         <tr>
@@ -149,7 +131,6 @@
           </td>
           <td v-else>
             <p
-              @click="seeExam(item)"
               style="
                 color: rgb(252, 94, 95);
                 border: 1px solid rgb(252, 94, 95);
@@ -180,6 +161,7 @@
       v-show="total > 10"
       :totaltotal="Number(total)"
       :size="Number(10)"
+      :currentPage='Number(page)'
       @getData="getResult"
     ></turn-page>
   </div>
@@ -208,7 +190,7 @@ export default {
       testPaperId: "",
       result: "",
       total: "",
-      page: "",
+      page: 1,
       main_show: false,
       examNumber: "",
       editscore_show: false,
@@ -219,10 +201,11 @@ export default {
       caseId: [],
       selected: "",
       uploadData: "",
+      isRouter:false
     };
   },
   mounted() {
-    this.getResult();
+    this.getResult(this.$store.state.dialecticalPage);
     this.getclassrooms();
   },
   methods: {
@@ -285,6 +268,8 @@ export default {
         this.$Message.error("当前考试无案例");
         return;
       }
+      this.isRouter=true
+      this.$store.state.dialecticalPage=this.page
       localStorage.setItem("caseId", item.caseId[0]);
       localStorage.setItem("examNo", item.examNo);
       this.caseId = item.caseId;
@@ -330,6 +315,14 @@ export default {
         });
     },
   },
+  beforeRouteLeave(to,from,next){
+    if(this.isRouter){
+      next()
+      return
+    }
+    this.$store.state.dialecticalPage=1
+    next()
+  }
 };
 </script>
 

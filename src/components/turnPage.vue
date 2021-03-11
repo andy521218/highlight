@@ -1,7 +1,7 @@
 <template>
   <div class="turn_page">
     <div class="pagination">
-      <Page :total="totaltotal" :page-size="size" @on-change="change" />
+      <Page :total="totaltotal" :page-size="size" @on-change="change" :current='currentPage'/>
     </div>
     <div class="count">
       <span>共{{ totaltotal }}条数据/每页{{ size }}条</span>
@@ -13,7 +13,7 @@
 import { Page } from "view-design";
 export default {
   name: "turn_page",
-  props: ["totaltotal", "size"],
+  props: ["totaltotal", "size",'currentPage'],
   data() {
     return {
       pageNumber: "",
@@ -21,11 +21,7 @@ export default {
     };
   },
   methods: {
-    page(index) {
-      this.pageNumber = index;
-    },
     change(page) {
-      this.pages = page;
       this.$emit("getData", page);
     },
   },
