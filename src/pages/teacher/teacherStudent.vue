@@ -161,7 +161,6 @@
       v-show="total > 10"
       :totaltotal="Number(total)"
       :size="Number(10)"
-      :currentPage='Number(page)'
       @getData="getResult"
     ></turn-page>
   </div>
@@ -201,12 +200,12 @@ export default {
       caseId: [],
       selected: "",
       uploadData: "",
-      isRouter:false
     };
   },
   mounted() {
-    this.getResult(this.$store.state.dialecticalPage);
+    this.getResult()
     this.getclassrooms();
+    console.log(this.$router.meta);
   },
   methods: {
     //班级
@@ -268,7 +267,6 @@ export default {
         this.$Message.error("当前考试无案例");
         return;
       }
-      this.isRouter=true
       this.$store.state.dialecticalPage=this.page
       localStorage.setItem("caseId", item.caseId[0]);
       localStorage.setItem("examNo", item.examNo);
@@ -315,14 +313,6 @@ export default {
         });
     },
   },
-  beforeRouteLeave(to,from,next){
-    if(this.isRouter){
-      next()
-      return
-    }
-    this.$store.state.dialecticalPage=1
-    next()
-  }
 };
 </script>
 

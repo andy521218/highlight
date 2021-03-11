@@ -50,7 +50,7 @@
           <label>正确答案</label>
         </li>
       </ul>
-      <ul>
+      <ul style="position: relative;">
         <li>
           <i class="correct"></i>
           <span>正确答案</span>
@@ -62,6 +62,10 @@
         <li>
           <i class="forget"></i>
           <span>漏选答案</span>
+        </li>
+        <li class="map_return" @click="$router.go(-1)">
+          <img src="../../../assets/public/return.png" alt="">
+          <p>返回</p>
         </li>
       </ul>
     </header>
@@ -239,6 +243,7 @@ export default {
       li {
         display: flex;
         align-items: center;
+        height: 100%;
         .custom_radio {
           margin: 0 10px;
         }
@@ -261,6 +266,17 @@ export default {
           background: rgb(255, 200, 40);
         }
       }
+       .map_return{
+         width: 20%;
+         justify-content: space-between;
+          position: absolute;
+          right: -5%;
+          top: -150%;
+          cursor: pointer;
+          img{
+            max-height: 55%;
+          }
+        }
     }
   }
   main {

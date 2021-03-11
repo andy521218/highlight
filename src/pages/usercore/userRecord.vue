@@ -60,7 +60,6 @@
       v-show="total > size"
       :totaltotal="Number(total)"
       :size="Number(size)"
-      :currentPage="Number(page)"
       @getData="getTrain"
     ></turn-page>
   </div>
@@ -104,7 +103,6 @@ export default {
       trainData: {},
       page: "",
       main_show: false,
-      isRouter: false,
     };
   },
   components: {
@@ -114,7 +112,7 @@ export default {
   },
 
   mounted() {
-    this.getTrain(this.$store.state.dialecticalPage);
+     this.getTrain(1);
     localStorage.removeItem("correctaskked");
     localStorage.removeItem("correctwatch");
   },
@@ -134,7 +132,6 @@ export default {
       this.$router.push("usermap");
     },
     toStudy(e) {
-      this.isRouter = true;
       localStorage.setItem("examNo", e.examNo);
       localStorage.setItem("caseId", e.caseId);
       this.$router.push("ask");
@@ -179,14 +176,6 @@ export default {
           return "肾系病";
       }
     },
-  },
-  beforeRouteLeave(to, form, next) {
-    if (this.isRouter) {
-      next();
-      return;
-    }
-    this.$store.state.dialecticalPage = 1;
-    next();
   },
 };
 </script>

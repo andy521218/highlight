@@ -36,7 +36,10 @@
             }}</span>
           </template>
         </edit-user>
-        <router-view name="main" ></router-view>
+        <keep-alive>
+          <router-view name="main" v-if="$route.meta.keepAlive"></router-view>
+        </keep-alive>
+        <router-view name="main" v-if="!$route.meta.keepAlive"></router-view>
       </div>
     </div>
     <router-view name="index" v-if="!this.$store.state.flag"></router-view>

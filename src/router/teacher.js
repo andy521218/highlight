@@ -110,6 +110,9 @@ export const teacher = [
         components: {
           main: () => import('../pages/teacher/teacherStudent'),
         },
+        meta: {
+          keepAlive: true,
+         },
       },
       {
         path: '/teacheruser',

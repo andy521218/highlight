@@ -34,6 +34,9 @@ export const user = [
         components: {
           main: () => import('../pages/usercore/userRecord'),
         },
+        meta: {
+          keepAlive: true,
+         },
       },
       {
         path: '/userstudy',
