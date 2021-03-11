@@ -170,7 +170,7 @@ export default {
       this.updataEmail = "";
     },
     checkavatar() {
-      if (!this.upData.name) {
+      if (!this.upData.name.trim()) {
         this.avaterText = "请输入姓名";
         return false;
       }
@@ -186,7 +186,7 @@ export default {
       return true;
     },
     checkuserName() {
-      if (!this.upData.userName) {
+      if (!this.upData.userName.trim()) {
         this.userNameText = "请输入用户名";
         return false;
       }

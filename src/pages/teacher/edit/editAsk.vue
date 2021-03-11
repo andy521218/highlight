@@ -306,8 +306,8 @@ export default {
         });
     },
     submit() {
-      if (!this.answer) return this.$Message.error("请输入问题!");
-      if (!this.question) return this.$Message.error("请输入答案!");
+      if (!this.answer.trim()) return this.$Message.error("请输入问题!");
+      if (!this.question.trim()) return this.$Message.error("请输入答案!");
       if (this.typeId == "1") {
         return (this.askColorshow = true);
       }

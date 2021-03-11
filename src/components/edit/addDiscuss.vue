@@ -34,7 +34,7 @@ export default {
       this.$parent.textIpts = "";
     },
     submit() {
-      if (!this.message) {
+      if (!this.message.trim()) {
         this.$Message.error("请输入要回复的内容");
         return;
       }

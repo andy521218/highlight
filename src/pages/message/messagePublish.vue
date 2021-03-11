@@ -94,8 +94,12 @@ export default {
         this.$Message.error("请选择病系");
         return;
       }
-      if (!this.title) {
+      if (!this.title.trim()) {
         this.$Message.error("请输入标题");
+        return;
+      }
+       if (!this.message.trim()) {
+        this.$Message.error("请输入问题内容");
         return;
       }
       if (this.imgUrl.length > 3) {

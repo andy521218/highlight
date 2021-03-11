@@ -341,7 +341,7 @@ export default {
     },
     //提交
     submit() {
-      if (!this.examData.name) {
+      if (!this.examData.name.trim()) {
         return (this.nameText = "请输入考试名称");
       } else {
         this.nameText = "";
@@ -361,7 +361,7 @@ export default {
       } else {
         this.endText = "";
       }
-      if (!this.examData.examTime) {
+      if (!this.examData.examTime.trim()) {
         this.examText = "请输入考试时长";
         return;
       }

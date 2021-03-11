@@ -137,7 +137,7 @@ export default {
       this.$parent.mask = false;
     },
     changeName() {
-      if (!this.upData.name) {
+      if (!this.upData.name.trim()) {
         this.nameText = "请输入姓名";
         return false;
       }

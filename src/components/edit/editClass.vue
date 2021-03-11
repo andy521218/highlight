@@ -156,7 +156,7 @@ export default {
         if (!this.did) return this.$Message.error("请选择院/系");
         if (!this.sid) return this.$Message.error("请选择专业");
         if (!this.gradeId) return this.$Message.error("请选择年级");
-        if (!this.upData.name) return this.$Message.error("请输入班级名称");
+        if (!this.upData.name.trim()) return this.$Message.error("请输入班级名称");
       }
       this.axios[methods](
         `/classrooms/${url}?${this.qs.stringify({
