@@ -51,7 +51,11 @@ export default {
     };
   },
   mounted() {
-    this.radioData = this.option.answer.split(",");
+    try {
+      this.radioData = this.option.answer.split(",");
+    } catch (error) {
+      return error
+    }
   },
   methods: {
     close() {

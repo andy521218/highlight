@@ -17,7 +17,7 @@
     ></edit-class>
     <div class="main_header">
       <div class="main_header_left">
-        <button class="add" @click="addClass()">新建班级</button>
+        <!-- <button class="add" @click="addClass()">新建班级</button> -->
       </div>
       <div class="main_header_left">
         <select-box

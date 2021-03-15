@@ -11,6 +11,11 @@
       v-if="complexion"
       @editcaseData="editcaseData"
     ></case-complexion>
+   <look-option
+      v-if="checkboxShow"
+      @editcaseData="editcaseData"
+      :option="option"
+    ></look-option>
     <div class="case_layout teacher_case_look">
       <div class="case_left">
         <case-header></case-header>
@@ -77,12 +82,15 @@
 import caseOption from "../edit/caseOption";
 import caseHeader from "../edit/caseHeader";
 import caseComplexion from "../edit/caseComplexion";
+import LookOption from '../../usercore/case/LookOption'
+
 export default {
   name: "edit-look",
   components: {
     caseOption,
     caseHeader,
     caseComplexion,
+    LookOption
   },
   data() {
     return {
@@ -97,6 +105,7 @@ export default {
       imgurl: "",
       mask: false,
       complexion: false,
+      checkboxShow:false
     };
   },
   mounted() {
@@ -119,6 +128,12 @@ export default {
         this.option = e;
         this.mask = true;
         return;
+      }
+       if (e.name == "望舌色"||e.name == "望舌形"||e.name == "望苔色"||e.name == "望苔质") {
+        this.checkboxShow = true;
+         this.option = e;
+        this.mask = true;
+        return
       }
       this.option = e;
       this.optionShow = true;
@@ -167,6 +182,7 @@ export default {
             this.$Message.warning("编辑成功!");
             this.optionShow = false;
             this.complexion = false;
+             this.checkboxShow = false;
             this.mask = false;
             this.getwatchdata();
           }
