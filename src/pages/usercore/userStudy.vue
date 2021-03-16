@@ -1,7 +1,7 @@
 <template>
   <div class="user_study">
     <ul class="case_id">
-      <li class="return" @click="$router.go(-1)">
+      <li class="return" @click="$router.push(router)">
        <img src="../../assets/public/return.png" alt="">
        <p>返回</p>
       </li>
@@ -178,6 +178,7 @@ export default {
       caseList: [],
       caseIndex: "0",
       isRouterAlive: true,
+      router:''
     };
   },
   mounted() {
@@ -188,7 +189,10 @@ export default {
     this.getscore();
     this.getSettingScore();
     if (this.authority == "TEACHER") {
+      this.router='teacherstudent'
       this.caseList = JSON.parse(localStorage.getItem("ArrayCaseId"));
+    }else{
+      this.router='userrecord'
     }
   },
   methods: {

@@ -47,6 +47,7 @@
           :itemName="'name'"
           :itemId="'diseaseType'"
           :defaultTitle="'请选择病系'"
+          style="z-index:9"
         ></selectBox>
 
         <selectBox

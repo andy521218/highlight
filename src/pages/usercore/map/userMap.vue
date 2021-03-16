@@ -63,7 +63,7 @@
           <i class="forget"></i>
           <span>漏选答案</span>
         </li>
-        <li class="map_return" @click="$router.go(-1)">
+        <li class="map_return" @click="$router.push('userrecord')">
           <img src="../../../assets/public/return.png" alt="">
           <p>返回</p>
         </li>
