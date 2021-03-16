@@ -255,6 +255,7 @@ export default {
           this.tips = true;
           this.editStudentShow = false;
           this.mask = false;
+          this.$store.state.did=''
           this.$Message.warning(`${msg}成功!`);
         } else {
           this.$Message.error(res.msg);

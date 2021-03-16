@@ -277,8 +277,8 @@ export default {
         });
     },
     submit() {
-      this.classRoomId=this.$store.state.classRoomId || this.upData.classRoomId
-      if (!this.classRoomId) {
+      this.upData.classRoomId= this.upData.classRoomId ||this.$store.state.classRoomId 
+      if (!this.upData.classRoomId) {
         this.classRoomIdText = "请选择班级";
         return;
       }
@@ -291,7 +291,6 @@ export default {
       if (!this.tips) {
         methods = "put";
         url = this.upData.id;
-        this.classRoomId=this.upData.classRoomId
         this.status = "";
         msg = "编辑";
       }
@@ -301,7 +300,7 @@ export default {
           name: this.upData.name,
           passwd: this.upData.passwd,
           userName: this.upData.userName,
-          classRoomId: this.classRoomId,
+          classRoomId: this.upData.classRoomId,
           mobile: this.upData.mobile,
           status: this.status,
           email: this.upData.email,
@@ -310,6 +309,7 @@ export default {
             this.getData(this.page);
             this.upData = {};
             this.tips = true;
+            this.$store.state.classRoomId=''
             this.editStudentShow = false;
             this.$Message.warning(`${msg}成功!`);
             this.mask = false;

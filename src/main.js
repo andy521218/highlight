@@ -52,6 +52,7 @@ axios.interceptors.response.use(function onFulfilled(response) {
       confirmButtonText: "确定",
       type: "error",
       callback: () => {
+        localStorage.removeItem('login')
         router.push('/login')
       }
     });
