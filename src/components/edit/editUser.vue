@@ -44,20 +44,6 @@
           @click="pwdShow"
           style="color: red"
         />
-        <!-- <img
-          src="../../assets/public/pwd.png"
-          class="edit_pwd"
-          alt
-          v-if="pwdSwitch"
-          @click="pwdShow"
-        />
-        <img
-          src="../../assets/public/pwdmove.png"
-          class="edit_pwd"
-          alt
-          v-else
-          @click="pwdShow"
-        /> -->
         <p class="edit_tips">{{ passwdText }}</p>
       </li>
       <li>
@@ -170,6 +156,10 @@ export default {
       this.updataEmail = "";
     },
     checkavatar() {
+      if (this.upData.name.trim().length>5) {
+        this.avaterText = "请输入五个字符";
+        return false;
+      }
       if (!this.upData.name.trim()) {
         this.avaterText = "请输入姓名";
         return false;

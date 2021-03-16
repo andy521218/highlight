@@ -20,6 +20,7 @@ export default new Vuex.Store({
     examId: '',
     typeId: '',
     did: '',
+    classRoomId:'',
     messageMenu: [
       {
         title: '问题讨论',

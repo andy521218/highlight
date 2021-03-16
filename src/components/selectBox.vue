@@ -118,8 +118,8 @@ export default {
         this.$emit("changeItem");
       }, 500);
       this.selectTitle = item[this.itemName];
-      if (this.$parent[this.typeId] == undefined) {
-        this.$store.state.typeId = item[this.itemId];
+      if (this.$parent[this.typeId] == undefined) {        
+        this.$store.state[this.typeId] = item[this.itemId];
       } else {
         this.$parent[this.typeId] = item[this.itemId];
       }

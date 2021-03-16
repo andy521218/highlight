@@ -71,7 +71,7 @@
                 :src="$url + item.userAvatar"
                 @click="sendmessage(item)"
                 title="发送私信"
-              />
+              />            
               <span>{{ item.name }}</span>
             </div>
             <div class="message_title" @click="replyTwo(item, index)">

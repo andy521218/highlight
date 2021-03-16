@@ -25,8 +25,8 @@ Vue.use(DatePicker, TimePicker)
 
 Vue.use(filters)
 Vue.prototype.http = http
-Vue.prototype.teacherAvatar = '09/1609119208449.png'
-Vue.prototype.studentAvatar = '82/1609119248774.png'
+Vue.prototype.teacherAvatar = '37/1615864951470.png'
+Vue.prototype.studentAvatar = 'AD/1615864970888.png'
 Vue.prototype.qs = qs
 Vue.prototype.$url = 'http://101.132.150.87/api/download/'
 Vue.prototype.upload = upload

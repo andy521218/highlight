@@ -32,13 +32,6 @@
               <span @click="editGrade(item)">编辑</span>
             </td>
           </tr>
-          <tr v-for="(item, index) in grade" :key="index">
-            <td>{{ index + 1 }}</td>
-            <td>{{ item.name }}</td>
-            <td>
-              <span @click="editGrade(item)">编辑</span>
-            </td>
-          </tr>
         </tbody>
       </table>
       <turn-page
@@ -179,6 +172,7 @@ export default {
         .then((res) => {
           this.gradeTotal = res.data.total;
           this.grade = res.data.rows;
+          console.log(this.grade);
           this.name = "";
         });
     },

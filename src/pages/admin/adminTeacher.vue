@@ -19,21 +19,6 @@
           <span class="edit_red">*</span>
           <span class="edit_text">院系:</span>
         </div>
-        <!-- <select
-          class="select"
-          v-if="tips"
-          v-model="upData.did"
-          @change="checkDid"
-        >
-          <option :value="selected">请选择院系</option>
-          <option
-            :value="item.id"
-            v-for="(item, index) in departments"
-            :key="index"
-          >
-            {{ item.name }}
-          </option>
-        </select> -->
         <selectBox
           v-if="tips"
           :listData="departments"
