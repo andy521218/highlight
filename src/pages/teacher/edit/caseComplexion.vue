@@ -70,7 +70,7 @@ export default {
         if (/红/.test(element)) {
           arr3.push(element);
         }
-        if (/青/.test(element)) {
+        if (/青/.test(element)&&!/黑/.test(element)) {
           arr4.push(element);
         }
         if (/黑/.test(element)) {

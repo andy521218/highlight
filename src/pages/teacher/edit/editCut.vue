@@ -42,7 +42,7 @@
                   <span>相兼脉类</span>
                 </li>
                 <li class="pulse_item">
-                  <ul v-for="(item, index) in pulseData.optinos" :key="index">
+                  <ul v-for="(item, index) in optinos" :key="index">
                     <li v-for="(i, index) in item" :key="index">
                       <div class="custom_radio" style="margin-right: 10px">
                         <span
@@ -85,8 +85,9 @@
         <div class="case_right_title">
           <span>脉诊图片</span>
         </div>
-        <img :src="imgsUrl" v-if="imgsUrl" alt="" class="seeimg" />
-        <p class="seedesc">{{ imgDesc }}</p>
+        <img :src="imgsUrl" v-if="url" alt="" class="seeimg" />
+       <img v-else src="../../../assets/public/f455781e08a0076236ca9f624e9dc26.png" alt="">
+        <p class="seedesc" v-if="imgsUrl">{{ imgDesc }}</p>
       </div>
       <div class="case_right" style="text-align: center" v-if="typeId == 1">
         <img
@@ -132,6 +133,8 @@ export default {
       pulseData: {},
       option: {},
       sex: false,
+      optinos:{},
+      url:''
     };
   },
   mounted() {
@@ -157,6 +160,7 @@ export default {
       this.allShow = true;
     },
     seeImg(e) {
+      this.url=e.picUrl
       if (/localhost/.test(e.picUrl)) {
         this.imgsUrl = e.picUrl.replace(/localhost/, "101.132.150.87");
       } else {
@@ -192,7 +196,7 @@ export default {
     },
     getpulseData() {
       this.axios.get(`/case/manage/${this.caseId}/feel/pulse`).then((res) => {
-        this.pulseData.optinos = [];
+        this.optinos = [];
         let arr = [],
           arr1 = [],
           arr2 = [],
@@ -238,19 +242,20 @@ export default {
             arr6.push(data[i]);
           }
           if (i == res.data.optinos.length - 1) {
-            this.pulseData.optinos.push(arr);
-            this.pulseData.optinos.push(arr1);
-            this.pulseData.optinos.push(arr2);
-            this.pulseData.optinos.push(arr3);
-            this.pulseData.optinos.push(arr4);
-            this.pulseData.optinos.push(arr5);
-            this.pulseData.optinos.push(arr6);
+            this.optinos.push(arr);
+            this.optinos.push(arr1);
+            this.optinos.push(arr2);
+            this.optinos.push(arr3);
+            this.optinos.push(arr4);
+            this.optinos.push(arr5);
+            this.optinos.push(arr6);
           }
         }
 
         this.answer = res.data.answer;
         res.data.optinos.forEach((item) => {
           if (res.data.answer == item.name) {
+            this.url=item.picUrl
             this.imgsUrl = this.$url + item.picUrl;
             this.imgDesc = item.description;
           }
@@ -332,14 +337,14 @@ export default {
       margin-left: 1%;
       li:nth-child(1) {
         border: none;
-        border-bottom: 1px solid rgb(111, 147, 251);
+        border-bottom: 1px solid #d4e5ff;
       }
       li {
         display: flex;
         align-items: center;
         width: 100%;
         height: 35px;
-        border: 1px solid rgb(111, 147, 251);
+        border: 1px solid #d4e5ff;
         border-top: none;
         padding-left: 15px;
         span:nth-child(1) {
@@ -347,15 +352,16 @@ export default {
           text-align: center;
           height: 35px;
           line-height: 35px;
-          border-right: 1px solid rgb(111, 147, 251);
+          border-right: 1px solid #d4e5ff;
         }
         span:last-child {
           padding-left: 15px;
         }
+        &:hover{
+          background: #cddbff;
+        }
       }
     }
-  }
-  .content_scrollbar_press {
   }
   .case_right {
     text-align: center;

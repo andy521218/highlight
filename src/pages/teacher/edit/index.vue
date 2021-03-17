@@ -246,9 +246,8 @@ export default {
   },
   mounted() {
     localStorage.setItem('login',true)
-    this.axios.get("/users/current").then((res) => {
-      // this.$store.state.current = res.data;
-      this.authority = res.data.authority;
+    
+      this.authority = sessionStorage.getItem('token');
       if (this.authority == "STUDENT") {
         this.item = [
           {
@@ -277,11 +276,10 @@ export default {
           },
         ];
       }
-      // localStorage.setItem("authority", res.data.authority);
-    });
+  
     this.exam = localStorage.getItem("exam");
     this.examNo = localStorage.getItem("examNo");
-    // this.authority = localStorage.getItem("authority");
+
     if (this.bgIndex == "0") {
       localStorage.getItem("caseMenuId")
         ? (this.bgIndex = localStorage.getItem("caseMenuId"))
@@ -335,6 +333,7 @@ export default {
         this.disableExam();
       });
     } else {
+      if(this.authority=='TEACHER') return
       this.startTime();
     }
   },

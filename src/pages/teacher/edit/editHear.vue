@@ -34,8 +34,9 @@
                   class="item_cont_border"
                   v-for="(item, index) in listenData"
                   :key="index"
+                  @click="openOption(item)"
                 >
-                  <div class="item_cont" @click="openOption(item)">
+                  <div class="item_cont" >
                     <p class="item_cont_title">{{ item.name }}</p>
                     <p class="item_cont_option">
                       {{ item.answer }}

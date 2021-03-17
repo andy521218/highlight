@@ -28,7 +28,7 @@
                 <li style="border: none">
                   <p>点击右侧空白处选择一个设置为正确选项:</p>
                 </li>
-                <li v-for="(item, index) in pulseData.optinos" :key="index">
+                <li v-for="(item, index) in optinos" :key="index">
                   <div
                     class="item_cont"
                     v-for="(i, index) in item"
@@ -79,13 +79,13 @@
       </div>
       <div class="case_right" style="text-align: center" v-if="typeId == 1">
         <img
-          v-if="sex == 'false'"
+          v-if="sex == 'true'"
           src="../../../assets/public/boy1.png"
           alt=""
           style="max-height: 100%; margin-top: 10%"
         />
         <img
-          v-if="sex == 'true'"
+          v-if="sex == 'false'"
           src="../../../assets/public/girl1.png"
           alt=""
           style="max-height: 100%; margin-top: 10%"
@@ -121,6 +121,7 @@ export default {
       pulseData: {},
       option: {},
       sex: false,
+      optinos:''
     };
   },
   mounted() {
@@ -181,20 +182,20 @@ export default {
     },
     getpulseData() {
       this.axios.get(`/case/manage/${this.caseId}/feel/pulse`).then((res) => {
-        this.pulseData.optinos = [];
+        this.optinos = [];
         let arr = [];
         let flag = false;
         for (let i = 0; i < res.data.optinos.length; i++) {
           flag = false;
           arr.push(res.data.optinos[i]);
           if (i % 8 == "7") {
-            this.pulseData.optinos.push(arr);
+            this.optinos.push(arr);
             arr = [];
             flag = true;
           }
         }
         if (!flag) {
-          this.pulseData.optinos.push(arr);
+          this.optinos.push(arr);
         }
         this.answer = res.data.answer;
         res.data.optinos.forEach((item) => {
@@ -280,14 +281,14 @@ export default {
       margin-left: 1%;
       li:nth-child(1) {
         border: none;
-        border-bottom: 1px solid rgb(111, 147, 251);
+        border-bottom: 1px solid #d4e5ff;
       }
       li {
         display: flex;
         align-items: center;
         width: 100%;
         height: 35px;
-        border: 1px solid rgb(111, 147, 251);
+        border: 1px solid #d4e5ff;
         border-top: none;
         padding-left: 15px;
         span:nth-child(1) {
@@ -295,15 +296,16 @@ export default {
           text-align: center;
           height: 35px;
           line-height: 35px;
-          border-right: 1px solid rgb(111, 147, 251);
+          border-right: 1px solid #d4e5ff;
         }
         span:last-child {
           padding-left: 15px;
         }
+          &:hover{
+          background: #cddbff;
+        }
       }
     }
-  }
-  .content_scrollbar_press {
   }
   .case_right {
     text-align: center;
