@@ -1,5 +1,6 @@
 <template>
   <div class="case_treatment">
+    <edit-drug v-if="drugShow"></edit-drug>
     <div class="treatment_layout">
       <div class="layout_left">
         <div class="title">
@@ -36,7 +37,7 @@
         <div class="layout_search">
           <div class="search_top">
             <p>遣方用药</p>
-            <a href="javascript:;">药材库</a>
+            <a href="javascript:;" @click="drugShow=true">药材库</a>
           </div>
           <div class="search_bottom">
             <div class="prescription">
@@ -237,8 +238,12 @@
 </template>
 
 <script>
+import editDrug from "../../../components/edit/editDrug";
 export default {
   name: "case-treatment",
+  components: {
+    editDrug,
+  },
   data() {
     return {
       tab: ["问", "望", "闻", "切"],
@@ -273,6 +278,7 @@ export default {
       defaultOptions: [],
       diseasepulseData: "",
       active: "0",
+      drugShow:false
     };
   },
   mounted() {
@@ -491,11 +497,15 @@ export default {
                   name: "脉诊",
                   answer: res.data.answer,
                 });
-                press.forEach((ele) => {
-                  if (ele == res.data.id) {
-                    this.pulseData = res.data;
-                  }
-                });
+                try {
+                  press.forEach((ele) => {
+                    if (ele == res.data.id) {
+                      this.pulseData = res.data;
+                    }
+                  });
+                } catch (error) {
+                  return error;
+                }
               }
             });
         })
@@ -557,7 +567,7 @@ export default {
     },
   },
   watch: {
-    searchTreat: function () {
+    searchTreat: function() {
       this.axios
         .get("/meta/treat", {
           params: {
@@ -568,12 +578,12 @@ export default {
           this.treatData = res.data;
         });
     },
-    searchAgentia: function () {
+    searchAgentia: function() {
       this.axios
         .get("/meta/agentia", {
           params: {
             name: this.searchAgentia,
-             size:'1000'
+            size: "1000",
           },
         })
         .then((res) => {

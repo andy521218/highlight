@@ -31,7 +31,8 @@
             class="text_box"
             v-if="druggerySwitch"
             placeholder="请输入方药名称"
-            v-model="druggery.alias"
+             v-model="druggery.name"
+            
           />
           <span class="edit_text_i" v-else>{{ druggery.alias }}</span>
         </li>
@@ -45,7 +46,7 @@
             class="text_box"
             v-if="druggerySwitch"
             placeholder="请输入方药别名"
-            v-model="druggery.name"
+           v-model="druggery.alias"
           />
           <span class="edit_text_i" v-else>{{ druggery.name }}</span>
         </li>

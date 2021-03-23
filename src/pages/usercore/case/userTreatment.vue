@@ -1,5 +1,6 @@
 <template>
   <div class="treatment_layout">
+    <edit-drug v-if="drugShow"></edit-drug>
     <div class="layout_left">
       <div class="title" @click="focusTreat">
         <p>治则治法</p>
@@ -29,7 +30,7 @@
       <div class="layout_search">
         <div class="search_top" @click="searchDurhshow = false">
           <p>遣方用药</p>
-          <a href="javascript:;">药材库</a>
+          <a href="javascript:;" @click="drugShow=true">药材库</a>
         </div>
         <div class="search_bottom">
           <div class="prescription" @click="searchDurhshow = false">
@@ -276,8 +277,12 @@
 </template>
 
 <script>
+import editDrug from '../../../components/edit/editDrug'
 export default {
   name: "user-treatment",
+  components:{
+    editDrug
+  },
   data() {
     return {
       tab: ["问", "望", "闻", "切"],
@@ -291,6 +296,7 @@ export default {
       agentiaData: {},
       searchAgentia: "",
       agentiaShow: false,
+      drugShow:false,
       agentiaList: [],
       agentiaId: [],
       agentiaListName: "",

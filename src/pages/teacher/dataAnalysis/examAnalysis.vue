@@ -478,6 +478,7 @@ export default {
             .exam_left_bottom_main_block_item {
               display: flex;
               flex: 1;
+              align-items: center;
               img {
                 height: 25px;
                 border-top-right-radius: 7px;
