@@ -170,7 +170,7 @@ export const user = [
       {
         path: '/usercut',
         name: 'usercut',
-        component: () => import('../pages/usercore/case/userCutNone'),
+        component: () => import('../pages/usercore/case/userCut'),
       },
       {
         path: '/userdialectical',

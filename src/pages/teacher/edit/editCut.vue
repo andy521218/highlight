@@ -6,11 +6,7 @@
       @editcaseData="editcaseData"
     ></case-option>
     <div class="case_layout">
-         <div
-      class="main_mask"
-     
-      v-show="optionShow"
-    ></div>
+      <div class="main_mask" v-show="optionShow"></div>
       <div class="case_left">
         <case-header></case-header>
         <main>
@@ -86,7 +82,11 @@
           <span>脉诊图片</span>
         </div>
         <img :src="imgsUrl" v-if="url" alt="" class="seeimg" />
-       <img v-else src="../../../assets/public/f455781e08a0076236ca9f624e9dc26.png" alt="">
+        <img
+          v-else
+          src="../../../assets/public/f455781e08a0076236ca9f624e9dc26.png"
+          alt=""
+        />
         <p class="seedesc" v-if="imgsUrl">{{ imgDesc }}</p>
       </div>
       <div class="case_right" style="text-align: center" v-if="typeId == 1">
@@ -133,8 +133,8 @@ export default {
       pulseData: {},
       option: {},
       sex: false,
-      optinos:{},
-      url:''
+      optinos: {},
+      url: "",
     };
   },
   mounted() {
@@ -160,7 +160,7 @@ export default {
       this.allShow = true;
     },
     seeImg(e) {
-      this.url=e.picUrl
+      this.url = e.picUrl;
       if (/localhost/.test(e.picUrl)) {
         this.imgsUrl = e.picUrl.replace(/localhost/, "101.132.150.87");
       } else {
@@ -197,65 +197,17 @@ export default {
     getpulseData() {
       this.axios.get(`/case/manage/${this.caseId}/feel/pulse`).then((res) => {
         this.optinos = [];
-        let arr = [],
-          arr1 = [],
-          arr2 = [],
-          arr3 = [],
-          arr4 = [],
-          arr5 = [],
-          arr6 = [];
-        let data = res.data.optinos;
-        for (let i = 0; i < res.data.optinos.length; i++) {
-          if (/浮脉类/.test(data[i].name)) {
-            let str = data[i].name.match(/(\S*)-/)[1];
-            data[i].name = str;
-            arr.push(data[i]);
-          }
-          if (/沉脉类/.test(data[i].name)) {
-             let str = data[i].name.match(/(\S*)-/)[1];
-            data[i].name = str;
-            arr1.push(data[i]);
-          }
-          if (/迟脉类/.test(data[i].name)) {
-            let str = data[i].name.match(/(\S*)-/)[1];
-            data[i].name = str;
-            arr2.push(data[i]);
-          }
-          if (/数脉类/.test(data[i].name)) {
-            let str = data[i].name.match(/(\S*)-/)[1];
-            data[i].name = str;
-            arr3.push(data[i]);
-          }
-          if (/虚脉类/.test(data[i].name)) {
-           let str = data[i].name.match(/(\S*)-/)[1];
-            data[i].name = str;
-            arr4.push(data[i]);
-          }
-          if (/实脉类/.test(data[i].name)) {
-            let str = data[i].name.match(/(\S*)-/)[1];
-            data[i].name = str;
-            arr5.push(data[i]);
-          }
-          if (/相兼脉类/.test(data[i].name)) {
-            let str = data[i].name.match(/(\S*)-/)[1];
-            data[i].name = str;
-            arr6.push(data[i]);
-          }
-          if (i == res.data.optinos.length - 1) {
-            this.optinos.push(arr);
-            this.optinos.push(arr1);
-            this.optinos.push(arr2);
-            this.optinos.push(arr3);
-            this.optinos.push(arr4);
-            this.optinos.push(arr5);
-            this.optinos.push(arr6);
-          }
-        }
-
+        this.optinos[0] = res.data.optinos.splice(0, 6);
+        this.optinos[1] = res.data.optinos.splice(0, 4);
+        this.optinos[2] = res.data.optinos.splice(0, 4);
+        this.optinos[3] = res.data.optinos.splice(0, 4);
+        this.optinos[4] = res.data.optinos.splice(0, 5);
+        this.optinos[5] = res.data.optinos.splice(0, 6);
+        this.optinos[6] = res.data.optinos.splice(0, 18);
         this.answer = res.data.answer;
         res.data.optinos.forEach((item) => {
           if (res.data.answer == item.name) {
-            this.url=item.picUrl
+            this.url = item.picUrl;
             this.imgsUrl = this.$url + item.picUrl;
             this.imgDesc = item.description;
           }
@@ -357,7 +309,7 @@ export default {
         span:last-child {
           padding-left: 15px;
         }
-        &:hover{
+        &:hover {
           background: #cddbff;
         }
       }

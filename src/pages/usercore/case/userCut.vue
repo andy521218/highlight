@@ -26,7 +26,7 @@
                 <li style="border: none">
                   <p>点击右侧空白处选择一个设置为正确选项:</p>
                 </li>
-                 <li style="border: none" class="pulse_title">
+                <li style="border: none" class="pulse_title">
                   <span>浮脉类</span>
                   <span>沉脉类</span>
                   <span>迟脉类</span>
@@ -51,9 +51,9 @@
                           @change="putPulse"
                         />
                       </div>
-                     <p class="item_cont_title">
-                      {{ i }}
-                    </p>
+                      <p class="item_cont_title">
+                        {{ i }}
+                      </p>
                     </li>
                   </ul>
                 </li>
@@ -605,61 +605,14 @@ export default {
         .get(`/answer/${this.examNo}/${this.caseId}/feel/pulse`)
         .then((res) => {
           this.pulseData = [];
-          let arr = [],
-          arr1 = [],
-          arr2 = [],
-          arr3 = [],
-          arr4 = [],
-          arr5 = [],
-          arr6 = [];
-        let data = res.data.options;
-          for (let i = 0; i < res.data.options.length; i++) {
-          if (/浮脉类/.test(data[i])) {
-          let str = data[i].match(/(\S*)-/)[1];
-            data[i] = str;
-            arr.push(data[i]);
-          }
-          if (/沉脉类/.test(data[i])) {
-           let str = data[i].match(/(\S*)-/)[1];
-            data[i]= str;
-            arr1.push(data[i]);
-          }
-          if (/迟脉类/.test(data[i])) {
-          let str = data[i].match(/(\S*)-/)[1];
-            data[i] = str;
-            arr2.push(data[i]);
-          }
-          if (/数脉类/.test(data[i])) {
-          let str = data[i].match(/(\S*)-/)[1];
-            data[i] = str;
-            arr3.push(data[i]);
-          }
-          if (/虚脉类/.test(data[i])) {
-            let str = data[i].match(/(\S*)-/)[1];
-            data[i] = str;
-            arr4.push(data[i]);
-          }
-          if (/实脉类/.test(data[i])) {
-            let str = data[i].match(/(\S*)-/)[1];
-            data[i] = str;
-            arr5.push(data[i]);
-          }
-          if (/相兼脉类/.test(data[i])) {
-           let str = data[i].match(/(\S*)-/)[1];
-            data[i] = str;
-            arr6.push(data[i]);
-          }
-          if (i ==  res.data.options.length - 1) {
-            this.pulseData.push(arr);
-            this.pulseData.push(arr1);
-            this.pulseData.push(arr2);
-            this.pulseData.push(arr3);
-            this.pulseData.push(arr4);
-            this.pulseData.push(arr5);
-            this.pulseData.push(arr6);
-          }
-        }
-         
+          this.pulseData[0] = res.data.options.splice(0, 6);
+          this.pulseData[1] = res.data.options.splice(0, 4);
+          this.pulseData[2] = res.data.options.splice(0, 4);
+          this.pulseData[3] = res.data.options.splice(0, 4);
+          this.pulseData[4] = res.data.options.splice(0, 5);
+          this.pulseData[5] = res.data.options.splice(0, 6);
+          this.pulseData[6] = res.data.options.splice(0, 18);
+
           if (/localhost/.test(res.data.picUrl)) {
             this.imgsUrl = res.data.picUrl.replace(
               /localhost/,
@@ -738,7 +691,7 @@ export default {
     height: 100%;
     overflow-y: auto;
     .content_scrollbar_pulse {
-         .pulse_title {
+      .pulse_title {
         span {
           flex: 1;
         }
