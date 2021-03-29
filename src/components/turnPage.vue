@@ -22,6 +22,7 @@ export default {
   },
   methods: {
     change(page) {
+      this.pages=page
       this.$emit("getData", page);
     },
   },

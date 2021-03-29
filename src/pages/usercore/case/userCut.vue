@@ -611,7 +611,7 @@ export default {
           this.pulseData[3] = res.data.options.splice(0, 4);
           this.pulseData[4] = res.data.options.splice(0, 5);
           this.pulseData[5] = res.data.options.splice(0, 6);
-          this.pulseData[6] = res.data.options.splice(0, 18);
+          this.pulseData[6] = res.data.options.splice(0, 23);
 
           if (/localhost/.test(res.data.picUrl)) {
             this.imgsUrl = res.data.picUrl.replace(

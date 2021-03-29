@@ -238,7 +238,7 @@ export default {
           this.$Message.warning("删除案例成功!");
           this.deleshow = false;
           this.mask = false;
-          this.getManage();
+         this.getManage(this.$refs.turnPage.pages);
         } else {
           this.$Message.error(res.msg);
         }

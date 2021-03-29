@@ -203,7 +203,7 @@ export default {
         this.optinos[3] = res.data.optinos.splice(0, 4);
         this.optinos[4] = res.data.optinos.splice(0, 5);
         this.optinos[5] = res.data.optinos.splice(0, 6);
-        this.optinos[6] = res.data.optinos.splice(0, 18);
+        this.optinos[6] = res.data.optinos.splice(0, 23);
         this.answer = res.data.answer;
         res.data.optinos.forEach((item) => {
           if (res.data.answer == item.name) {
