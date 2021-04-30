@@ -28,6 +28,38 @@
                 <li style="border: none">
                   <p>点击右侧空白处选择一个设置为正确选项:</p>
                 </li>
+                <li v-for="(item, index) in optinos" :key="index">
+                  <label for="">{{ list[index] }}</label>
+                  <div class="pulse_warp">
+                    <div
+                      class="pulse_item"
+                      v-for="(i, index) in item"
+                      :key="index"
+                    >
+                      <div class="custom_radio" style="margin-right: 10px">
+                        <span
+                          class="custom_text"
+                          :class="{ active_radio: i.name == answer }"
+                        ></span>
+                        <input
+                          type="radio"
+                          class="custom_none"
+                          v-model="answer"
+                          :value="i.name"
+                          @change="putPulse(i)"
+                        />
+                      </div>
+                      <p class="item_cont_title" @click="seeImg(i)">
+                        {{ i.name }}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <!-- <ul class="content_scrollbar_pulse" v-show="typeId == 0">
+                <li style="border: none">
+                  <p>点击右侧空白处选择一个设置为正确选项:</p>
+                </li>
                 <li style="border: none" class="pulse_title">
                   <span>浮脉类</span>
                   <span>沉脉类</span>
@@ -59,7 +91,7 @@
                     </li>
                   </ul>
                 </li>
-              </ul>
+              </ul> -->
               <ul class="content_scrollbar_press" v-show="typeId == 1">
                 <li>
                   <p>点击右侧空白处选择一个设置为正确选项:</p>
@@ -119,6 +151,15 @@ export default {
   data() {
     return {
       tab: ["脉诊", "按诊"],
+      list: [
+        "浮脉类",
+        "沉脉类",
+        "迟脉类",
+        "数脉类",
+        "虚脉类",
+        "实脉类",
+        "相兼脉类",
+      ],
       typeId: "0",
       route: "",
       edit_cont: false,
@@ -253,8 +294,7 @@ export default {
         display: flex;
         width: 100%;
         border-bottom: 1px solid rgb(212, 229, 255);
-        height: 35px;
-        align-items: center;
+        align-items: flex-start;
         padding-left: 15px;
         .item_cont {
           width: 12.5%;
@@ -270,17 +310,18 @@ export default {
           flex: 1;
         }
       }
-      .pulse_item {
-        height: auto;
-        border: none;
-        align-items: flex-start;
-        ul {
-          flex: 1;
-          li {
-            padding-left: 0;
-            text-align: center;
-            border: none;
-          }
+      label {
+        margin-top: 10px;
+        width: 70px;
+      }
+      .pulse_warp {
+        width: 86%;
+        display: flex;
+        flex-wrap: wrap;
+        .pulse_item {
+          width: 100px;
+          margin: 10px 0;
+          display: flex;
         }
       }
     }

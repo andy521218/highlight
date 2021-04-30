@@ -6,8 +6,8 @@ module.exports = {
       '/api': {
         // target:'http://59.110.218.110:8080/api',
         // target: 'http://192.168.16.70:8080/api',
-        target: 'http://101.132.150.87:8080/api',
-        // target: 'http://localserver:8006/api',
+        // target: 'http://101.132.150.87:8080/api',
+        target: 'http://localserver:8006/api',
         changeOrigin: true,
         pathRewrite: {
           '/api': ''

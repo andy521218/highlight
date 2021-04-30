@@ -22,7 +22,39 @@
           </ul>
           <div class="content scrollbar">
             <div class="content_scrollbar_">
-              <ul class="content_scrollbar_pulse" v-show="typeId == 0">
+                <ul class="content_scrollbar_pulse" v-show="typeId == 0">
+                <li style="border: none">
+                  <p>点击右侧空白处选择一个设置为正确选项:</p>
+                </li>
+                <li v-for="(item, index) in pulseData" :key="index">
+                  <label for="">{{ list[index] }}</label>
+                  <div class="pulse_warp">
+                    <div
+                      class="pulse_item"
+                      v-for="(i, index) in item"
+                      :key="index"
+                    >
+                      <div class="custom_radio" style="margin-right: 10px">
+                        <span
+                          class="custom_text"
+                          :class="{ active_radio: i == answer }"
+                        ></span>
+                        <input
+                          type="radio"
+                          class="custom_none"
+                          v-model="answer"
+                          :value="i"
+                          @change="putPulse"
+                        />
+                      </div>
+                      <p class="item_cont_title">
+                        {{ i }}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              <!-- <ul class="content_scrollbar_pulse" v-show="typeId == 0">
                 <li style="border: none">
                   <p>点击右侧空白处选择一个设置为正确选项:</p>
                 </li>
@@ -57,7 +89,7 @@
                     </li>
                   </ul>
                 </li>
-              </ul>
+              </ul> -->
               <div class="normal_edit" v-if="normal_edit_show && typeId == 1">
                 按诊的结果均为正常
                 <p></p>
@@ -155,6 +187,15 @@ export default {
   },
   data() {
     return {
+      list: [
+        "浮脉类",
+        "沉脉类",
+        "迟脉类",
+        "数脉类",
+        "虚脉类",
+        "实脉类",
+        "相兼脉类",
+      ],
       tab: ["脉诊", "按诊"],
       examNo: "",
       typeId: "0",
@@ -691,30 +732,30 @@ export default {
     height: 100%;
     overflow-y: auto;
     .content_scrollbar_pulse {
+      
       .pulse_title {
         span {
           flex: 1;
         }
       }
-      .pulse_item {
-        height: auto;
-        border: none;
-        align-items: flex-start;
-        ul {
-          flex: 1;
-          li {
-            padding-left: 0;
-            text-align: center;
-            border: none;
-          }
+       .pulse_warp {
+        width: 86%;
+        display: flex;
+        flex-wrap: wrap;
+        .pulse_item {
+          width: 100px;
+          margin: 10px 0;
+          display: flex;
         }
+      }
+      label{
+        width: 70px;
       }
       li {
         display: flex;
         width: 100%;
         border-bottom: rgb(212, 229, 255) 1px solid;
-        height: 35px;
-        align-items: center;
+          align-items: flex-start;
         padding-left: 15px;
         .item_cont {
           width: 12.5%;
