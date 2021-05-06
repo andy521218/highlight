@@ -94,6 +94,7 @@ export default {
     submit() {
       if (!this.radioData) return this.$Message.error("请选择一项正确答案");
       this.$emit("editcaseData");
+      this.close()
     },
   },
 };

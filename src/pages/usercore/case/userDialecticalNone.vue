@@ -134,19 +134,24 @@
       <button class="edit_submit" @click="changeView">下一步</button>
     </div>
 
-  <!-- 步骤2 -->
+    <!-- 步骤2 -->
     <div class="dialectical_layout_left_two" v-show="!step">
-      <ul class="main_tab" style="height:50px">
+      <div class="title">
+        病名:{{ searchDisease }}
+        <button class="submit" @click="submitName">添加到辨证</button>
+      </div>
+      <ul class="main_tab">
         <li
           v-for="(item, index) in tab"
           :key="index"
           class="item_title"
-          @click="seeTabdata(item, index)"
+          @click="typeId = index"
         >
           {{ item }}
           <div :class="{ active: typeId == index }"></div>
         </li>
       </ul>
+
       <!-- 问诊 -->
       <div class="scrollbar" v-show="typeId == 0">
         <ul class="main_cont">
@@ -155,30 +160,29 @@
             :key="index"
             style="border-bottom: 1px solid rgb(212, 229, 255)"
           >
-            <div class="custom_radio" style="margin-right: 10px">
-              <span
-                class="custom_text"
-                :class="{
-                  active_checkbox: temporaryAsk.indexOf(item.id) > -1,
-                }"
-              ></span>
-              <input
-                type="checkbox"
-                class="custom_none"
-                :value="item.id"
-                v-model="temporaryAsk"
-              />
+            <div>
+              <div class="custom_radio" style="margin-right: 10px">
+                <span
+                  class="custom_text"
+                  :class="{
+                    active_checkbox: nameAskData.indexOf(item.id) > -1,
+                  }"
+                ></span>
+                <input
+                  type="checkbox"
+                  class="custom_none"
+                  :value="item.id"
+                  v-model="nameAskData"
+                />
+              </div>
             </div>
             <div style="display: flex; flex-direction: column">
-              <span class="start" style="height: auto"
-                >问:{{ item.question }}</span
-              >
+              <span class="start">问:{{ item.question }}</span>
               <span class="end">答:{{ item.answer }}</span>
             </div>
           </li>
         </ul>
       </div>
-
       <!-- 望诊 -->
       <div class="scrollbar" v-show="typeId == 1">
         <ul class="main_cont">
@@ -187,17 +191,16 @@
               <span
                 class="custom_text"
                 :class="{
-                  active_checkbox: temporaryWatch.indexOf(item.id) > -1,
+                  active_checkbox: nameWatchData.indexOf(item.id) > -1,
                 }"
               ></span>
               <input
                 type="checkbox"
                 class="custom_none"
                 :value="item.id"
-                v-model="temporaryWatch"
+                v-model="nameWatchData"
               />
             </div>
-
             <span style="width: 50px">
               {{ item.name }}
             </span>
@@ -214,24 +217,23 @@
               <span
                 class="custom_text"
                 :class="{
-                  active_checkbox: temporaryListent.indexOf(item.id) > -1,
+                  active_checkbox: namelistenData.indexOf(item.id) > -1,
                 }"
               ></span>
               <input
                 type="checkbox"
                 class="custom_none"
                 :value="item.id"
-                v-model="temporaryListent"
+                v-model="namelistenData"
               />
             </div>
-            <span style="width: 50px">
-              {{ item.name }}
-            </span>
+            {{ item.name }}
             <p>-----</p>
             {{ item.answer }}
           </li>
         </ul>
       </div>
+
       <!-- 切诊 -->
       <div class="scrollbar" v-show="typeId == 3">
         <ul class="main_cont">
@@ -240,14 +242,14 @@
               <span
                 class="custom_text"
                 :class="{
-                  active_checkbox: temporaryPress.indexOf(pulseData.id) > -1,
+                  active_checkbox: namePressData.indexOf(pulseData.id) > -1,
                 }"
               ></span>
               <input
-                class="custom_none"
                 type="checkbox"
+                class="custom_none"
                 :value="pulseData.id"
-                v-model="temporaryPress"
+                v-model="namePressData"
               />
             </div>
             <span style="width: 50px"> 脉诊 </span>
@@ -259,14 +261,14 @@
               <span
                 class="custom_text"
                 :class="{
-                  active_checkbox: temporaryPress.indexOf(item.id) > -1,
+                  active_checkbox: namePressData.indexOf(item.id) > -1,
                 }"
               ></span>
               <input
                 type="checkbox"
                 class="custom_none"
                 :value="item.id"
-                v-model="temporaryPress"
+                v-model="namePressData"
               />
             </div>
             <span style="width: 50px">
@@ -278,268 +280,171 @@
         </ul>
       </div>
     </div>
-    <div class="dialectical_submit" v-show="!step">
-      <div class="submit_top">
-        <i class="el-icon-right" @click="viewName"></i>
-        <h5 @click="viewName">添加到病名</h5>
-      </div>
-      <div class="submit_bottom">
-        <i class="el-icon-right" @click="viewdisease"></i>
-        <h5 @click="viewdisease">添加到症候</h5>
-      </div>
-    </div>
     <!-- 右侧 -->
     <div class="dialectical_layout_right_two" v-show="!step">
       <button
         class="edit_submit"
+        style="right: 0; bottom: -10%"
         @click="changeView"
         v-show="!step"
-        style="right: 0; bottom: -10%"
       >
         上一步
       </button>
-      <div class="dialectical_warp">
-        <div class="title">
-          辨病依据:{{ searchDisease }}
-          <button class="submit" @click="submitName">确定</button>
+      <div class="title" style="justify-content: flex-start">
+        证型:
+        <div v-for="(item, index) in diseaseCheckArr1" :key="index">
+          <div class="custom_radio" style="margin-right: 10px">
+            <span
+              class="custom_text"
+              :class="{
+                active_radio: diseaseDeafault == item.id,
+              }"
+            ></span>
+            <input
+              class="custom_none"
+              type="radio"
+              name="disease"
+              :value="item.id"
+              v-model="diseaseDeafault"
+              @change="seeDisease(item)"
+            />
+          </div>
+          <label for="">{{ item.name }}</label>
         </div>
-        <div class="scrollbar">
-          <ul class="main_cont">
-            <!-- 问诊 -->
-            <li
-              v-for="item in askData"
-              :key="item.id"
-              style="border-bottom: 1px solid rgb(212, 229, 255)"
-              v-show="nameAskData.indexOf(item.id) > -1"
-            >
-              <div class="custom_radio" style="margin-right: 10px">
-                <i class="el-icon-error"></i>
-                <input
-                  type="checkbox"
-                  class="custom_none"
-                  :value="item.id"
-                  v-model="nameAskData"
-                />
-              </div>
-              <div style="display: flex; flex-direction: column">
-                <span class="start" style="height: auto"
-                  >问:{{ item.question }}</span
-                >
-                <span class="end">答:{{ item.answer }}</span>
-              </div>
-            </li>
-            <!-- 望诊 -->
-            <li
-              v-for="item in wachData"
-              :key="item.id"
-              v-show="nameWatchData.indexOf(item.id) > -1"
-            >
-              <div class="custom_radio" style="margin-right: 10px">
-                <i class="el-icon-error"></i>
-                <input
-                  type="checkbox"
-                  class="custom_none"
-                  :value="item.id"
-                  v-model="nameWatchData"
-                />
-              </div>
-
-              <span style="width: 50px">
-                {{ item.name }}
-              </span>
-              <p>-----</p>
-              {{ item.answer }}
-            </li>
-            <!-- 闻诊 -->
-            <li
-              v-for="item in listenData"
-              :key="item.id"
-              v-show="listenData.indexOf(item.id) > -1"
-            >
-              <div class="custom_radio" style="margin-right: 10px">
-                <i class="el-icon-error"></i>
-                <input
-                  type="checkbox"
-                  class="custom_none"
-                  :value="item.id"
-                  v-model="namelistenData"
-                />
-              </div>
-              <span style="width: 50px">
-                {{ item.name }}
-              </span>
-              <p>-----</p>
-              {{ item.answer }}
-            </li>
-            <!-- 切诊 -->
-            <li v-show="namePressData.indexOf(pulseData.id) > -1">
-              <div class="custom_radio" style="margin-right: 10px">
-                <i class="el-icon-error"></i>
-                <input
-                  type="checkbox"
-                  class="custom_none"
-                  :value="pulseData.id"
-                  v-model="namePressData"
-                />
-              </div>
-              <span style="width: 50px"> 脉诊 </span>
-              <p>-----</p>
-              {{ pulseData.answer }}
-            </li>
-            <li
-              v-for="item in pressData"
-              :key="item.id"
-              v-show="namePressData.indexOf(item.id) > -1"
-            >
-              <div class="custom_radio" style="margin-right: 10px">
-                <i class="el-icon-error"></i>
-                <input
-                  type="checkbox"
-                  class="custom_none"
-                  :value="item.id"
-                  v-model="namePressData"
-                />
-              </div>
-              <span style="width: 50px">
-                {{ item.name }}
-              </span>
-              <p>-----</p>
-              {{ item.answer }}
-            </li>
-          </ul>
-        </div>
+        <button class="submit disease" @click="submitDisease">辨证依据</button>
       </div>
-      <div class="dialectical_warp" style="margin-top:2%">
-        <div class="title" style="justify-content: flex-start">
-          辩证依据:
-          <div v-for="(item, index) in diseaseCheckArr1" :key="index">
+      <ul class="main_tab">
+        <li
+          v-for="(item, index) in tab"
+          :key="index"
+          class="item_title"
+          @click="diseaseChangeId = index"
+        >
+          {{ item }}
+          <div :class="{ active: diseaseChangeId == index }"></div>
+        </li>
+      </ul>
+      <!-- 问诊 -->
+      <div class="scrollbar" v-show="diseaseChangeId == 0">
+        <ul class="main_cont">
+          <li
+            v-for="(item, index) in askData"
+            :key="index"
+            style="border-bottom: 1px solid rgb(212, 229, 255)"
+          >
             <div class="custom_radio" style="margin-right: 10px">
               <span
                 class="custom_text"
                 :class="{
-                  active_radio: diseaseDeafault == item.id,
+                  active_checkbox: diseaseAskData.indexOf(item.id) > -1,
                 }"
               ></span>
               <input
                 class="custom_none"
-                type="radio"
-                name="disease"
+                type="checkbox"
                 :value="item.id"
-                v-model="diseaseDeafault"
-                @change="seeDisease(item)"
+                v-model="diseaseAskData"
               />
             </div>
-            <label for="">{{ item.name }}</label>
-          </div>
-          <button class="submit disease" @click="submitDisease">
-            确定
-          </button>
-        </div>
-        <div class="scrollbar">
-          <ul class="main_cont">
-            <!-- 问诊 -->
-            <li
-              v-for="item in askData"
-              :key="item.id"
-              v-show="diseaseAskData.indexOf(item.id) > -1"
-              style="border-bottom: 1px solid rgb(212, 229, 255)"
-            >
-              <div class="custom_radio" style="margin-right: 10px">
-                <i class="el-icon-error"></i>
-                <input
-                  class="custom_none"
-                  type="checkbox"
-                  :value="item.id"
-                  v-model="diseaseAskData"
-                />
-              </div>
-              <div style="display: flex; flex-direction: column">
-                <span class="start">问:{{ item.question }}</span>
-                <span class="end">答:{{ item.answer }}</span>
-              </div>
-            </li>
-            <!-- 望诊 -->
-            <li
-              v-for="item in wachData"
-              :key="item.id"
-              v-show="diseaseWatchData.indexOf(item.id) > -1"
-            >
-              <div class="custom_radio" style="margin-right: 10px">
-                <i class="el-icon-error"></i>
-                <input
-                  class="custom_none"
-                  type="checkbox"
-                  :value="item.id"
-                  v-model="diseaseWatchData"
-                />
-              </div>
-              <span style="width: 50px">
-                {{ item.name }}
-              </span>
-              <p>-----</p>
-              {{ item.answer }}
-            </li>
-            <!-- 闻诊 -->
-            <li
-              v-for="item in listenData"
-              :key="item.id"
-              v-show="diseaselistenData.indexOf(item.id) > -1"
-            >
-              <div class="custom_radio" style="margin-right: 10px">
-                <i class="el-icon-error"></i>
-                <input
-                  class="custom_none"
-                  type="checkbox"
-                  :value="item.id"
-                  v-model="diseaselistenData"
-                />
-              </div>
-              <span style="width: 50px">
-                {{ item.name }}
-              </span>
-              <p>-----</p>
-              {{ item.answer }}
-            </li>
-            <!-- 切诊 -->
-            <li
-              v-if="pulseData.answer"
-              v-show="diseasePressData.indexOf(pulseData.id) > -1"
-            >
-              <div class="custom_radio" style="margin-right: 10px">
-                <i class="el-icon-error"></i>
-                <input
-                  class="custom_none"
-                  type="checkbox"
-                  :value="pulseData.id"
-                  v-model="diseasePressData"
-                />
-              </div>
-              <span style="width: 50px"> 脉诊 </span>
-              <p>-----</p>
-              {{ pulseData.answer }}
-            </li>
-            <li
-              v-for="item in pressData"
-              :key="item.id"
-              v-show="diseasePressData.indexOf(item.id) > -1"
-            >
-              <div class="custom_radio" style="margin-right: 10px">
-                <i class="el-icon-error"></i>
-                <input
-                  class="custom_none"
-                  type="checkbox"
-                  :value="item.id"
-                  v-model="diseasePressData"
-                />
-              </div>
-              <span style="width: 50px">
-                {{ item.name }}
-              </span>
-              <p>-----</p>
-              {{ item.answer }}
-            </li>
-          </ul>
-        </div>
+            <div style="display: flex; flex-direction: column">
+              <span class="start">问:{{ item.question }}</span>
+              <span class="end">答:{{ item.answer }}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 望诊 -->
+      <div class="scrollbar" v-show="diseaseChangeId == 1">
+        <ul class="main_cont">
+          <li v-for="(item, index) in wachData" :key="index">
+            <div class="custom_radio" style="margin-right: 10px">
+              <span
+                class="custom_text"
+                :class="{
+                  active_checkbox: diseaseWatchData.indexOf(item.id) > -1,
+                }"
+              ></span>
+              <input
+                class="custom_none"
+                type="checkbox"
+                :value="item.id"
+                v-model="diseaseWatchData"
+              />
+            </div>
+            {{ item.name }}
+            <p>-----</p>
+            {{ item.answer }}
+          </li>
+        </ul>
+      </div>
+      <!-- 闻诊 -->
+      <div class="scrollbar" v-show="diseaseChangeId == 2">
+        <ul class="main_cont">
+          <li v-for="(item, index) in listenData" :key="index">
+            <div class="custom_radio" style="margin-right: 10px">
+              <span
+                class="custom_text"
+                :class="{
+                  active_checkbox: diseaselistenData.indexOf(item.id) > -1,
+                }"
+              ></span>
+              <input
+                class="custom_none"
+                type="checkbox"
+                :value="item.id"
+                v-model="diseaselistenData"
+              />
+            </div>
+            {{ item.name }}
+            <p>-----</p>
+            {{ item.answer }}
+          </li>
+        </ul>
+      </div>
+
+      <!-- 切诊 -->
+      <div class="scrollbar" v-show="diseaseChangeId == 3">
+        <ul class="main_cont">
+          <li v-if="pulseData.answer">
+            <div class="custom_radio" style="margin-right: 10px">
+              <span
+                class="custom_text"
+                :class="{
+                  active_checkbox: diseasePressData.indexOf(pulseData.id) > -1,
+                }"
+              ></span>
+              <input
+                class="custom_none"
+                type="checkbox"
+                :value="pulseData.id"
+                v-model="diseasePressData"
+              />
+            </div>
+            脉诊
+            <p>-----</p>
+            {{ pulseData.answer }}
+          </li>
+          <li v-for="(item, index) in pressData" :key="index">
+            <div class="custom_radio" style="margin-right: 10px">
+              <span
+                class="custom_text"
+                :class="{
+                  active_checkbox: diseasePressData.indexOf(item.id) > -1,
+                }"
+              ></span>
+              <input
+                class="custom_none"
+                type="checkbox"
+                :value="item.id"
+                v-model="diseasePressData"
+              />
+            </div>
+            {{ item.name }}
+            <p>-----</p>
+            {{ item.answer }}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -552,10 +457,6 @@ export default {
   data() {
     return {
       tab: ["问", "望", "闻", "切"],
-       temporaryAsk: [],
-      temporaryWatch: [],
-      temporaryListent: [],
-      temporaryPress: [],
       diseaseNameShow: false,
       caseId: "",
       typeId: "",
@@ -625,49 +526,6 @@ export default {
     }
   },
   methods: {
-     viewdisease() {
-        this.temporaryAsk.forEach((item) => {
-        this.checkView(this.diseaseAskData, item);
-      });
-      this.temporaryWatch.forEach((item) => {
-        this.checkView(this.diseaseWatchData, item);
-      });
-      this.temporaryListent.forEach((item) => {
-        this.checkView(this.diseaselistenData, item);
-      });
-      this.temporaryPress.forEach((item) => {
-        this.checkView(this.diseaselistenData, item);
-      });
-       this.init()
-    },
-    viewName() {
-      this.temporaryAsk.forEach((item) => {
-        this.checkView(this.nameAskData, item);
-      });
-      this.temporaryWatch.forEach((item) => {
-        this.checkView(this.nameWatchData, item);
-      });
-      this.temporaryListent.forEach((item) => {
-        this.checkView(this.namelistenData, item);
-      });
-      this.temporaryPress.forEach((item) => {
-        this.checkView(this.namePressData, item);
-      });
-      this.init()
-    },
-     checkView(arr, item) {
-      if (arr.indexOf(item) > -1) {
-        return;
-      } else {
-        arr.push(item);
-      }
-    },
-    init(){
-      this.temporaryAsk=[]
-      this.temporaryWatch=[]
-      this.temporaryListent=[]
-      this.temporaryPress=[]
-    },
     // 第一步查看tab选项
     seeTabdata(item, i) {
       this.typeId = i;
@@ -1049,12 +907,11 @@ export default {
 
 <style lang="scss">
 .case_dialectical {
-  width: 96%;
-  margin: 0 auto;
+  width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   .dialectical_layout_left {
     width: 53%;
@@ -1085,6 +942,7 @@ export default {
     margin-left: 1%;
     background-color: rgb(212, 229, 255, 0.4);
     border-radius: 10px;
+
     ul {
       width: 94%;
       margin-left: 3%;
@@ -1124,24 +982,7 @@ export default {
       }
     }
   }
-  .dialectical_submit {
-    height: 85%;
-    margin-top: 2%;
-    .submit_top,
-    .submit_bottom {
-      cursor: pointer;
-      height: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: rgb(111, 147, 251);
-      .el-icon-right {
-        font-size: 40px;
-        font-weight: bold;
-      }
-    }
-  }
+
   .dialectical_layout_left_two,
   .dialectical_layout_right_two {
     width: 47.5%;
@@ -1156,7 +997,7 @@ export default {
     }
     .scrollbar {
       width: 99%;
-      height: 100%;
+      height: 98%;
       .main_cont {
         width: 100%;
         height: 84%;
@@ -1171,7 +1012,7 @@ export default {
       align-items: center;
       justify-content: space-between;
       padding: 0 1% 0 3%;
-      border-bottom: 1px solid rgb(111, 147, 251);
+      border-bottom: rgb(212, 229, 255) 1px solid;
       div {
         width: 100px;
         margin-left: 15px;
@@ -1187,42 +1028,10 @@ export default {
     .custom_radio {
       width: 20px;
       height: 20px;
-      &:hover {
-        color: rgb(111, 147, 251);
-      }
-      i {
-        font-size: 20px;
-      }
     }
   }
-  .dialectical_layout_right_two {
-    background-color: transparent;
-    display: flex;
-    width: 45%;
-    flex-direction: column;
-    .dialectical_warp {
-      width: 100%;
-      height: 49%;
-      background-color: rgb(212, 229, 255, 0.4);
-      overflow: hidden;
-      border-radius: 10px;
-
-      .dialectical_submit {
-        // display: flex;
-        // flex-direction: column;
-        // justify-content: center;
-        // align-content: center;
-      }
-      .title {
-        height: 60px;
-      }
-      .scrollbar {
-        height: 78%;
-        .main_cont {
-          height: 100%;
-        }
-      }
-    }
+  .dialectical_layout_left_two {
+    margin-right: 1.5%;
   }
 
   //   公共样式
@@ -1243,7 +1052,6 @@ export default {
     .item_title {
       cursor: pointer;
       width: 5%;
-      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1268,6 +1076,7 @@ export default {
       position: relative;
       padding: 1%;
       width: 99%;
+      font-size: 1.1em;
       .custom_radio {
         margin-bottom: 12px;
       }
