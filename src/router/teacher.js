@@ -174,12 +174,12 @@ export const teacher = [
       {
         path: '/editcut',
         name: '/editcut',
-        component: () => import('../pages/teacher/edit/editCut')
+        component: () => import('../pages/teacher/edit/editCutNone')
       },
       {
         path: '/editdialectical',
         name: '/editdialectical',
-        component: () => import('../pages/teacher/edit/editDialectical')
+        component: () => import('../pages/teacher/edit/editDialecticalNone')
       },
       {
         path: '/edittreatment',

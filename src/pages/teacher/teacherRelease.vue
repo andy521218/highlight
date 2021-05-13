@@ -31,7 +31,7 @@
             :typeId="'rommsId'"
             :itemName="'name'"
             :itemId="'id'"
-            :defaultTitle="'请选择班级'"
+       
           ></selectBox>
 
           <p class="edit_tips">{{ roomsText }}</p>
@@ -231,7 +231,7 @@ export default {
       examCase: [],
       examCaseNumber: {},
       main_show: false,
-      rommsId: "",
+      rommsId: "1111111111",
       active: null,
     };
   },
@@ -341,12 +341,19 @@ export default {
     },
     //提交
     submit() {
+      try {
+        this.examData.name.trim()
+      } catch (error) {
+        this.nameText = "请输入考试名称"
+        return error
+      }
       if (!this.examData.name.trim()) {
         return (this.nameText = "请输入考试名称");
       } else {
         this.nameText = "";
       }
       if (!this.rommsId) {
+        console.log(this.rommsId);
         return (this.roomsText = "请选择班级");
       } else {
         this.roomsText = "";

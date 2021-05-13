@@ -654,7 +654,7 @@ export default {
   methods: {
     //右侧试图更新
     viewdisease() {
-        this.temporaryAsk.forEach((item) => {
+      this.temporaryAsk.forEach((item) => {
         this.checkView(this.diseaseAskData, item);
       });
       this.temporaryWatch.forEach((item) => {
@@ -666,6 +666,7 @@ export default {
       this.temporaryPress.forEach((item) => {
         this.checkView(this.diseaselistenData, item);
       });
+      this.init();
     },
     viewName() {
       this.temporaryAsk.forEach((item) => {
@@ -680,6 +681,7 @@ export default {
       this.temporaryPress.forEach((item) => {
         this.checkView(this.namePressData, item);
       });
+      this.init();
     },
     checkView(arr, item) {
       if (arr.indexOf(item) > -1) {
@@ -687,6 +689,12 @@ export default {
       } else {
         arr.push(item);
       }
+    },
+    init() {
+      this.temporaryAsk = [];
+      this.temporaryWatch = [];
+      this.temporaryListent = [];
+      this.temporaryPress = [];
     },
     // 第一步查看tab选项
     seeTabdata(item, i) {
